@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Showmie;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Showmie
@@ -10,8 +14,10 @@ namespace Showmie
         public App()
         {
             InitializeComponent();
+            AppCenter.Start("android=92233719-d584-4656-9fd8-27003c82e33b;",
+                  typeof(Analytics), typeof(Crashes));
+            MainPage = new Onboard();
 
-            MainPage = new MainPage();
         }
 
         protected override void OnStart()

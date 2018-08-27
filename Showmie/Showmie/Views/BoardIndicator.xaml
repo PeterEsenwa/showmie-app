@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:showmie="clr-namespace:Showmie"
+      xmlns:utils="clr-namespace:Showmie.Utils"
+      x:Class="Showmie.BoardIndicator">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <utils:IndicatorPosToImgCV x:Key="posToImageSrc" />
+        </ResourceDictionary>
+    </Grid.Resources>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+    <showmie:IndicatorImage Source="{Binding SourceImage, Converter={StaticResource posToImageSrc} , ConverterParameter=1}"/>
+    <showmie:IndicatorImage Source="{Binding SourceImage,  Converter={StaticResource posToImageSrc} , ConverterParameter=2}"/>
+    <Label Text="{Binding SourceImage,  Converter={StaticResource posToImageSrc} , ConverterParameter=2}" TextColor="Black"/>
+    <!--<showmie:IndicatorImage Source="{Binding SourceImage,  Converter={StaticResource posToImageSrc} , ConverterParameter=3}"/>-->
+</Grid>

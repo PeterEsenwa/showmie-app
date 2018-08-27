@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Showmie.Onboard"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+             xmlns:local="clr-namespace:Showmie"
+             xmlns:utils="clr-namespace:Showmie.Utils">
+    <ContentPage.Resources>
+        <local:res x:Key="resOne" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <cv:CarouselView ItemsSource="{Binding BoardsSource}" Position="{Binding SourceImage, Mode=TwoWay}">
+                <cv:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid VerticalOptions="Center">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="20" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="10" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="1.5*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1.5*" />
+                                <ColumnDefinition Width="20" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="5"
+                                   Source="{Binding DescImageURL}" />
+                            <Label Grid.Row="3"
+                                   Grid.Column="2"
+                                   FontAttributes="Bold"
+                                   FontFamily="Arial"
+                                   FontSize="32"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding BodyText}"
+                                   TextColor="{StaticResource textColorLightBlack}" />
+                            <Image Grid.Row="4"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="5"
+                                   Source="seperator.png"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Center" />
+                            <Label Grid.Row="5"
+                                   Grid.Column="2"
+                                   FontAttributes="Bold"
+                                   FontFamily="Quicksand"
+                                   FontSize="Medium"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   Text="{Binding HeadingText}"
+                                   TextColor="{StaticResource textColorLightBlack}" />
+                        </Grid>
+                    </DataTemplate>
+                </cv:CarouselView.ItemTemplate>
+            </cv:CarouselView>
+            <Grid Margin="0,0,0,20" HeightRequest="50">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <ResourceDictionary>
+                        <utils:IndicatorPosToImgCV x:Key="posToImageSrc" />
+                    </ResourceDictionary>
+                </Grid.Resources>
+
+                <Button x:Name="SkipOnboarding"
+                        Grid.Column="1"
+                        BackgroundColor="White"
+                        BorderColor="Transparent"
+                        FontAttributes="Bold"
+                        FontSize="Small"
+                        CornerRadius="4"
+                        Text="SKIP"
+                        TextColor="{StaticResource textColorLightGrey}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start" />
+                <Grid x:Name="Indicators"
+                      Grid.Column="2"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <local:IndicatorImage Grid.Column="0" Source="{Binding SourceImage, Mode=OneWay, Converter={StaticResource posToImageSrc}, ConverterParameter=0}" />
+                    <local:IndicatorImage Grid.Column="1" Source="{Binding SourceImage, Mode=OneWay, Converter={StaticResource posToImageSrc}, ConverterParameter=1}" />
+                    <local:IndicatorImage Grid.Column="2" Source="{Binding SourceImage, Mode=OneWay, Converter={StaticResource posToImageSrc}, ConverterParameter=2}" />
+                </Grid>
+                <Button x:Name="NextBoard"
+                        Grid.Column="3"
+                        BackgroundColor="Transparent"
+                        Image="next_page_arrow.png"
+                        HorizontalOptions="Center"
+                        FontSize="Medium"
+                        VerticalOptions="Start" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+  <item>
+    <color android:color="@color/launcher_background"/>
+  </item>
+  <!--<item android:top="80dp"
+        android:right="0dp">
+    <bitmap
+        android:src="@drawable/bike_back"
+        android:tileMode="disabled"
+        android:dither="false"
+        android:filter="false"
+        android:gravity="top|right"/>
+  </item>
+  <item android:top="80dp"
+        android:left="0dp"
+        android:gravity="top|left">
+    <bitmap android:src="@drawable/bike_front"
+        android:tileMode="disabled"/>
+  </item>
+  <item android:top="100dp">
+    <bitmap android:gravity="center_horizontal"
+       android:src="@drawable/cycles_text"
+       android:tileMode="disabled"
+       />
+  </item>-->
+  <item>
+    <bitmap android:gravity="center"
+       android:src="@drawable/splash_showmie"
+       android:tileMode="disabled"
+       />
+  </item>
+</layer-list>

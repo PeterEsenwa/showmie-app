@@ -13,5 +13,13 @@ namespace Showmie
         {
             InitializeComponent();
         }
+
+        private int pageNum;
+
+        public int PageNum {
+            get { return pageNum; }
+            set { pageNum = value; }
+        }
+
     }
 }
