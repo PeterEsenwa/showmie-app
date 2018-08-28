@@ -17,5 +17,10 @@ namespace Showmie
             BoardsList.Add(thirdBoard);
             return BoardsList;
         }
+
+        public int NoOfBoards()
+        {
+            return BoardsList.Count;
+        }
     }
 }
