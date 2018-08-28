@@ -10,16 +10,18 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
-            <cv:CarouselView ItemsSource="{Binding BoardsSource}" Position="{Binding SourceImage, Mode=TwoWay}">
+            <cv:CarouselView x:Name="boardsCarousel"
+                             ItemsSource="{Binding BoardsSource}"
+                             Position="{Binding SourceImage, Mode=TwoWay}">
                 <cv:CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Grid VerticalOptions="Center">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="50" />
+                                <RowDefinition Height="*" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="20" />
+                                <RowDefinition Height=".5*" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="10" />
+                                <RowDefinition Height=".2*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -29,39 +31,45 @@
                                 <ColumnDefinition Width="1.5*" />
                                 <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Row="1"
+                            <Image x:Name="boardImage"
+                                   Grid.Row="1"
                                    Grid.Column="0"
                                    Grid.ColumnSpan="5"
                                    Source="{Binding DescImageURL}" />
-                            <Label Grid.Row="3"
+                            <Label x:Name="boardHeader"
+                                   Grid.Row="3"
                                    Grid.Column="2"
                                    FontAttributes="Bold"
                                    FontFamily="Arial"
                                    FontSize="32"
+                                   Text="{Binding HeadingText}"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
-                                   Text="{Binding BodyText}"
                                    TextColor="{StaticResource textColorLightBlack}" />
-                            <Image Grid.Row="4"
+                            <Image x:Name="seperator"
+                                   Grid.Row="4"
                                    Grid.Column="0"
                                    Grid.ColumnSpan="5"
                                    Source="seperator.png"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center" />
-                            <Label Grid.Row="5"
+                            <Label x:Name="boardDescription"
+                                   Grid.Row="5"
                                    Grid.Column="2"
                                    FontAttributes="Bold"
                                    FontFamily="Quicksand"
                                    FontSize="Medium"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
-                                   Text="{Binding HeadingText}"
+                                   Text="{Binding BodyText}"
                                    TextColor="{StaticResource textColorLightBlack}" />
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>
             </cv:CarouselView>
-            <Grid Margin="0,0,0,20" HeightRequest="50">
+            <Grid x:Name="lowerBar"
+                  Margin="0,0,0,20"
+                  HeightRequest="50">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="20" />
                     <ColumnDefinition Width="1*" />
@@ -83,6 +91,7 @@
                         FontSize="Small"
                         CornerRadius="4"
                         Text="SKIP"
+                        Clicked="SkipOnboarding_Clicked"
                         TextColor="{StaticResource textColorLightGrey}"
                         HorizontalOptions="Center"
                         VerticalOptions="Start" />
@@ -101,6 +110,7 @@
                 </Grid>
                 <Button x:Name="NextBoard"
                         Grid.Column="3"
+                        Clicked="NextBoard_Clicked"
                         BackgroundColor="Transparent"
                         Image="next_page_arrow.png"
                         HorizontalOptions="Center"
