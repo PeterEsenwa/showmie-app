@@ -136,9 +136,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\seperator.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\sm_community.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\sm_community.png" />
   </ItemGroup>
   <ItemGroup>
@@ -230,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\idea_bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\sm_community.png" />
   </ItemGroup>
   <Import Project="..\Showmie\Showmie.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
