@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Showmie.SignupPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Showmie">
+    <StackLayout BackgroundColor="White">
+        <!--  Place new controls here  -->
+        <Grid>
+
+            <Label x:Name="startTxt"
+                   Text="Get Started!"
+                   FontSize="{StaticResource fontSizeLarge}"
+                   HorizontalOptions="CenterAndExpand"
+                   TextColor="{StaticResource textColorLightBlack}">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="Quicksand-Bold.ttf#Quicksand Bold" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

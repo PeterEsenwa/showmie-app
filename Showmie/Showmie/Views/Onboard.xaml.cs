@@ -31,7 +31,7 @@ namespace Showmie
 
         private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
         {
-            App.Current.MainPage = new NavigationPage(new MainPage());
+            App.Current.MainPage = new NavigationPage(new SignupPage());
         }
     }
 }

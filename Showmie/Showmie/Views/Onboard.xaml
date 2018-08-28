@@ -5,9 +5,6 @@
              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              xmlns:local="clr-namespace:Showmie"
              xmlns:utils="clr-namespace:Showmie.Utils">
-    <ContentPage.Resources>
-        <local:res x:Key="resOne" />
-    </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <cv:CarouselView x:Name="boardsCarousel"
@@ -19,9 +16,9 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition Height=".5*" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".3*" />
+                                <RowDefinition Height=".5*" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".2*" />
+                                <RowDefinition Height=".3*" />
                                 <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -39,9 +36,8 @@
                             <Label x:Name="boardHeader"
                                    Grid.Row="3"
                                    Grid.Column="2"
-                                   FontAttributes="Bold"
-                                   FontFamily="Arial"
-                                   FontSize="32"
+                                   FontFamily="{StaticResource Quicksand_Bold}"
+                                   FontSize="{StaticResource fontSizeLarge}"
                                    Text="{Binding HeadingText}"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
@@ -56,8 +52,7 @@
                             <Label x:Name="boardDescription"
                                    Grid.Row="5"
                                    Grid.Column="2"
-                                   FontAttributes="Bold"
-                                   FontFamily="Quicksand"
+                                   FontFamily="{StaticResource Quicksand_Medium}"
                                    FontSize="Medium"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
@@ -87,7 +82,7 @@
                         Grid.Column="1"
                         BackgroundColor="White"
                         BorderColor="Transparent"
-                        FontAttributes="Bold"
+                        FontFamily="{StaticResource Quicksand_Medium}"
                         FontSize="Small"
                         CornerRadius="4"
                         Text="SKIP"

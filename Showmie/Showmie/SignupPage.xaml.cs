@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace Showmie
 {
-    public partial class MainPage : ContentPage
+    public partial class SignupPage : ContentPage
     {
-        public MainPage()
+        public SignupPage()
         {
             InitializeComponent();
         }
