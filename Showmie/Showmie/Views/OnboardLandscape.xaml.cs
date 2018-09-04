@@ -1,29 +1,31 @@
 ﻿using Showmie.Views;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Xamarin.Essentials;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Showmie
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Onboard: OrientationContentPage, INotifyPropertyChanged
-    {
-        public Onboard()
-        {
-            InitializeComponent();
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class OnboardLandscape : OrientationContentPage
+	{
+		public OnboardLandscape ()
+		{
+			InitializeComponent ();
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
         }
-
         OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
         public int SourceImage { get { return _sourceImage; } set { _sourceImage = value; OnPropertyChanged(); } }
 
-        private void NextBoard_Clicked(object sender, System.EventArgs e)
+        private void NextBoard_Clicked(object sender, EventArgs e)
         {
             if (boardsCarousel.Position < onboardsVM.NoOfBoards() - 1)
             {

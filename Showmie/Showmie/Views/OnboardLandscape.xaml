@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:OrientationContentPage x:Class="Showmie.Onboard"
+<views:OrientationContentPage x:Class="Showmie.OnboardLandscape"
                               xmlns="http://xamarin.com/schemas/2014/forms"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                               xmlns:views="clr-namespace:Showmie.Views"
                               xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-                              xmlns:local="clr-namespace:Showmie"
-                              xmlns:utils="clr-namespace:Showmie.Utils">
+                              xmlns:utils="clr-namespace:Showmie.Utils"
+                              xmlns:local="clr-namespace:Showmie">
     <views:OrientationContentPage.Content>
         <StackLayout BackgroundColor="White">
             <cv:CarouselView x:Name="boardsCarousel"
@@ -15,52 +15,50 @@
                     <DataTemplate>
                         <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height=".6*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".4*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".2*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".1*" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width=".5*" />
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width=".5*" />
+                                <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
                             <Image x:Name="boardImage"
-                                   Grid.Row="1"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="5"
+                                   Grid.Column="1"
                                    Source="{Binding DescImageURL}"
                                    VerticalOptions="CenterAndExpand" />
-                            <Label x:Name="boardHeader"
-                                   Grid.Row="3"
-                                   Grid.Column="2"
-                                   FontFamily="{StaticResource Quicksand_Bold}"
-                                   FontSize="{StaticResource fontSizeLarge}"
-                                   Text="{Binding HeadingText}"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   TextColor="{StaticResource textColorLightBlack}" />
-                            <Image x:Name="seperator"
-                                   Grid.Row="4"
-                                   Grid.Column="0"
-                                   Grid.ColumnSpan="5"
-                                   Source="seperator.png"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center" />
-                            <Label x:Name="boardDescription"
-                                   Grid.Row="5"
-                                   Grid.Column="2"
-                                   FontFamily="{StaticResource Quicksand_Medium}"
-                                   FontSize="{StaticResource fontSizeMedium}"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   Text="{Binding BodyText}"
-                                   TextColor="{StaticResource textColorLightBlack}" />
+                            <Grid HorizontalOptions="CenterAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".2*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height=".2*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="boardHeader"
+                                       Grid.Row="1"
+                                       FontFamily="{StaticResource Quicksand_Bold}"
+                                       FontSize="{StaticResource fontSizeLarge}"
+                                       Text="{Binding HeadingText}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       TextColor="{StaticResource textColorLightBlack}" />
+
+                                <Label x:Name="boardDescription"
+                                       Grid.Row="2"
+                                       FontFamily="{StaticResource Quicksand_Medium}"
+                                       FontSize="{StaticResource fontSizeMedium}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       Text="{Binding BodyText}"
+                                       TextColor="{StaticResource textColorLightBlack}" />
+                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>
