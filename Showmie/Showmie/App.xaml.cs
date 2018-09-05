@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Showmie.Views;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -20,7 +21,7 @@ namespace Showmie
 
             if (OnboardScreens != null)
             {
-                OnboardScreens = new Onboard();
+                OnboardScreens = new Onboard(true);
             }
 
 
@@ -67,8 +68,8 @@ namespace Showmie
             }
             Current.Resources["fontSizeLarge"] = oldLargeFS * diff;
         }
-
-        public Onboard OnboardScreens { get; set; }
+        public static OnboardLandscape OnboardScreensLandscape { get; set; }
+        public static Onboard OnboardScreens { get; set; }
         protected override void OnStart()
         {
             if (OnboardScreens != null)
@@ -77,7 +78,7 @@ namespace Showmie
             }
             else
             {
-                OnboardScreens = new Onboard();
+                OnboardScreens = new Onboard(OrientationContentPage.firstPageLoad);
                 MainPage = OnboardScreens;
             }
         }
@@ -95,7 +96,7 @@ namespace Showmie
             }
             else
             {
-                OnboardScreens = new Onboard();
+                OnboardScreens = new Onboard(OrientationContentPage.firstPageLoad);
                 MainPage = OnboardScreens;
             }
         }

@@ -13,11 +13,11 @@ namespace Showmie.Utils
             {
                 if (Orientation == PageOrientation.Horizontal)
                 {
-                    Application.Current.MainPage = new OnboardLandscape();
+                    Application.Current.MainPage = App.OnboardScreensLandscape;
                 }
                 else
                 {
-                    Application.Current.MainPage = new OnboardLandscape();
+                    Application.Current.MainPage = App.OnboardScreens;
                 }
             }
         }

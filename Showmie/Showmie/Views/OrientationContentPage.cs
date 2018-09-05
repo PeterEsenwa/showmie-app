@@ -7,25 +7,29 @@ namespace Showmie.Views
 {
     public class OrientationContentPage : ContentPage
     {
-        private double _width;
-        private double _height;
+        private static double _width;
+        private static double _height;
+        internal static bool firstPageLoad = true;
 
         private event EventHandler<PageOrientationEventArgs> OnOrientationChanged = (e, a) => { };
 
         public OrientationContentPage()
             : base()
         {
-            Init();
-        }
 
-        private void Init()
-        {
-            _width = this.Width;
-            _height = this.Height;
         }
 
         protected override void OnSizeAllocated(double width, double height)
         {
+            if (firstPageLoad == true)
+            {
+                _width = this.Width;
+                _height = this.Height;
+                firstPageLoad = false;
+                base.OnSizeAllocated(width, height);
+                return;
+            }
+            
             var oldWidth = _width;
             const double sizenotallocated = -1;
 
@@ -37,10 +41,8 @@ namespace Showmie.Views
 
             // ignore if the previous height was size unallocated
             if (oldWidth == sizenotallocated) return;
-
             // Has the device been rotated ?
-            if (width == oldWidth)
-                OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((width < height) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
+            OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((width < height) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
         }
 
     }

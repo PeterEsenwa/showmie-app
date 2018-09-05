@@ -13,9 +13,10 @@ namespace Showmie
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class OnboardLandscape : OrientationContentPage
 	{
-		public OnboardLandscape ()
+		public OnboardLandscape (bool firstPageLoad)
 		{
-			InitializeComponent ();
+            OrientationContentPage.firstPageLoad = firstPageLoad;
+            InitializeComponent ();
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;

@@ -10,14 +10,15 @@ namespace Showmie
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Onboard: OrientationContentPage, INotifyPropertyChanged
     {
-        public Onboard()
+        public Onboard(bool firstPageLoad)
         {
+            OrientationContentPage.firstPageLoad = firstPageLoad;
             InitializeComponent();
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
         }
-
+        
         OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
@@ -40,6 +41,8 @@ namespace Showmie
         {
             base.OnAppearing();
         }
+
+
 
         protected override bool OnBackButtonPressed()
         {
