@@ -9,6 +9,7 @@
     <views:OrientationContentPage.Content>
         <StackLayout BackgroundColor="White">
             <cv:CarouselView x:Name="boardsCarousel"
+                             PositionSelected="BoardsCarousel_PositionSelected"
                              ItemsSource="{Binding BoardsSource}"
                              Position="{Binding SourceImage, Mode=TwoWay}">
                 <cv:CarouselView.ItemTemplate>

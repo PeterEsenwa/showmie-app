@@ -10,13 +10,22 @@ namespace Showmie
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Onboard: OrientationContentPage, INotifyPropertyChanged
     {
-        public Onboard(bool firstPageLoad)
+        public Onboard(bool isFirstLoad)
         {
-            OrientationContentPage.firstPageLoad = firstPageLoad;
             InitializeComponent();
+            firstPageLoad = isFirstLoad;
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
+        }
+        public Onboard(bool isFirstLoad, int boardPosition)
+        {
+            InitializeComponent();
+            firstPageLoad = isFirstLoad;
+            BoardsSource = onboardsVM.GetBoards();
+            SourceImage = 0;
+            BindingContext = this;
+            boardsCarousel.Position = boardPosition;
         }
         
         OnboardsVM onboardsVM = new OnboardsVM();
@@ -32,9 +41,11 @@ namespace Showmie
             }
         }
 
+
+
         private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new SignupPage());
+            Application.Current.MainPage = new SignupPage();
         }
 
         protected override void OnAppearing()
@@ -52,5 +63,9 @@ namespace Showmie
             return base.OnBackButtonPressed();
         }
 
+        private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)
+        {
+            OnboardPositionChanged(boardsCarousel.Position);
+        }
     }
 }

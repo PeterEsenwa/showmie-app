@@ -13,14 +13,25 @@ namespace Showmie
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class OnboardLandscape : OrientationContentPage
 	{
-		public OnboardLandscape (bool firstPageLoad)
+		public OnboardLandscape (bool isFirstLoad)
 		{
-            OrientationContentPage.firstPageLoad = firstPageLoad;
             InitializeComponent ();
+            firstPageLoad = isFirstLoad;
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
         }
+
+		public OnboardLandscape (bool isFirstLoad, int boardPosition)
+		{
+            InitializeComponent ();
+            firstPageLoad = isFirstLoad;
+            BoardsSource = onboardsVM.GetBoards();
+            SourceImage = 0;
+            BindingContext = this;
+            boardsCarousel.Position = boardPosition;
+        }
+
         OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
@@ -52,5 +63,9 @@ namespace Showmie
             return base.OnBackButtonPressed();
         }
 
+        private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)
+        {
+            OnboardPositionChanged(boardsCarousel.Position);
+        }
     }
 }

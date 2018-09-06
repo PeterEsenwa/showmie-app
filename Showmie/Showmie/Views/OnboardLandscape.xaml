@@ -10,6 +10,7 @@
         <StackLayout BackgroundColor="White">
             <cv:CarouselView x:Name="boardsCarousel"
                              ItemsSource="{Binding BoardsSource}"
+                             PositionSelected="BoardsCarousel_PositionSelected"
                              Position="{Binding SourceImage, Mode=TwoWay}">
                 <cv:CarouselView.ItemTemplate>
                     <DataTemplate>

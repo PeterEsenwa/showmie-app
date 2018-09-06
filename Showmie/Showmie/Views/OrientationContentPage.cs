@@ -10,6 +10,7 @@ namespace Showmie.Views
         private static double _width;
         private static double _height;
         internal static bool firstPageLoad = true;
+        public static int onboardPosition = 0;
 
         private event EventHandler<PageOrientationEventArgs> OnOrientationChanged = (e, a) => { };
 
@@ -17,6 +18,11 @@ namespace Showmie.Views
             : base()
         {
 
+        }
+
+        protected static void OnboardPositionChanged(int newPosition)
+        {
+            onboardPosition = newPosition;
         }
 
         protected override void OnSizeAllocated(double width, double height)

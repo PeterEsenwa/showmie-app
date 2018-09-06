@@ -17,15 +17,24 @@ namespace Showmie
             InitializeComponent();
             AppCenter.Start("android=92233719-d584-4656-9fd8-27003c82e33b;",
                   typeof(Analytics), typeof(Crashes));
-            ScaleFontSizes();
-
-            if (OnboardScreens != null)
+            //ScaleFontSizes();
+            if (OrientationContentPage.firstPageLoad)
             {
                 OnboardScreens = new Onboard(true);
+                OnboardLandscapeScreens = new OnboardLandscape(true);
+                //OnboardScreensLandscape = new OnboardLandscape(false);
+            }
+            else
+            {
+                OnboardScreens = new Onboard(false);
+                OnboardLandscapeScreens = new OnboardLandscape(false);
             }
 
 
         }
+
+        public Onboard OnboardScreens { get; set; }
+        public OnboardLandscape OnboardLandscapeScreens { get; set; }
 
         public static void ScaleFontSizes()
         {
@@ -68,17 +77,17 @@ namespace Showmie
             }
             Current.Resources["fontSizeLarge"] = oldLargeFS * diff;
         }
-        public static OnboardLandscape OnboardScreensLandscape { get; set; }
-        public static Onboard OnboardScreens { get; set; }
+        //public static OnboardLandscape OnboardScreensLandscape { get; set; }
+
         protected override void OnStart()
         {
-            if (OnboardScreens != null)
+            if (OnboardScreens == null)
             {
-                Current.Quit();
+                OnboardScreens = new Onboard(true);
+                //OnboardScreensLandscape = new OnboardLandscape(false);
             }
             else
             {
-                OnboardScreens = new Onboard(OrientationContentPage.firstPageLoad);
                 MainPage = OnboardScreens;
             }
         }
@@ -90,13 +99,13 @@ namespace Showmie
 
         protected override void OnResume()
         {
-            if (OnboardScreens != null)
+            if (OnboardScreens == null)
             {
-                Current.Quit();
+                OnboardScreens = new Onboard(true);
+                //OnboardScreensLandscape = new OnboardLandscape(false);
             }
             else
             {
-                OnboardScreens = new Onboard(OrientationContentPage.firstPageLoad);
                 MainPage = OnboardScreens;
             }
         }

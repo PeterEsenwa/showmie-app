@@ -6,18 +6,26 @@
     <StackLayout BackgroundColor="White">
         <!--  Place new controls here  -->
         <Grid>
-
-            <Label x:Name="startTxt"
-                   Text="Get Started!"
-                   FontSize="{StaticResource fontSizeLarge}"
-                   HorizontalOptions="CenterAndExpand"
-                   TextColor="{StaticResource textColorLightBlack}">
-                <Label.FontFamily>
-                    <OnPlatform x:TypeArguments="x:String">
-                        <On Platform="Android" Value="Quicksand-Bold.ttf#Quicksand Bold" />
-                    </OnPlatform>
-                </Label.FontFamily>
-            </Label>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.15*" />
+                    <RowDefinition Height="0.85*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="startTxt"
+                       Grid.Row="1"
+                       Text="Get Started!"
+                       FontFamily="{StaticResource Quicksand_Medium}"
+                       FontSize="{StaticResource fontSizeLarge}"
+                       HorizontalOptions="CenterAndExpand"
+                       TextColor="{StaticResource textColorLightBlack}" />
+            </Grid>
+            <Grid>
+                <!--<Button x:Name="fb_signup" Image="fb_icon.png" />-->
+            </Grid>
         </Grid>
     </StackLayout>
 
