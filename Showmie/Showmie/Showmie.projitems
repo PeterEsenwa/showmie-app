@@ -24,6 +24,7 @@
       <DependentUpon>res.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\FontHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IAndroidMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IndicatorPosToImgCV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\PageOrientationEventArgs.cs" />
@@ -32,6 +33,7 @@
       <DependentUpon>BoardIndicator.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\bottomBorderEntry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Onboard.xaml.cs">
       <DependentUpon>Onboard.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -41,6 +43,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\OrientationContentPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\SizedButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\switchButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Onboard.xaml">

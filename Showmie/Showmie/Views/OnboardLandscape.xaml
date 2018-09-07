@@ -19,10 +19,10 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="20" />
                             </Grid.ColumnDefinitions>
                             <Image x:Name="boardImage"
                                    Grid.Column="1"

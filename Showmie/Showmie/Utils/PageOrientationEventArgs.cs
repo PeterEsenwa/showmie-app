@@ -9,11 +9,20 @@ namespace Showmie.Utils
         public PageOrientationEventArgs(PageOrientation orientation, ContentPage currentPage)
         {
             Orientation = orientation;
+            if (Orientation == PageOrientation.Horizontal)
+            {
+                App.ScaleFontSizes("Landscape");
+            }
+            else
+            {
+                App.ScaleFontSizes("Portrait");
+            }
             if (currentPage is OrientationContentPage && (currentPage is OnboardLandscape || currentPage is Onboard))
             {
                 if (Orientation == PageOrientation.Horizontal)
                 {
                     //Application.Current.MainPage = new OnboardLandscape(OrientationContentPage.firstPageLoad);
+
                     Application.Current.MainPage = new OnboardLandscape(isFirstLoad: OrientationContentPage.firstPageLoad, boardPosition: OrientationContentPage.onboardPosition);
                 }
                 else
