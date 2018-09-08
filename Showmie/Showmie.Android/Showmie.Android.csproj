@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="AndroidMethods.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="SizedButtonRenderer.cs" />
     <Compile Include="Splash.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -246,7 +247,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\fb_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\fb_icon_mdpi.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\fb_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\fb_icon.png" />
@@ -261,6 +262,24 @@
     <AndroidResource Include="Resources\drawable\entry_underline.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\google_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\google_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\google_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\google_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\google_icon_xxhdpi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\google_icon_xxxhdpi.png" />
   </ItemGroup>
   <Import Project="..\Showmie\Showmie.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
