@@ -9,16 +9,16 @@
           VerticalOptions="Fill"
           HorizontalOptions="FillAndExpand">
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="0" Height="1.5*" />
-            <RowDefinition x:Name="1" Height="Auto" />
-            <RowDefinition x:Name="2" Height=".3*" />
-            <RowDefinition x:Name="3" Height="Auto" />
-            <RowDefinition x:Name="4" Height=".3*" />
-            <RowDefinition x:Name="5" Height="Auto" />
-            <RowDefinition x:Name="6" Height=".3*" />
-            <RowDefinition x:Name="7" Height="4.5*" />
-            <RowDefinition x:Name="8" Height="Auto" />
-            <RowDefinition x:Name="9" Height="Auto" />
+            <RowDefinition x:Name="grid0" Height="1.5*" />
+            <RowDefinition x:Name="grid1" Height="Auto" />
+            <RowDefinition x:Name="grid2" Height=".3*" />
+            <RowDefinition x:Name="grid3" Height="Auto" />
+            <RowDefinition x:Name="grid4" Height=".3*" />
+            <RowDefinition x:Name="grid5" Height="Auto" />
+            <RowDefinition x:Name="grid6" Height=".3*" />
+            <RowDefinition x:Name="grid7" Height="4.5*" />
+            <RowDefinition x:Name="grid8" Height="Auto" />
+            <RowDefinition x:Name="grid9" Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
