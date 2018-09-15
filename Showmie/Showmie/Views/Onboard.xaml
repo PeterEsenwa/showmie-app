@@ -40,12 +40,12 @@
                             <Label x:Name="boardHeader"
                                    Grid.Row="3"
                                    Grid.Column="2"
-                                   FontFamily="{StaticResource Quicksand_Bold}"
-                                   FontSize="{StaticResource fontSizeLarge}"
+                                   FontFamily="{StaticResource QuicksandBold}"
+                                   FontSize="{StaticResource FontSizeLarge}"
                                    Text="{Binding HeadingText}"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
-                                   TextColor="{StaticResource textColorLightBlack}" />
+                                   TextColor="{StaticResource TextColorLightBlack}" />
                             <Image x:Name="seperator"
                                    Grid.Row="4"
                                    Grid.Column="0"
@@ -56,12 +56,12 @@
                             <Label x:Name="boardDescription"
                                    Grid.Row="5"
                                    Grid.Column="2"
-                                   FontFamily="{StaticResource Quicksand_Medium}"
-                                   FontSize="{StaticResource fontSizeMedium}"
+                                   FontFamily="{StaticResource QuicksandMedium}"
+                                   FontSize="{StaticResource FontSizeMedium}"
                                    HorizontalOptions="Center"
                                    HorizontalTextAlignment="Center"
                                    Text="{Binding BodyText}"
-                                   TextColor="{StaticResource textColorLightBlack}" />
+                                   TextColor="{StaticResource TextColorLightBlack}" />
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>
@@ -86,11 +86,12 @@
                         Grid.Column="1"
                         BackgroundColor="White"
                         BorderColor="Transparent"
-                        FontFamily="{StaticResource Quicksand_Medium}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        FontFamily="{StaticResource QuicksandBold}"
                         CornerRadius="4"
                         Text="SKIP"
                         Clicked="SkipOnboarding_Clicked"
-                        TextColor="{StaticResource textColorLightGrey}"
+                        TextColor="{StaticResource TextColorLightGrey}"
                         HorizontalOptions="Start"
                         VerticalOptions="Start" />
                 <Grid x:Name="Indicators"
@@ -112,7 +113,7 @@
                         BackgroundColor="Transparent"
                         Image="next_page_arrow.png"
                         HorizontalOptions="End"
-                        FontSize="{StaticResource fontSizeMedium}"
+                        FontSize="{StaticResource FontSizeMedium}"
                         VerticalOptions="Start" />
             </Grid>
         </StackLayout>

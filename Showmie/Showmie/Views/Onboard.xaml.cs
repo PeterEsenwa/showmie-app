@@ -1,15 +1,15 @@
 ﻿using Showmie.Views;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Showmie
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Onboard: OrientationContentPage, INotifyPropertyChanged
+    public partial class Onboard : OrientationContentPage, INotifyPropertyChanged
     {
+        public int BoardPosition { get; set; }
         public Onboard(bool isFirstLoad)
         {
             InitializeComponent();
@@ -25,10 +25,10 @@ namespace Showmie
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
-            boardsCarousel.Position = boardPosition;
+            BoardPosition = boardPosition;
         }
-        
-        OnboardsVM onboardsVM = new OnboardsVM();
+
+        private OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
         public int SourceImage { get { return _sourceImage; } set { _sourceImage = value; OnPropertyChanged(); } }
@@ -39,28 +39,21 @@ namespace Showmie
             {
                 boardsCarousel.Position++;
             }
+            else if (boardsCarousel.Position == onboardsVM.NoOfBoards() - 1)
+            {
+                SetMainPage(new NavigationPage(new SignupPage()));
+            }
         }
-
-
 
         private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
         {
-            Application.Current.MainPage = new SignupPage();
+            SetMainPage(new NavigationPage(new SignupPage()));
         }
 
         protected override void OnAppearing()
         {
+            boardsCarousel.Position = BoardPosition;
             base.OnAppearing();
-        }
-
-
-
-        protected override bool OnBackButtonPressed()
-        {
-            if (Device.RuntimePlatform == Device.Android)
-                DependencyService.Get<IAndroidMethods>().CloseApp();
-
-            return base.OnBackButtonPressed();
         }
 
         private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)

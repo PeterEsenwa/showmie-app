@@ -11,7 +11,7 @@
             <cv:CarouselView x:Name="boardsCarousel"
                              ItemsSource="{Binding BoardsSource}"
                              PositionSelected="BoardsCarousel_PositionSelected"
-                             Position="{Binding SourceImage, Mode=TwoWay}">
+                             Position="{Binding BoardPosition, Mode=TwoWay}">
                 <cv:CarouselView.ItemTemplate>
                     <DataTemplate>
                         <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
@@ -40,25 +40,25 @@
                                 </Grid.ColumnDefinitions>
                                 <Label x:Name="boardHeader"
                                        Grid.Row="1"
-                                       FontFamily="{StaticResource Quicksand_Bold}"
-                                       FontSize="{StaticResource fontSizeLarge}"
+                                       FontFamily="{StaticResource QuicksandBold}"
+                                       FontSize="{StaticResource FontSizeLarge}"
                                        Text="{Binding HeadingText}"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
-                                       TextColor="{StaticResource textColorLightBlack}" />
+                                       TextColor="{StaticResource TextColorLightBlack}" />
 
                                 <Label x:Name="boardDescription"
                                        Grid.Row="2"
-                                       FontFamily="{StaticResource Quicksand_Medium}"
-                                       FontSize="{StaticResource fontSizeMedium}"
+                                       FontFamily="{StaticResource QuicksandMedium}"
+                                       FontSize="{StaticResource FontSizeMedium}"
                                        HorizontalOptions="Center"
                                        VerticalOptions="Center"
                                        HorizontalTextAlignment="Center"
                                        VerticalTextAlignment="Center"
                                        Text="{Binding BodyText}"
-                                       TextColor="{StaticResource textColorLightBlack}" />
+                                       TextColor="{StaticResource TextColorLightBlack}" />
                             </Grid>
                         </Grid>
                     </DataTemplate>
@@ -84,11 +84,12 @@
                         Grid.Column="1"
                         BackgroundColor="White"
                         BorderColor="Transparent"
-                        FontFamily="{StaticResource Quicksand_Medium}"
+                        FontSize="{StaticResource FontSizeSmall}"
+                        FontFamily="{StaticResource QuicksandBold}"
                         CornerRadius="4"
                         Text="SKIP"
                         Clicked="SkipOnboarding_Clicked"
-                        TextColor="{StaticResource textColorLightGrey}"
+                        TextColor="{StaticResource TextColorLightGrey}"
                         HorizontalOptions="Start"
                         VerticalOptions="Start" />
                 <Grid x:Name="Indicators"
@@ -110,7 +111,7 @@
                         BackgroundColor="Transparent"
                         Image="next_page_arrow.png"
                         HorizontalOptions="End"
-                        FontSize="{StaticResource fontSizeMedium}"
+                        FontSize="{StaticResource FontSizeMedium}"
                         VerticalOptions="Start" />
             </Grid>
         </StackLayout>

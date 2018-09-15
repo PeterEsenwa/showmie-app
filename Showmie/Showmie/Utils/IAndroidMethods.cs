@@ -1,7 +1,9 @@
-﻿namespace Showmie
+﻿using Android.Content;
+
+namespace Showmie
 {
     public interface IAndroidMethods
     {
-        void CloseApp();
+        void CloseApp(Context context);
     }
 }

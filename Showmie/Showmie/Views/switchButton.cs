@@ -15,7 +15,7 @@ namespace Showmie.Views
             };
 
             Padding = 2;
-            BackgroundColor = (Color)Application.Current.Resources["textColorNearBlack"];
+            BackgroundColor = (Color)Application.Current.Resources["TextColorNearBlack"];
 
             LeftLabel = new Label()
             {
@@ -24,8 +24,8 @@ namespace Showmie.Views
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                TextColor = (Color)Application.Current.Resources["textColorNearBlack"],
-                FontSize = (double)Application.Current.Resources["fontSizeMediumAlt"],
+                TextColor = (Color)Application.Current.Resources["TextColorNearBlack"],
+                FontSize = (double)Application.Current.Resources["FontSizeMedium"],
                 FontFamily = (OnPlatform<string>)Application.Current.Resources["Quicksand_Medium"]
             };
 
@@ -36,8 +36,8 @@ namespace Showmie.Views
                 LineBreakMode = LineBreakMode.NoWrap,
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                TextColor = (Color)Application.Current.Resources["textColorNearBlack"],
-                FontSize = (double)Application.Current.Resources["fontSizeMediumAlt"],
+                TextColor = (Color)Application.Current.Resources["TextColorNearBlack"],
+                FontSize = (double)Application.Current.Resources["FontSizeMedium"],
                 FontFamily = (OnPlatform<string>)Application.Current.Resources["Quicksand_Medium"]
             };
 
@@ -55,7 +55,11 @@ namespace Showmie.Views
         private BoxView LeftBoxView { get; set; }
         private BoxView RightBoxView { get; set; }
 
-
+        private static class SwitchPositions {
+            public static string Left { get; set; } = "Left";
+            public static string Right { get; set; } = "Right";
+        }
+       
         public string SwitchPosition {
             get { return (string)GetValue(SwitchPositionProperty); }
             set { SetValue(SwitchPositionProperty, value); }
@@ -72,19 +76,19 @@ namespace Showmie.Views
                 {
                     if (newvalue as string == "Left")
                     {
-                        ((SwitchButton)bindable).LeftBoxView.BackgroundColor = (Color)Application.Current.Resources["textColorNearBlack"];
+                        ((SwitchButton)bindable).LeftBoxView.BackgroundColor = (Color)Application.Current.Resources["TextColorNearBlack"];
                         ((SwitchButton)bindable).LeftLabel.TextColor = Color.White;
 
-                        ((SwitchButton)bindable).RightLabel.TextColor = (Color)Application.Current.Resources["textColorLightBlack"];
+                        ((SwitchButton)bindable).RightLabel.TextColor = (Color)Application.Current.Resources["TextColorLightBlack"];
                         ((SwitchButton)bindable).RightBoxView.BackgroundColor = Color.White;
                     }
                     else if (newvalue as string == "Right")
                     {
                         ((SwitchButton)bindable).LeftBoxView.BackgroundColor = Color.White;
-                        ((SwitchButton)bindable).LeftLabel.TextColor = (Color)Application.Current.Resources["textColorLightBlack"];
+                        ((SwitchButton)bindable).LeftLabel.TextColor = (Color)Application.Current.Resources["TextColorLightBlack"];
 
                         ((SwitchButton)bindable).RightLabel.TextColor = Color.White;
-                        ((SwitchButton)bindable).RightBoxView.BackgroundColor = (Color)Application.Current.Resources["textColorNearBlack"];
+                        ((SwitchButton)bindable).RightBoxView.BackgroundColor = (Color)Application.Current.Resources["TextColorNearBlack"];
                     }
                 }
                 ((SwitchButton)bindable).InvalidateLayout();
@@ -155,12 +159,17 @@ namespace Showmie.Views
             _neededWidth += LeftLabelRequest.Request.Width + 24;
             _neededHeight = Math.Max(_neededHeight, LeftLabelRequest.Request.Height);
             _neededWidth += RightLabelRequest.Request.Width + 24;
-            _neededHeight = Math.Max(_neededHeight, RightLabelRequest.Request.Height);
+            _neededHeight = Math.Max(_neededHeight, RightLabelRequest.Request.Height) + 8;
             return new double[] { _neededWidth, _neededHeight };
         }
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
             base.LayoutChildren(x, y, width, height);
+        }
+
+        public void ToggleSwitch()
+        {
+            SwitchPosition = SwitchPosition == SwitchPositions.Left ? SwitchPositions.Right : SwitchPositions.Left;
         }
     }
 }

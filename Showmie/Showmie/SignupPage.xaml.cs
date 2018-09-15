@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Showmie.Views;
+using System;
 using Xamarin.Forms;
 
 namespace Showmie
@@ -14,12 +11,19 @@ namespace Showmie
             InitializeComponent();
         }
 
-        private int pageNum;
-
-        public int PageNum {
-            get { return pageNum; }
-            set { pageNum = value; }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            ((SwitchButton) sender)?.ToggleSwitch();
         }
 
+        private async void GotoLoginAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new LoginPage());
+        }
+
+        private void HandleSignup(object sender, EventArgs e)
+        {
+            Application.Current.MainPage = new RootPage();
+        }
     }
 }

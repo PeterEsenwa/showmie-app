@@ -9,10 +9,10 @@ using ButtonRenderer = Xamarin.Forms.Platform.Android.AppCompat.ButtonRenderer;
 [assembly: ExportRenderer(typeof(SizedButton), typeof(SizedButtonRenderer))]
 namespace Showmie.Droid
 {
-    class SizedButtonRenderer: ButtonRenderer
+    internal class SizedButtonRenderer: ButtonRenderer
     {
-        private SizedButton myButton;
-        private AppCompatButton androidButton;
+        private SizedButton _myButton;
+        private AppCompatButton _androidButton;
         public SizedButtonRenderer(Context context) : base(context)
         {
         }
@@ -21,23 +21,27 @@ namespace Showmie.Droid
         {
             base.OnElementChanged(e);
             if (e.OldElement != null)
-                myButton = e.OldElement as SizedButton;
+                _myButton = e.OldElement as SizedButton;
             if (e.NewElement != null)
-                myButton = e.NewElement as SizedButton;
+                _myButton = e.NewElement as SizedButton;
             if (Element != null)
-                myButton = Element as SizedButton;
+                _myButton = Element as SizedButton;
 
             if (Control != null)
             {
-                androidButton = Control as AppCompatButton;
+                _androidButton = Control as AppCompatButton;
             }
             else
             {
-                androidButton = CreateNativeControl();
-                SetNativeControl(androidButton);
+                _androidButton = CreateNativeControl();
+                SetNativeControl(_androidButton);
             }
 
-            androidButton.SetPadding((int)myButton.Padding.Left, (int)myButton.Padding.Top, (int)myButton.Padding.Right, (int)myButton.Padding.Bottom);
+            if (_myButton != null)
+                _androidButton.SetPadding((int) _myButton.Padding.Left, (int) _myButton.Padding.Top,
+                    (int) _myButton.Padding.Right, (int) _myButton.Padding.Bottom);
+            _androidButton.SetMinimumHeight(0);
+            _androidButton.SetMinimumWidth(0);
         }
     }
 }

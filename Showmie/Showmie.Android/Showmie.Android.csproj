@@ -76,7 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AndroidMethods.cs" />
-    <Compile Include="MainActivity.cs" />
+    <Compile Include="PreApp.cs" />
     <Compile Include="SizedButtonRenderer.cs" />
     <Compile Include="Splash.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -280,6 +280,32 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\google_icon_xxxhdpi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-ldpi\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-mdpi\bookmark_mdpi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xhdpi\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-xxhdpi\bookmark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\edit_pencil_icon.png" />
+    <AndroidResource Include="Resources\drawable-ldpi\edit_pencil_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\edit_pencil_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\edit_pencil_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\edit_pencil_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\edit_pencil_icon.png" />
   </ItemGroup>
   <Import Project="..\Showmie\Showmie.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

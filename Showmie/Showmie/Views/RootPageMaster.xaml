@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Showmie.Views.RootPageMaster"
+             xmlns:views="clr-namespace:Showmie.Views;assembly=Showmie"
+             BindingContext="{x:Static views:RootPageMaster.BContext}">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="true"
+                  ItemsSource="{Binding MenuItems}">
+            <ListView.Header>
+                <Grid BackgroundColor="#4B4B4B">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="Column0" Width="10" />
+                        <ColumnDefinition x:Name="Column1" Width="3*" />
+                        <ColumnDefinition x:Name="Column2" Width="1*" />
+                        <ColumnDefinition x:Name="Column3" Width="10" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="Row0" Height="20" />
+                        <RowDefinition x:Name="Row1" Height="Auto" />
+                        <RowDefinition x:Name="Row2" Height="Auto" />
+                        <RowDefinition x:Name="Row3" Height="20" />
+                    </Grid.RowDefinitions>
+                    <views:SizedButton
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Image="edit_pencil_icon.png"
+                        BackgroundColor="#1976D2"
+                        Padding="8"
+                        ContentLayout="Left, 8"
+                        Text="Edit Account" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Label VerticalOptions="FillAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   Text="{Binding Title}"
+                                   FontSize="24" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

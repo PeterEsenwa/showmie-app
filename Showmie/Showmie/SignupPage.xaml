@@ -3,13 +3,16 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Showmie"
-             xmlns:views="clr-namespace:Showmie.Views">
+             xmlns:views="clr-namespace:Showmie.Views"
+             Title="Signup"
+             NavigationPage.HasNavigationBar="False">
     <!--  Place new controls here  -->
-    <Grid Grid.Row="0"
+    <Grid x:Name="mainGrid"
+          Grid.Row="0"
           VerticalOptions="Fill"
-          HorizontalOptions="FillAndExpand">
+          HorizontalOptions="Fill">
         <Grid.RowDefinitions>
-            <RowDefinition x:Name="grid0" Height="1.5*" />
+            <RowDefinition x:Name="grid0" Height="2*" />
             <RowDefinition x:Name="grid1" Height="Auto" />
             <RowDefinition x:Name="grid2" Height=".3*" />
             <RowDefinition x:Name="grid3" Height="Auto" />
@@ -21,27 +24,29 @@
             <RowDefinition x:Name="grid9" Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <StackLayout Grid.Row="1"
+        <StackLayout x:Name="intro"
+                     Grid.Row="1"
+                     Grid.Column="0"
                      HorizontalOptions="CenterAndExpand"
                      Spacing="-4">
             <Label x:Name="startTxt"
                    Text="Get Started!"
-                   FontFamily="{StaticResource Quicksand_Bold}"
-                   FontSize="{StaticResource fontSizeLarge}"
+                   FontFamily="{StaticResource QuicksandBold}"
+                   FontSize="{StaticResource FontSizeLarge}"
                    HorizontalOptions="CenterAndExpand"
-                   TextColor="{StaticResource textColorNearBlack}" />
+                   TextColor="{StaticResource TextColorNearBlack}" />
             <Label x:Name="createAccntPrompt"
                    Text="Create an account now"
-                   FontFamily="{StaticResource Quicksand_Bold}"
-                   FontSize="{StaticResource fontSizeBig}"
+                   FontFamily="{StaticResource QuicksandBold}"
+                   FontSize="{StaticResource FontSizeBig}"
                    HorizontalOptions="CenterAndExpand"
-                   TextColor="{StaticResource textColorNearBlack}" />
+                   TextColor="{StaticResource TextColorNearBlack}" />
         </StackLayout>
-        <Grid Grid.Row="3"
-              HorizontalOptions="CenterAndExpand"
-              BackgroundColor="Azure"
+        <Grid x:Name="fieldsHolder"
+              Grid.Row="3"
+              Grid.Column="0"
               RowSpacing="4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -51,54 +56,70 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <views:BottomBorderEntry x:Name="usernameInput"
                                      Grid.Row="0"
-                                     FontFamily="{StaticResource Quicksand_Medium}"
-                                     FontSize="{StaticResource fontSizeMediumAlt}"
+                                     Grid.Column="1"
+                                     FontFamily="{StaticResource QuicksandMedium}"
+                                     FontSize="{StaticResource FontSizeMedium}"
                                      HorizontalOptions="FillAndExpand"
                                      Placeholder="Username"
-                                     PlaceholderColor="{StaticResource textColorLightGrey}"
-                                     TextColor="{StaticResource textColorNearBlack}" />
+                                     PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                     TextColor="{StaticResource TextColorNearBlack}" />
             <views:BottomBorderEntry x:Name="emailInput"
                                      Grid.Row="1"
-                                     FontFamily="{StaticResource Quicksand_Medium}"
-                                     FontSize="{StaticResource fontSizeMediumAlt}"
+                                     Grid.Column="1"
+                                     FontFamily="{StaticResource QuicksandMedium}"
+                                     FontSize="{StaticResource FontSizeMedium}"
                                      HorizontalOptions="FillAndExpand"
                                      Placeholder="Email"
-                                     PlaceholderColor="{StaticResource textColorLightGrey}"
-                                     TextColor="{StaticResource textColorNearBlack}" />
+                                     PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                     TextColor="{StaticResource TextColorNearBlack}" />
             <views:BottomBorderEntry x:Name="passwordInput"
                                      Grid.Row="2"
-                                     FontFamily="{StaticResource Quicksand_Medium}"
-                                     FontSize="{StaticResource fontSizeMediumAlt}"
+                                     Grid.Column="1"
+                                     FontFamily="{StaticResource QuicksandMedium}"
+                                     FontSize="{StaticResource FontSizeMedium}"
                                      HorizontalOptions="FillAndExpand"
                                      Placeholder="Password"
-                                     PlaceholderColor="{StaticResource textColorLightGrey}"
-                                     TextColor="{StaticResource textColorNearBlack}" />
+                                     IsPassword="true"
+                                     PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                     TextColor="{StaticResource TextColorNearBlack}" />
             <views:BottomBorderEntry x:Name="confirmInput"
                                      Grid.Row="3"
-                                     FontFamily="{StaticResource Quicksand_Medium}"
-                                     FontSize="{StaticResource fontSizeMediumAlt}"
+                                     Grid.Column="1"
+                                     FontFamily="{StaticResource QuicksandMedium}"
+                                     FontSize="{StaticResource FontSizeMedium}"
                                      HorizontalOptions="FillAndExpand"
                                      Placeholder="Re-enter Password"
-                                     PlaceholderColor="{StaticResource textColorLightGrey}"
-                                     TextColor="{StaticResource textColorNearBlack}" />
+                                     IsPassword="true"
+                                     PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                     TextColor="{StaticResource TextColorNearBlack}" />
         </Grid>
-        <StackLayout Grid.Row="5"
+        <StackLayout x:Name="chooseUserType"
+                     Grid.Row="5"
+                     Grid.Column="0"
                      HorizontalOptions="Center"
                      Orientation="Vertical">
             <Label Text="I am a Fashion"
                    HorizontalOptions="CenterAndExpand"
-                   TextColor="{StaticResource textColorNearBlack}"
-                   FontFamily="{StaticResource Quicksand_Medium}"
-                   FontSize="{StaticResource fontSizeMediumAlt}" />
+                   TextColor="{StaticResource TextColorNearBlack}"
+                   FontFamily="{StaticResource QuicksandMedium}"
+                   FontSize="{StaticResource FontSizeMedium}" />
             <views:SwitchButton SwitchPosition="Right"
                                 LeftText="Enthusiast"
                                 RightText="Professional"
-                                HorizontalOptions="Fill" />
+                                HorizontalOptions="Fill">
+                <views:SwitchButton.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                </views:SwitchButton.GestureRecognizers>
+            </views:SwitchButton>
         </StackLayout>
-        <Grid Grid.Row="7">
+        <Grid x:Name="signupBtnHolder"
+              Grid.Row="7"
+              Grid.Column="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=".25*" />
                 <ColumnDefinition Width=".5*" />
@@ -108,65 +129,76 @@
                                Grid.Column="1"
                                Padding="8,2"
                                Text="Signup"
-                               TextColor="{StaticResource btnTextColorDefault}"
-                               FontFamily="{StaticResource Quicksand_Bold}"
-                               FontSize="{StaticResource fontSizeBig}"
-                               BackgroundColor="{StaticResource btnBackColorDefault}"
+                               Clicked="HandleSignup"
+                               TextColor="{StaticResource BtnTextColorDefault}"
+                               FontFamily="{StaticResource QuicksandBold}"
+                               FontSize="{StaticResource FontSizeBig}"
+                               BackgroundColor="{StaticResource BtnBackColorDefault}"
                                HorizontalOptions="Fill"
                                VerticalOptions="Center"
                                CornerRadius="4" />
         </Grid>
-        <StackLayout Grid.Row="8"
+        <StackLayout x:Name="gotoLogin"
+                     Grid.Row="8"
+                     Grid.Column="0"
                      VerticalOptions="Start"
                      HorizontalOptions="CenterAndExpand"
                      Orientation="Horizontal"
                      Spacing="4">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GotoLoginAsync" />
+            </StackLayout.GestureRecognizers>
             <Label Text="already have an account?"
                    VerticalOptions="Start"
-                   TextColor="{StaticResource textColorLightBlack}"
-                   FontFamily="{StaticResource Quicksand_Medium}"
-                   FontSize="{StaticResource fontSizeSmall}" />
+                   TextColor="{StaticResource TextColorLightBlack}"
+                   FontFamily="{StaticResource QuicksandMedium}"
+                   FontSize="{StaticResource FontSizeSmall}" />
             <Label Text="Goto Login"
                    VerticalOptions="Start"
-                   TextColor="{StaticResource textColorLightBlue}"
-                   FontFamily="{StaticResource Quicksand_Medium}"
-                   FontSize="{StaticResource fontSizeSmall}" />
+                   TextColor="{StaticResource TextColorLightBlue}"
+                   FontFamily="{StaticResource QuicksandMedium}"
+                   FontSize="{StaticResource FontSizeSmall}" />
         </StackLayout>
-        <Grid Grid.Row="9"
+        <Grid x:Name="socialSignup"
+              Grid.Row="9"
+              Grid.Column="0"
               VerticalOptions="End"
-              HorizontalOptions="FillAndExpand"
-              BackgroundColor="{StaticResource textColorNearBlack}">
+              HorizontalOptions="Fill"
+              BackgroundColor="{StaticResource TextColorNearBlack}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <StackLayout HorizontalOptions="Center"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout HorizontalOptions="CenterAndExpand"
                          VerticalOptions="CenterAndExpand"
                          Orientation="Horizontal"
                          Spacing="0">
-                <Label Margin="10,0"
+                <Label Margin="5,0"
                        Text="continue with"
                        VerticalOptions="Center"
-                       TextColor="{StaticResource textColorWhite}"
-                       FontFamily="{StaticResource Quicksand_Medium}"
-                       FontSize="{StaticResource fontSizeMediumAlt}" />
+                       TextColor="{StaticResource TextColorWhite}"
+                       FontFamily="{StaticResource QuicksandMedium}"
+                       FontSize="{StaticResource FontSizeMediumAlt}" />
                 <Image x:Name="fb_signup"
                        Source="fb_icon.png"
-                       Margin="10,10"
+                       Margin="5,10"
                        VerticalOptions="Center"
-                       MinimumHeightRequest="{StaticResource iconSizeLarge}"
-                       MinimumWidthRequest="{StaticResource iconSizeLarge}" />
-                <Label Margin="10,0"
+                       HeightRequest="{StaticResource IconSizeLarge}"
+                       WidthRequest="{StaticResource IconSizeLarge}" />
+                <Label Margin="5,0"
                        Text="or"
                        VerticalOptions="Center"
-                       TextColor="{StaticResource textColorWhite}"
-                       FontFamily="{StaticResource Quicksand_Medium}"
-                       FontSize="{StaticResource fontSizeMediumAlt}" />
+                       TextColor="{StaticResource TextColorWhite}"
+                       FontFamily="{StaticResource QuicksandMedium}"
+                       FontSize="{StaticResource FontSizeMediumAlt}" />
                 <Image x:Name="google_signup"
                        Source="google_icon.png"
-                       Margin="10,10"
+                       Margin="5,10"
                        VerticalOptions="Center"
-                       MinimumHeightRequest="{StaticResource iconSizeLarge}"
-                       MinimumWidthRequest="{StaticResource iconSizeLarge}" />
+                       HeightRequest="{StaticResource IconSizeLarge}"
+                       WidthRequest="{StaticResource IconSizeLarge}" />
             </StackLayout>
         </Grid>
     </Grid>
