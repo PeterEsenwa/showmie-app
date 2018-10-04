@@ -4,7 +4,7 @@ using System.Security;
 
 namespace Showmie.Models
 {
-    internal class User
+    public class User
     {
         public string Firstname { get; set; }
         public string Surname { get; set; }
@@ -20,6 +20,10 @@ namespace Showmie.Models
             Null = 0,
             Enthusiast = 1,
             Professional = 2
+        }
+
+        public User()
+        {
         }
 
         public User(string firstname, string surname, string username, string email, SecureString password, UserTypes type)

@@ -29,7 +29,7 @@ namespace Showmie.Droid
 
             if (Control != null)
             {
-                _androidButton = Control as AppCompatButton;
+                _androidButton = Control;
             }
             else
             {

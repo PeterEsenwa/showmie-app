@@ -18,5 +18,11 @@ namespace Showmie.Droid
             App app = new App();
             LoadApplication(app);
         }
+
+        protected override void OnStop()
+        {
+            Xamarin.Forms.Application.Current.Properties["current_page"] = null;
+            base.OnStop();
+        }
     }
 }

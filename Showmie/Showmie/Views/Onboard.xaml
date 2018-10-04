@@ -16,13 +16,13 @@
                     <DataTemplate>
                         <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height=".6*" />
+                                <RowDefinition Height=".5*" />
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".4*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height=".2*" />
+                                <RowDefinition Height=".3*" />
                                 <RowDefinition Height="Auto" />
                                 <RowDefinition Height=".1*" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height=".2*" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="10" />
@@ -37,15 +37,20 @@
                                    Grid.ColumnSpan="5"
                                    Source="{Binding DescImageURL}"
                                    VerticalOptions="CenterAndExpand" />
-                            <Label x:Name="boardHeader"
-                                   Grid.Row="3"
-                                   Grid.Column="2"
-                                   FontFamily="{StaticResource QuicksandBold}"
-                                   FontSize="{StaticResource FontSizeLarge}"
-                                   Text="{Binding HeadingText}"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   TextColor="{StaticResource TextColorLightBlack}" />
+                            <views:CustomLabel x:Name="boardHeader"
+                                               Grid.Row="3"
+                                               Grid.Column="2"
+                                               LineBreakMode="WordWrap"
+                                               NamedFontSize="Large"
+                                               FontSizeFactor="1.5"
+                                               MaxLines="3"
+                                               VerticalOptions="FillAndExpand"
+                                               VerticalTextAlignment="Center"
+                                               FontFamily="{StaticResource QuicksandBold}"
+                                               Text="{Binding HeadingText}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="{StaticResource TextColorLightBlack}" />
                             <Image x:Name="seperator"
                                    Grid.Row="4"
                                    Grid.Column="0"
@@ -53,15 +58,20 @@
                                    Source="seperator.png"
                                    VerticalOptions="Center"
                                    HorizontalOptions="Center" />
-                            <Label x:Name="boardDescription"
-                                   Grid.Row="5"
-                                   Grid.Column="2"
-                                   FontFamily="{StaticResource QuicksandMedium}"
-                                   FontSize="{StaticResource FontSizeMedium}"
-                                   HorizontalOptions="Center"
-                                   HorizontalTextAlignment="Center"
-                                   Text="{Binding BodyText}"
-                                   TextColor="{StaticResource TextColorLightBlack}" />
+                            <views:CustomLabel x:Name="boardDescription"
+                                               Grid.Row="5"
+                                               Grid.Column="2"
+                                               NamedFontSize="Small"
+                                               FontSizeFactor="1.2"
+                                               MaxLines="5"
+                                               VerticalOptions="FillAndExpand"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="WordWrap"
+                                               FontFamily="{StaticResource QuicksandMedium}"
+                                               HorizontalOptions="Center"
+                                               HorizontalTextAlignment="Center"
+                                               Text="{Binding BodyText}"
+                                               TextColor="{StaticResource TextColorLightBlack}" />
                         </Grid>
                     </DataTemplate>
                 </cv:CarouselView.ItemTemplate>

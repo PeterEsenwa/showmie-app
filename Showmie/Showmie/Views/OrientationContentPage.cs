@@ -50,6 +50,7 @@ namespace Showmie.Views
                     Orientation = ScreenOrientation.Landscape;
                 }
                 OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((Orientation == ScreenOrientation.Portrait) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
+                firstPageLoad = false;
             }
 
         }

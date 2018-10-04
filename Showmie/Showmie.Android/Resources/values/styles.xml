@@ -10,15 +10,16 @@
     <item name="windowActionBar">true</item>
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
     <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#FFFFFF</item>
+    <item name="colorPrimary">#FF4081</item>
     <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">#BA1437</item>
+    <item name="colorPrimaryDark">#dc316b</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">#262626</item>
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
+
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
@@ -33,17 +34,27 @@
 
     <item name="colorAccent">#262626</item>
   </style>
+  
+  
   <style name="PreAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    <item name="android:windowNoTitle">true</item>
     
+    <item name="android:windowNoTitle">true</item>
+
     <item name="android:windowFullscreen">true</item>
+    
+    <item name="colorControlNormal">#E81945</item>
     
     <item name="colorPrimary">#FFFFFF</item>
     
+    <item name="android:colorActivatedHighlight">#dc316b</item>
+
     <item name="colorPrimaryDark">#BA1437</item>
-    
+
     <item name="colorAccent">#262626</item>
   </style>
+  
+  
+    
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>
   </style>

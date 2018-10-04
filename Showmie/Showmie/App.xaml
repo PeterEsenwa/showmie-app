@@ -5,13 +5,17 @@
     <Application.Resources>
         <Color x:Key="TextColorLightBlack">#262626</Color>
         <Color x:Key="TextColorNearBlack">#191919</Color>
+        <Color x:Key="BackgroundColorNearBlack">#191919</Color>
         <Color x:Key="TextColorLightGrey">#424242</Color>
+        <Color x:Key="TextColorLightGreyTRANS">#81262626</Color>
         <Color x:Key="TextColorLighterGrey">#8C8C8C</Color>
         <Color x:Key="TextColorLightBlue">#1976D2</Color>
         <Color x:Key="TextColorNearRed">#E81945</Color>
         <Color x:Key="TextColorWhite">#FFFFFF</Color>
+        <Color x:Key="TextColorWhitesmoke">#FFFFFF</Color>
 
         <Color x:Key="BtnTextColorDefault">#FFFFFF</Color>
+        <Color x:Key="TextBackColorLightPink">#FC8E8D</Color>
         <Color x:Key="BtnBackColorDefault">#E81945</Color>
 
         <x:Double x:Key="FontSizeLarge">30</x:Double>
@@ -20,7 +24,9 @@
         <x:Double x:Key="FontSizeMediumAlt">18</x:Double>
         <x:Double x:Key="FontSizeSmall">14</x:Double>
         <x:Double x:Key="FontSizeTiny">8</x:Double>
+        <x:Double x:Key="FontSizeVeryTiny">4</x:Double>
 
+        <x:Int32 x:Key="MenuRowHeight">60</x:Int32>
         <x:Double x:Key="IconSizeLarge">32</x:Double>
         <x:Double x:Key="IconSizeXLarge">48</x:Double>
         <x:Double x:Key="IconSizeXxLarge">64</x:Double>
@@ -46,6 +52,24 @@
         </OnPlatform>
         <OnPlatform x:Key="QuicksandLight" x:TypeArguments="x:String">
             <On Platform="Android" Value="Quicksand-Light.ttf#Quicksand Light" />
+            <!--<On Platform="UWP" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="iOS" Value="OpenSans-Regular" />-->
+        </OnPlatform>
+
+        <OnPlatform x:Key="PTSansBold" x:TypeArguments="x:String">
+            <On Platform="Android" Value="PT_Sans-Web-Bold.ttf#PT Sans Bold" />
+            <!--<On Platform="UWP"
+                Value="/Assets/OpenSans-Bold.ttf#Open Sans" />
+            <On Platform="iOS"
+                Value="OpenSans-Bold" />-->
+        </OnPlatform>
+        <OnPlatform x:Key="PTSansRegular" x:TypeArguments="x:String">
+            <On Platform="Android" Value="PT_Sans-Web-Regular.ttf#PT Sans Regular" />
+            <!--<On Platform="UWP" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
+            <On Platform="iOS" Value="OpenSans-Regular" />-->
+        </OnPlatform>
+        <OnPlatform x:Key="PTSansItalic" x:TypeArguments="x:String">
+            <On Platform="Android" Value="PT_Sans-Web-Italic.ttf#PT Sans Italic" />
             <!--<On Platform="UWP" Value="/Assets/OpenSans-Regular.ttf#Open Sans" />
             <On Platform="iOS" Value="OpenSans-Regular" />-->
         </OnPlatform>

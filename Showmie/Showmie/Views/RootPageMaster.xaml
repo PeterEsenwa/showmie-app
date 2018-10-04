@@ -1,51 +1,161 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Showmie.Views.RootPageMaster"
+             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Showmie.Views.RootPageMaster"
-             xmlns:views="clr-namespace:Showmie.Views;assembly=Showmie"
-             BindingContext="{x:Static views:RootPageMaster.BContext}">
-    <StackLayout>
+             xmlns:views="clr-namespace:Showmie.Views"
+             xmlns:app="clr-namespace:Showmie;assembly=Showmie"
+             Title="Master Main">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="normalTemplate">
+                <ViewCell>
+                    <Grid Padding="12,18,0,18"
+                          ColumnSpacing="0"
+                          HorizontalOptions="FillAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0"
+                               Source="{Binding IconSrc}"
+                               Margin="16,0"
+                               VerticalOptions="Fill"
+                               HorizontalOptions="Fill" />
+                        <views:CustomLabel Grid.Column="1"
+                                           FontSizeFactor="1"
+                                           NamedFontSize="Medium"
+                                           VerticalOptions="FillAndExpand"
+                                           VerticalTextAlignment="Center"
+                                           Text="{Binding Title}"
+                                           HorizontalOptions="Start"
+                                           FontFamily="{StaticResource QuicksandMedium}"
+                                           TextColor="{StaticResource TextColorNearBlack}" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="otherTemplate">
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <views:CustomLabel Margin="24,8"
+                                           FontSizeFactor="1.2"
+                                           NamedFontSize="Small"
+                                           Text="{Binding Title}"
+                                           FontFamily="{StaticResource QuicksandRegular}"
+                                           TextColor="{StaticResource TextColorNearBlack}" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <views:ItemTemplateSelector x:Key="itemTemplateSelector"
+                                        NormalTemplate="{StaticResource normalTemplate}"
+                                        OtherTemplate="{StaticResource otherTemplate}" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <Grid VerticalOptions="Fill">
         <ListView x:Name="MenuItemsListView"
+                  x:FieldModifier="public"
                   SeparatorVisibility="None"
-                  HasUnevenRows="true"
-                  ItemsSource="{Binding MenuItems}">
+                  HasUnevenRows="True"
+                  RowHeight="{StaticResource Key=MenuRowHeight}"
+                  IsGroupingEnabled="true"
+                  ItemTemplate="{StaticResource itemTemplateSelector}">
             <ListView.Header>
                 <Grid BackgroundColor="#4B4B4B">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="Column0" Width="10" />
-                        <ColumnDefinition x:Name="Column1" Width="3*" />
-                        <ColumnDefinition x:Name="Column2" Width="1*" />
-                        <ColumnDefinition x:Name="Column3" Width="10" />
+                        <ColumnDefinition x:Name="Column0" Width="5" />
+                        <ColumnDefinition x:Name="Column1" Width="*" />
+                        <ColumnDefinition x:Name="Column2" Width="Auto" />
+                        <ColumnDefinition x:Name="Column3" Width="5" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition x:Name="Row0" Height="20" />
+                        <RowDefinition x:Name="Row0" Height="Auto" />
                         <RowDefinition x:Name="Row1" Height="Auto" />
-                        <RowDefinition x:Name="Row2" Height="Auto" />
-                        <RowDefinition x:Name="Row3" Height="20" />
                     </Grid.RowDefinitions>
-                    <views:SizedButton
-                        Grid.Column="1"
-                        Grid.Row="1"
-                        Image="edit_pencil_icon.png"
-                        BackgroundColor="#1976D2"
-                        Padding="8"
-                        ContentLayout="Left, 8"
-                        Text="Edit Account" />
+                    <views:SizedButton Grid.Row="0"
+                                       Grid.Column="1"
+                                       Padding="8"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Image="edit_pencil_icon.png"
+                                       FontFamily="{StaticResource QuicksandMedium}"
+                                       FontSize="{StaticResource FontSizeSmall}"
+                                       BackgroundColor="#1976D2"
+                                       TextColor="{x:StaticResource TextColorWhite}"
+                                       ContentLayout="Left, 0" />
+
+                    <BoxView Grid.Row="1"
+                             Grid.Column="0"
+                             Grid.ColumnSpan="4"
+                             Opacity=".5"
+                             VerticalOptions="Fill"
+                             BackgroundColor="{StaticResource BackgroundColorNearBlack}" />
+                    <Grid Grid.Row="1"
+                          Grid.Column="1"
+                          Padding="0,8"
+                          VerticalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout x:Name="followersRect"
+                                     Grid.Column="0"
+                                     VerticalOptions="CenterAndExpand"
+                                     Orientation="Vertical"
+                                     Spacing="-2">
+                            <views:CustomLabel Text="122k"
+                                               HorizontalOptions="CenterAndExpand"
+                                               TextColor="{StaticResource TextColorWhite}"
+                                               FontSizeFactor="1.2"
+                                               NamedFontSize="Small"
+                                               FontFamily="{StaticResource QuicksandMedium}" />
+                            <views:CustomLabel Text="Followers"
+                                               TextColor="{StaticResource TextColorWhite}"
+                                               HorizontalOptions="CenterAndExpand"
+                                               FontSizeFactor="1.2"
+                                               NamedFontSize="Small"
+                                               FontFamily="{StaticResource QuicksandRegular}" />
+                        </StackLayout>
+                        <StackLayout x:Name="designsRect"
+                                     Grid.Column="1"
+                                     Orientation="Vertical"
+                                     VerticalOptions="CenterAndExpand"
+                                     Spacing="-2">
+                            <Label Text="80"
+                                   HorizontalOptions="CenterAndExpand"
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   TextColor="{StaticResource TextColorWhite}"
+                                   FontFamily="{StaticResource QuicksandMedium}" />
+                            <Label Text="Posts"
+                                   HorizontalOptions="CenterAndExpand"
+                                   TextColor="{StaticResource TextColorWhite}"
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   FontFamily="{StaticResource QuicksandRegular}" />
+                        </StackLayout>
+                    </Grid>
+                    <Image Grid.Row="0"
+                           Grid.Column="2"
+                           Source="my_user.png"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center" />
+                    <views:CustomLabel Grid.Row="1"
+                                       Grid.Column="2"
+                                       Text="Hi Peter"
+                                       VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       FontSizeFactor="1.2"
+                                       NamedFontSize="Small"
+                                       TextColor="{x:StaticResource TextColorWhite}"
+                                       FontFamily="{StaticResource QuicksandMedium}" />
                 </Grid>
             </ListView.Header>
-            <ListView.ItemTemplate>
+            <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-                            <Label VerticalOptions="FillAndExpand"
-                                   VerticalTextAlignment="Center"
-                                   Text="{Binding Title}"
-                                   FontSize="24" />
-                        </StackLayout>
+                        <Grid HeightRequest="1" BackgroundColor="{StaticResource TextColorLightGrey}" />
                     </ViewCell>
                 </DataTemplate>
-            </ListView.ItemTemplate>
+            </ListView.GroupHeaderTemplate>
         </ListView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

@@ -26,7 +26,7 @@ namespace Showmie.Views
                 HorizontalOptions = LayoutOptions.Center,
                 TextColor = (Color)Application.Current.Resources["TextColorNearBlack"],
                 FontSize = (double)Application.Current.Resources["FontSizeMedium"],
-                FontFamily = (OnPlatform<string>)Application.Current.Resources["Quicksand_Medium"]
+                FontFamily = (OnPlatform<string>)Application.Current.Resources["QuicksandMedium"]
             };
 
             RightLabel = new Label()
@@ -38,7 +38,7 @@ namespace Showmie.Views
                 HorizontalOptions = LayoutOptions.Center,
                 TextColor = (Color)Application.Current.Resources["TextColorNearBlack"],
                 FontSize = (double)Application.Current.Resources["FontSizeMedium"],
-                FontFamily = (OnPlatform<string>)Application.Current.Resources["Quicksand_Medium"]
+                FontFamily = (OnPlatform<string>)Application.Current.Resources["QuicksandMedium"]
             };
 
             LeftBoxView = new BoxView() { HorizontalOptions = LayoutOptions.Fill, VerticalOptions = LayoutOptions.Fill };

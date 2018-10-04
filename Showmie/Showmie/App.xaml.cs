@@ -2,7 +2,6 @@
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using Showmie.Models;
-using Showmie.Views;
 using System.Security;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -18,24 +17,27 @@ namespace Showmie
             InitializeComponent();
             AppCenter.Start("android=92233719-d584-4656-9fd8-27003c82e33b;",
                   typeof(Analytics), typeof(Crashes));
-            
         }
-        static User curUser = new User("Peter","Esenwa","designPete","bigjove0@gmail.com", new SecureString(), User.UserTypes.Enthusiast);
+        public static User NewUser { get; set; }
+        public static BindableProperty Username { get; set; }
+
+        public static User curUser = new User("Peter", "Esenwa", "designPete", "bigjove0@gmail.com", new SecureString(), User.UserTypes.Enthusiast);
         public Onboard OnboardScreens { get; set; }
         public OnboardLandscape OnboardLandscapeScreens { get; set; }
 
         protected override void OnStart()
         {
-            if (OrientationContentPage.firstPageLoad)
+            if (Current.Properties.ContainsKey("current_page") && (Current.Properties["current_page"] != null || !Current.Properties["current_page"].Equals(null)))
+            {
+                System.Type lastPageType = (System.Type)Current.Properties["current_page"];
+
+            }
+            else
             {
                 OnboardScreens = new Onboard(true);
                 OnboardLandscapeScreens = new OnboardLandscape(true);
             }
-            else
-            {
-                OnboardScreens = new Onboard(false);
-                OnboardLandscapeScreens = new OnboardLandscape(false);
-            }
+
 
             ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
             switch (metrics.Orientation)
@@ -54,6 +56,20 @@ namespace Showmie
                     break;
             }
         }
+
+
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+        }
+
+        protected override void OnSleep()
+        {
+            Current.Properties["current_page"] = MainPage.GetType();
+            base.OnSleep();
+        }
+
 
     }
 }
