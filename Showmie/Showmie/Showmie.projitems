@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IAndroidMethods.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IndicatorPosToImgCV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\PageOrientationEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ResponsiveThickness.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeItemsVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OnboardsVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\BoardIndicator.xaml.cs">

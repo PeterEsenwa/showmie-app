@@ -4,12 +4,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Showmie.Views"
              xmlns:app="clr-namespace:Showmie;assembly=Showmie"
+             xmlns:utils="clr-namespace:Showmie.Utils"
              Title="Master Main">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="normalTemplate">
                 <ViewCell>
-                    <Grid Padding="12,18,0,18"
+                    <Grid Padding="{utils:ResponsiveThickness Size=Small,
+                                                              Left=8,
+                                                              Top=12,
+                                                              Right=0,
+                                                              Bottom=12}"
                           ColumnSpacing="0"
                           HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
@@ -18,7 +23,11 @@
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0"
                                Source="{Binding IconSrc}"
-                               Margin="16,0"
+                               Margin="{utils:ResponsiveThickness Size=Small,
+                                                                  Left=8,
+                                                                  Top=0,
+                                                                  Right=8,
+                                                                  Bottom=0}"
                                VerticalOptions="Fill"
                                HorizontalOptions="Fill" />
                         <views:CustomLabel Grid.Column="1"
@@ -36,7 +45,11 @@
             <DataTemplate x:Key="otherTemplate">
                 <ViewCell>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <views:CustomLabel Margin="24,8"
+                        <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
+                                                                              Left=8,
+                                                                              Top=4,
+                                                                              Right=8,
+                                                                              Bottom=4}"
                                            FontSizeFactor="1.2"
                                            NamedFontSize="Small"
                                            Text="{Binding Title}"
@@ -73,7 +86,11 @@
                     </Grid.RowDefinitions>
                     <views:SizedButton Grid.Row="0"
                                        Grid.Column="1"
-                                       Padding="8"
+                                       Padding="{utils:ResponsiveThickness Size=Small,
+                                                                           Left=8,
+                                                                           Top=8,
+                                                                           Right=8,
+                                                                           Bottom=8}"
                                        VerticalOptions="Center"
                                        HorizontalOptions="Center"
                                        Image="edit_pencil_icon.png"

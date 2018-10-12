@@ -1,7 +1,11 @@
 ﻿
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
+using Android.Runtime;
+using Android.Util;
+using Android.Views;
 using Xamarin.Forms;
 
 namespace Showmie.Droid
@@ -17,6 +21,16 @@ namespace Showmie.Droid
 
             App app = new App();
             LoadApplication(app);
+            //DisplayMetrics dm = new DisplayMetrics();
+            //IWindowManager windowManager = this.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
+            //windowManager.DefaultDisplay.GetRealMetrics(dm);
+            //int width = dm.WidthPixels;
+            //int height = dm.HeightPixels;
+            //windowManager.DefaultDisplay.GetMetrics(dm);
+            //width = dm.WidthPixels;
+            //height = dm.HeightPixels;
+            //App.ScreenHeight = (int)(Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
+            //App.ScreenWidth = (int)(Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density);
         }
 
         protected override void OnStop()

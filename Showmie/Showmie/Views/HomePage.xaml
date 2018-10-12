@@ -4,13 +4,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
              xmlns:views="clr-namespace:Showmie.Views"
+             xmlns:utils="clr-namespace:Showmie.Utils"
              xmlns:models="clr-namespace:Showmie.Models"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="singleTemplate">
                 <ViewCell>
-                    <views:CardHolder Margin="18,0,18,18"
+                    <views:CardHolder Margin="{utils:ResponsiveThickness Size=Small,
+                                                                         Left=18,
+                                                                         Top=0,
+                                                                         Right=18,
+                                                                         Bottom=18}"
                                       HorizontalOptions="Center"
                                       VerticalOptions="Start"
                                       BackgroundColor="Black">
@@ -30,7 +35,11 @@
                                                FontFamily="{StaticResource PTSansBold}" />
                         </views:CardHolder.Title>
                         <views:CardHolder.Description>
-                            <views:CustomLabel Margin="0,0,0,8"
+                            <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
+                                                                                  Left=0,
+                                                                                  Top=0,
+                                                                                  Right=0,
+                                                                                  Bottom=8}"
                                                Text="{Binding Contributor, StringFormat='by {0}'}"
                                                FontSizeFactor="1"
                                                VerticalOptions="Center"
@@ -44,7 +53,11 @@
             </DataTemplate>
             <DataTemplate x:Key="multipleTemplate">
                 <ViewCell>
-                    <views:MultiCardHolder Margin="18,0,18,18"
+                    <views:MultiCardHolder Margin="{utils:ResponsiveThickness Size=Small,
+                                                                              Left=18,
+                                                                              Top=0,
+                                                                              Right=18,
+                                                                              Bottom=18}"
                                            HorizontalOptions="Center"
                                            ColumnSpacing="20">
                         <Grid.ColumnDefinitions>
@@ -66,7 +79,11 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <views:CustomLabel Grid.Row="0"
-                               Margin="18,2"
+                               Margin="{utils:ResponsiveThickness Size=Small,
+                                                                  Left=9,
+                                                                  Top=1,
+                                                                  Right=9,
+                                                                  Bottom=1}"
                                Text="FEATURED THIS WEEK"
                                BackgroundColor="{StaticResource TextBackColorLightPink}"
                                TextColor="{StaticResource TextColorLightBlack}"

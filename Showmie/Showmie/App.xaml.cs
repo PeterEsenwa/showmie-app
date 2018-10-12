@@ -24,6 +24,8 @@ namespace Showmie
         public static User curUser = new User("Peter", "Esenwa", "designPete", "bigjove0@gmail.com", new SecureString(), User.UserTypes.Enthusiast);
         public Onboard OnboardScreens { get; set; }
         public OnboardLandscape OnboardLandscapeScreens { get; set; }
+        public static double ScreenWidth { get; internal set; }
+        public static double ScreenHeight { get; internal set; }
 
         protected override void OnStart()
         {
