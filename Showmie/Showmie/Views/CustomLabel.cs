@@ -50,9 +50,13 @@ namespace Showmie.Views
 
         public virtual void OnFontSizeChangedImpl()
         {
-            ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
-            double density = metrics.Density;
-            FontSize = FontSizeFactor * Device.GetNamedSize(NamedFontSize, typeof(Label));
+            //double w = App.ScreenWidth;
+            //double h = App.ScreenHeight;
+            //ScreenMetrics metrics = DeviceDisplay.ScreenMetrics;
+            //double density = metrics.Density;
+
+            double namedFontSize = Device.GetNamedSize(NamedFontSize, typeof(Label));
+            FontSize = FontSizeFactor * namedFontSize;
             InvalidateMeasure();
         }
 

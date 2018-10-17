@@ -112,8 +112,8 @@ namespace Showmie.Views
 
     public class MultiCardHolder : Grid
     {
-        public ShadowedImage LeftPostImage { get; set; } = new ShadowedImage();
-        public ShadowedImage RightPostImage { get; set; } = new ShadowedImage();
+        public Image LeftPostImage { get; set; } = new Image();
+        public Image RightPostImage { get; set; } = new Image();
 
         public MultiCardHolder()
         {

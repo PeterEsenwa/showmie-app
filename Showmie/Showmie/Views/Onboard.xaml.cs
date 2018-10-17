@@ -20,6 +20,7 @@ namespace Showmie
             BindingContext = this;
             DependencyService.Get<IAndroidMethods>().HideBar();
         }
+
         public Onboard(bool isFirstLoad, int boardPosition)
         {
             InitializeComponent();
@@ -57,6 +58,11 @@ namespace Showmie
         {
             boardsCarousel.Position = BoardPosition;
             base.OnAppearing();
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
         }
 
         private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)

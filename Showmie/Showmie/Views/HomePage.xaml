@@ -3,51 +3,63 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-             xmlns:models="clr-namespace:Showmie.Models"
              xmlns:views="clr-namespace:Showmie.Views"
-             Icon="nav_menu_button.png"
+             xmlns:utils="clr-namespace:Showmie.Utils"
+             xmlns:models="clr-namespace:Showmie.Models"
              NavigationPage.HasNavigationBar="True">
     <ContentPage.Resources>
         <ResourceDictionary>
             <DataTemplate x:Key="singleTemplate">
                 <ViewCell>
-                    <views:CardHolder Margin="18,0,18,18"
-                                      BackgroundColor="Black"
+                    <views:CardHolder Margin="{utils:ResponsiveThickness Size=Small,
+                                                                         Left=18,
+                                                                         Top=0,
+                                                                         Right=18,
+                                                                         Bottom=18}"
                                       HorizontalOptions="Center"
-                                      VerticalOptions="Start">
+                                      VerticalOptions="Start"
+                                      BackgroundColor="Black">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <views:CardHolder.Title>
                             <views:CustomLabel Margin="0"
-                                               FontFamily="{StaticResource PTSansBold}"
+                                               Text="{Binding Title}"
+                                               VerticalOptions="Center"
                                                FontSizeFactor="1.6"
+                                               NamedFontSize="Large"
+                                               VerticalTextAlignment="Center"
                                                HorizontalTextAlignment="Center"
                                                LineBreakMode="WordWrap"
-                                               NamedFontSize="Large"
-                                               Text="{Binding Title}"
                                                TextColor="{StaticResource TextColorWhitesmoke}"
-                                               VerticalOptions="Center"
-                                               VerticalTextAlignment="Center" />
+                                               FontFamily="{StaticResource PTSansBold}" />
                         </views:CardHolder.Title>
                         <views:CardHolder.Description>
-                            <views:CustomLabel Margin="0,0,0,8"
-                                               FontFamily="{StaticResource QuicksandMedium}"
+                            <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
+                                                                                  Left=0,
+                                                                                  Top=0,
+                                                                                  Right=0,
+                                                                                  Bottom=8}"
+                                               Text="{Binding Contributor, StringFormat='by {0}'}"
                                                FontSizeFactor="1"
+                                               VerticalOptions="Center"
                                                HorizontalTextAlignment="Center"
                                                NamedFontSize="Small"
-                                               Text="{Binding Contributor, StringFormat='by {0}'}"
                                                TextColor="{StaticResource TextColorWhitesmoke}"
-                                               VerticalOptions="Center" />
+                                               FontFamily="{StaticResource QuicksandMedium}" />
                         </views:CardHolder.Description>
                     </views:CardHolder>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="multipleTemplate">
                 <ViewCell>
-                    <views:MultiCardHolder Margin="18,0,18,18"
-                                           ColumnSpacing="20"
-                                           HorizontalOptions="Center">
+                    <views:MultiCardHolder Margin="{utils:ResponsiveThickness Size=Small,
+                                                                              Left=18,
+                                                                              Top=0,
+                                                                              Right=18,
+                                                                              Bottom=18}"
+                                           HorizontalOptions="Center"
+                                           ColumnSpacing="20">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -56,8 +68,8 @@
                 </ViewCell>
             </DataTemplate>
             <views:HomeItemTemplateSelector x:Key="itemTemplateSelector"
-                                            MultipleTemplate="{StaticResource multipleTemplate}"
-                                            SingleTemplate="{StaticResource singleTemplate}" />
+                                            SingleTemplate="{StaticResource singleTemplate}"
+                                            MultipleTemplate="{StaticResource multipleTemplate}" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -67,25 +79,29 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <views:CustomLabel Grid.Row="0"
-                               Margin="18,2"
+                               Margin="{utils:ResponsiveThickness Size=Small,
+                                                                  Left=9,
+                                                                  Top=1,
+                                                                  Right=9,
+                                                                  Bottom=1}"
+                               Text="FEATURED THIS WEEK"
                                BackgroundColor="{StaticResource TextBackColorLightPink}"
-                               FontFamily="{StaticResource QuicksandMedium}"
+                               TextColor="{StaticResource TextColorLightBlack}"
                                FontSizeFactor="1.3"
                                HorizontalOptions="Fill"
-                               HorizontalTextAlignment="Center"
-                               NamedFontSize="Small"
-                               Text="FEATURED THIS WEEK"
-                               TextColor="{StaticResource TextColorLightBlack}"
                                VerticalOptions="Fill"
-                               VerticalTextAlignment="Center" />
+                               VerticalTextAlignment="Center"
+                               HorizontalTextAlignment="Center"
+                               FontFamily="{StaticResource QuicksandMedium}"
+                               NamedFontSize="Small" />
             <ListView Grid.Row="1"
-                      BackgroundColor="Transparent"
-                      HasUnevenRows="True"
                       HorizontalOptions="Fill"
-                      ItemTemplate="{StaticResource itemTemplateSelector}"
+                      VerticalOptions="Start"
                       ItemsSource="{Binding HomeItemsSource}"
+                      ItemTemplate="{StaticResource itemTemplateSelector}"
+                      BackgroundColor="Transparent"
                       SeparatorVisibility="None"
-                      VerticalOptions="Start" />
+                      HasUnevenRows="True" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

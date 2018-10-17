@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Showmie"
              xmlns:views="clr-namespace:Showmie.Views"
+             xmlns:utils="clr-namespace:Showmie.Utils"
              Title="Login"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
@@ -80,7 +81,11 @@
                 <StackLayout x:Name="staySignedInHolder"
                              Grid.Row="2"
                              Grid.Column="1"
-                             Margin="0,8"
+                             Margin="{utils:ResponsiveThickness Size=Small,
+                                                                Left=0,
+                                                                Top=4,
+                                                                Right=0,
+                                                                Bottom=4}"
                              Orientation="Horizontal"
                              HorizontalOptions="CenterAndExpand">
                     <Image Source="bookmark.png" />
@@ -154,7 +159,11 @@
                              VerticalOptions="CenterAndExpand"
                              Orientation="Horizontal"
                              Spacing="0">
-                    <Label Margin="5,0"
+                    <Label Margin="{utils:ResponsiveThickness Size=Small,
+                                                              Left=2.5,
+                                                              Top=0,
+                                                              Right=2.5,
+                                                              Bottom=0}"
                            Text="continue with"
                            VerticalOptions="Center"
                            TextColor="{StaticResource TextColorWhite}"
@@ -162,11 +171,19 @@
                            FontSize="{StaticResource FontSizeMediumAlt}" />
                     <Image x:Name="fb_signup"
                            Source="fb_icon.png"
-                           Margin="5,10"
+                           Margin="{utils:ResponsiveThickness Size=Small,
+                                                              Left=5,
+                                                              Top=10,
+                                                              Right=5,
+                                                              Bottom=10}"
                            VerticalOptions="Center"
                            HeightRequest="{StaticResource IconSizeLarge}"
                            WidthRequest="{StaticResource IconSizeLarge}" />
-                    <Label Margin="5,0"
+                    <Label Margin="{utils:ResponsiveThickness Size=Small,
+                                                              Left=2.5,
+                                                              Top=0,
+                                                              Right=2.5,
+                                                              Bottom=0}"
                            Text="or"
                            VerticalOptions="Center"
                            TextColor="{StaticResource TextColorWhite}"
@@ -174,7 +191,11 @@
                            FontSize="{StaticResource FontSizeMediumAlt}" />
                     <Image x:Name="google_signup"
                            Source="google_icon.png"
-                           Margin="5,10"
+                           Margin="{utils:ResponsiveThickness Size=Small,
+                                                              Left=5,
+                                                              Top=10,
+                                                              Right=5,
+                                                              Bottom=10}"
                            VerticalOptions="Center"
                            HeightRequest="{StaticResource IconSizeLarge}"
                            WidthRequest="{StaticResource IconSizeLarge}" />

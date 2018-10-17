@@ -2,8 +2,10 @@
 <ContentPage x:Class="Showmie.SignupPage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Showmie"
              xmlns:views="clr-namespace:Showmie.Views"
+             xmlns:utils="clr-namespace:Showmie.Utils"
              Title="Signup"
              NavigationPage.HasNavigationBar="False">
     <!--  Place new controls here  -->
@@ -175,28 +177,46 @@
                          VerticalOptions="CenterAndExpand"
                          Orientation="Horizontal"
                          Spacing="0">
-                <Label Margin="5,0"
+                <Label Margin="{utils:ResponsiveThickness Size=Small,
+                                                          Left=2.5,
+                                                          Top=0,
+                                                          Right=2.5,
+                                                          Bottom=0}"
                        Text="continue with"
-                       VerticalOptions="Center"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Center"
                        TextColor="{StaticResource TextColorWhite}"
                        FontFamily="{StaticResource QuicksandMedium}"
                        FontSize="{StaticResource FontSizeMediumAlt}" />
                 <Image x:Name="fb_signup"
                        Source="fb_icon.png"
-                       Margin="5,10"
+                       Margin="{utils:ResponsiveThickness Size=Small,
+                                                          Left=5,
+                                                          Top=10,
+                                                          Right=5,
+                                                          Bottom=10}"
                        VerticalOptions="Center"
                        HeightRequest="{StaticResource IconSizeLarge}"
                        WidthRequest="{StaticResource IconSizeLarge}" />
-                <Label Margin="5,0"
+                <Label Margin="{utils:ResponsiveThickness Size=Small,
+                                                          Left=2.5,
+                                                          Top=0,
+                                                          Right=2.5,
+                                                          Bottom=0}"
                        Text="or"
-                       VerticalOptions="Center"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Center"
                        TextColor="{StaticResource TextColorWhite}"
                        FontFamily="{StaticResource QuicksandMedium}"
                        FontSize="{StaticResource FontSizeMediumAlt}" />
                 <Image x:Name="google_signup"
                        Source="google_icon.png"
-                       Margin="5,10"
-                       VerticalOptions="Center"
+                       Margin="{utils:ResponsiveThickness Size=Small,
+                                                          Left=5,
+                                                          Top=10,
+                                                          Right=5,
+                                                          Bottom=10}"
+                       VerticalOptions="CenterAndExpand"
                        HeightRequest="{StaticResource IconSizeLarge}"
                        WidthRequest="{StaticResource IconSizeLarge}" />
             </StackLayout>
