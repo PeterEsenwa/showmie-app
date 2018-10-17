@@ -15,7 +15,7 @@
     <item name="colorPrimaryDark">#dc316b</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
-    <item name="colorAccent">#262626</item>
+    <item name="colorAccent">@color/colorAccent</item>
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
@@ -23,37 +23,64 @@
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
+  
   <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
+    
     <item name="android:windowBackground">@drawable/splash_screen</item>
+    
     <item name="android:windowNoTitle">true</item>
+    
     <item name="android:windowFullscreen">true</item>
 
-    <item name="colorPrimary">#FFFFFF</item>
+    <!--<item name="colorPrimary">#FFFFFF</item>
 
     <item name="colorPrimaryDark">#BA1437</item>
 
-    <item name="colorAccent">#262626</item>
-  </style>
-  
-  
-  <style name="PreAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    
-    <item name="android:windowNoTitle">true</item>
+    <item name="colorAccent">#262626</item>-->
+    <!--<item name="android:colorControlActivated">#dc316b</item>
 
-    <item name="android:windowFullscreen">true</item>
-    
+    <item name="colorPrimaryDark">#BA1437</item>
     <item name="colorControlNormal">#E81945</item>
-    
-    <item name="colorPrimary">#FFFFFF</item>
-    
-    <item name="android:colorActivatedHighlight">#dc316b</item>
+    <item name="colorAccent">#262626</item>-->
+  </style>
 
-    <item name="colorPrimaryDark">#BA1437</item>
-
-    <item name="colorAccent">#262626</item>
+  <style name="PreAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="searchViewStyle">@style/MySearchViewStyle</item>
   </style>
   
   
+  <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+    <item name="color">#dc316b</item>
+    <!-- Background for the search query section (e.g. EditText) -->
+    <item name="queryBackground">@color/searchbarBackground</item>
+    <!-- Background for the actions section (e.g. voice, submit) -->
+    <item name="submitBackground">@color/searchbarBackground</item>
+    <!-- Close button icon -->
+    <!--<item name="closeIcon">...</item>-->
+    <!-- Search button icon -->
+    <!--<item name="searchIcon">...</item>-->
+    <!-- Go/commit button icon -->
+    <!--<item name="goIcon">...</item>-->
+    <!-- Voice search button icon -->
+    <!--<item name="voiceIcon">...</item>-->
+    <!-- Commit icon shown in the query suggestion row -->
+    <!--<item name="commitIcon">...</item>-->
+    <!-- Layout for query suggestion rows -->
+    <!--<item name="suggestionRowLayout">...</item>-->
+  </style>
+  
+
+  <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="color">#dc316b</item>
+  </style>
+
+  
+  <style name="ToolbarTheme"> 
+    <!-- Used to tint the back arrow, menu and spinner arrow -->
+    <item name="colorControlNormal">#E81945</item>
+  </style>
     
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#FF4081</item>

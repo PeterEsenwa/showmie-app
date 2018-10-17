@@ -23,6 +23,7 @@ namespace Showmie
 
         private void HandleSignup(object sender, EventArgs e)
         {
+            //DependencyService.Get<IAndroidMethods>().SetActionBarIcon();
             Application.Current.MainPage = new RootPage();
         }
     }

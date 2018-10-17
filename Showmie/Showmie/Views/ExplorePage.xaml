@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage x:Class="Showmie.Views.ExplorePage"
+            xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:Utils="clr-namespace:Showmie.Utils"
+            xmlns:views="clr-namespace:Showmie.Views">
+
+    <NavigationPage.TitleView>
+        <views:CustomSearchBar Margin="0,0,24,0"
+                               FontFamily="{StaticResource QuicksandRegular}"
+                               HeightRequest="{Utils:ResponsiveDouble Value=42,
+                                                                      Size=Small}"
+                               HorizontalOptions="Fill"
+                               Placeholder="Search SHOWMiE"
+                               PlaceholderColor="Gray"
+                               VerticalOptions="CenterAndExpand" />
+    </NavigationPage.TitleView>
+    <views:ExploreTab Title="Male" />
+    <views:ExploreTab Title="Female" />
+    <views:ExploreTab Title="Children" />
+</TabbedPage>

@@ -1,4 +1,5 @@
-﻿using Showmie.Views;
+﻿using Android.Views;
+using Showmie.Views;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -17,6 +18,7 @@ namespace Showmie
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
+            DependencyService.Get<IAndroidMethods>().HideBar();
         }
         public Onboard(bool isFirstLoad, int boardPosition)
         {
@@ -47,6 +49,7 @@ namespace Showmie
 
         private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
         {
+            DependencyService.Get<IAndroidMethods>().ShowBar();
             SetMainPage(new NavigationPage(new SignupPage()));
         }
 

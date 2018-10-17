@@ -37,7 +37,7 @@ namespace Showmie.Views
             TitleAndDesc.VerticalOptions = LayoutOptions.Start;
             Children.Add(PostImage, 0, 0);
             Children.Add(TitleAndDesc, 0, 0);
-            this.HeightRequest = -1;
+            HeightRequest = -1;
         }
 
         private static BindableProperty ItemsProperty { get; } = BindableProperty.Create(

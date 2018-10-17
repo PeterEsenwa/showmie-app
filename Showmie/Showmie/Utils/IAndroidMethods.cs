@@ -4,6 +4,8 @@ namespace Showmie
 {
     public interface IAndroidMethods
     {
-        void CloseApp(Context context);
+        void HideBar();
+        void ShowBar();
+        void SetActionBarIcon();
     }
 }

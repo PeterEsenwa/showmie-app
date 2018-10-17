@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MenuItem = Showmie.Models.MenuItem;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using System.Collections.ObjectModel;
-using Showmie.Models;
+using MenuItem = Showmie.Models.MenuItem;
 
 namespace Showmie.Views
 {
@@ -44,8 +38,18 @@ namespace Showmie.Views
             var page = (Page)Activator.CreateInstance(item.TargetType);
             page.Title = item.Title;
 
-            NavigationPage navigationPage = new NavigationPage(page);
-            //navigationPage.
+            NavigationPage navigationPage = new NavigationPage(page)
+            {
+                BarBackgroundColor = Color.Red,
+                Icon = "nav_menu_button.png"
+            };
+
+            if (item.TargetType == typeof(ExplorePage))
+            {
+                //int barHeight =  200 / 14 * (int)Device.GetNamedSize(NamedSize.Large, typeof(Label));
+                //navigationPage.On<Xamarin.Forms.PlatformConfiguration.Android>().SetBarHeight(barHeight);
+                //navigationPage.BarBackgroundColor = Color.Red;
+            }
             Detail = navigationPage;
             IsPresented = false;
 

@@ -78,6 +78,8 @@
     <Compile Include="AndroidMethods.cs" />
     <Compile Include="LabelFontEffect.cs" />
     <Compile Include="PreApp.cs" />
+    <Compile Include="Renderers\CardHolderRenderer.cs" />
+    <Compile Include="Renderers\CustomSearchBarRenderer.cs" />
     <Compile Include="ShadowedImageRenderer.cs" />
     <Compile Include="SizedButtonRenderer.cs" />
     <Compile Include="Splash.cs" />
@@ -443,6 +445,20 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\black_essence_3x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\searchbar_background.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\nav_menu_button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\nav_menu_button.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="..\Showmie\Showmie.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace Showmie.Models
     {
         public MenuItem()
         {
-            TargetType = typeof(RootPageDetail);
+            TargetType = typeof(HomePage);
         }
         public int Id { get; set; }
         public string Title { get; set; }
