@@ -18,6 +18,10 @@
         <Color x:Key="TextBackColorLightPink">#FC8E8D</Color>
         <Color x:Key="BtnBackColorDefault">#E81945</Color>
 
+        <Color x:Key="CheckboxBackgroundColor">#EBEBEB</Color>
+        <Color x:Key="CheckedCheckboxBackgroundColor">#E81945</Color>
+        <Color x:Key="UnCheckedCheckboxBackgroundColor">#464646</Color>
+
         <Color x:Key="TabColorDefault">#FFFFFF</Color>
         <Color x:Key="TabBGColorDefault">#E81945</Color>
 

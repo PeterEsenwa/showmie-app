@@ -4,10 +4,16 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:Utils="clr-namespace:Showmie.Utils"
             xmlns:views="clr-namespace:Showmie.Views">
-
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Name="Filter"
+                     Clicked="Filter_Clicked"
+                     Icon="filter_icon.png"
+                     Order="Primary"
+                     Priority="0"
+                     Text="" />
+    </TabbedPage.ToolbarItems>
     <NavigationPage.TitleView>
-        <views:CustomSearchBar Margin="0,0,24,0"
-                               FontFamily="{StaticResource QuicksandRegular}"
+        <views:CustomSearchBar FontFamily="{StaticResource QuicksandRegular}"
                                HeightRequest="{Utils:ResponsiveDouble Value=42,
                                                                       Size=Small}"
                                HorizontalOptions="Fill"
@@ -15,7 +21,4 @@
                                PlaceholderColor="Gray"
                                VerticalOptions="CenterAndExpand" />
     </NavigationPage.TitleView>
-    <views:ExploreTab Title="Male" />
-    <views:ExploreTab Title="Female" />
-    <views:ExploreTab Title="Children" />
 </TabbedPage>

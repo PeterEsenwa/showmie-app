@@ -21,7 +21,7 @@ namespace Showmie.Views
                 new MenuItem { Id = 2, Title = "Notifications" , IconSrc = "bell_icon.png", Type = MenuItem.ItemType.Normal},
                 new MenuItem { Id = 3, Title = "My Showroom" , IconSrc = "showroom_icon.png", Type = MenuItem.ItemType.Normal},
                 new MenuItem { Id = 4, Title = "Subscriptions" , IconSrc = "subsricptions_icon.png", Type = MenuItem.ItemType.Normal},
-                new MenuItem { Id = 5, Title = "Challenges" , IconSrc = "trophy_icon.png", Type = MenuItem.ItemType.Normal},
+                new MenuItem { Id = 5, Title = "Challenges" , IconSrc = "trophy_icon.png", Type = MenuItem.ItemType.Normal, TargetType = typeof(Challenges)},
                 new MenuItem { Id = 6, Title = "Settings" , IconSrc = "cog_icon.png", Type = MenuItem.ItemType.Normal},
             };
             var othersGroup = new MenuItemGroup() {

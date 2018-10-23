@@ -17,6 +17,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\FeaturedItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\FilterItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\HomeItem.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Notification.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\User.cs" />
@@ -33,42 +34,51 @@
     <Compile Include="$(MSBuildThisFileDirectory)Utils\IndicatorPosToImgCV.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\PageOrientationEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\ResponsiveDouble.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utils\ResponsiveThickness.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\FilterItemsVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\HomeItemsVM.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OnboardsVM.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\BoardIndicator.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\BoardIndicator.xaml.cs">
       <DependentUpon>BoardIndicator.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\bottomBorderEntry.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomLabel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomSearchBar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\DevCardHolder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ExplorePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\bottomBorderEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\CoordinatorPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\CustomBottomSheet.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\CustomCheckbox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Challenges.xaml.cs">
+      <DependentUpon>Challenges.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\CustomLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\CustomSearchBar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\DevCardHolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ExplorePage.xaml.cs">
       <DependentUpon>ExplorePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\HomePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Onboard.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Onboard.xaml.cs">
       <DependentUpon>Onboard.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\OnboardLandscape.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\OnboardLandscape.xaml.cs">
       <DependentUpon>OnboardLandscape.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\OrientationContentPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\RootPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\RootPage.xaml.cs">
       <DependentUpon>RootPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ExploreTab.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ExploreTab.xaml.cs">
       <DependentUpon>ExploreTab.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -79,15 +89,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\RootPageMenuItem.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SizedButton.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\SpecialLabel.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\SizedButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\SpecialLabel.xaml.cs">
       <DependentUpon>SpecialLabel.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\switchButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\switchButton.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Onboard.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\Onboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -99,25 +109,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\BoardIndicator.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CustomViews\BoardIndicator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\OnboardLandscape.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\OnboardLandscape.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\LoginPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\RootPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\RootPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -129,27 +139,36 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ExploreTab.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\ExploreTab.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\SpecialLabel.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\CustomViews\SpecialLabel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\HomePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\ExplorePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\ExplorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Pages\Challenges.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\" />
   </ItemGroup>
 </Project>
