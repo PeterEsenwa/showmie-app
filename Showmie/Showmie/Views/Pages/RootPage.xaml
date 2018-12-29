@@ -8,10 +8,6 @@
         <pages:RootPageMaster x:Name="MasterPage" />
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        <NavigationPage>
-            <x:Arguments>
-                <pages:ExploreTab />
-            </x:Arguments>
-        </NavigationPage>
+        <NavigationPage />
     </MasterDetailPage.Detail>
 </MasterDetailPage>

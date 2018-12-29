@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace Showmie.Views
 {
-    internal class CustomLabel : Label
+    public class CustomLabel : Label
     {
 
         private static BindableProperty FontSizeFactorProperty { get; } = BindableProperty.Create(

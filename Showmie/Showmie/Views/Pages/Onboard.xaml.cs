@@ -1,4 +1,5 @@
-﻿using Android.Views;
+﻿using Android.App;
+using Android.Views;
 using Showmie.Views;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,12 +32,19 @@ namespace Showmie
             BoardPosition = boardPosition;
         }
 
+        public Onboard(bool isFirstLoad, Activity creatorActivity) : this(isFirstLoad)
+        {
+            this.creatorActivity = creatorActivity;
+        }
+
         private OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
+        private Activity creatorActivity;
+
         public int SourceImage { get { return _sourceImage; } set { _sourceImage = value; OnPropertyChanged(); } }
 
-        private void NextBoard_Clicked(object sender, System.EventArgs e)
+        private async void NextBoard_Clicked(object sender, System.EventArgs e)
         {
             if (boardsCarousel.Position < onboardsVM.NoOfBoards() - 1)
             {
@@ -44,13 +52,16 @@ namespace Showmie
             }
             else if (boardsCarousel.Position == onboardsVM.NoOfBoards() - 1)
             {
+                await App.SaveProperty("firstLoad", true);
+                await App.SaveProperty("keepLogin", false);
                 SetMainPage(new NavigationPage(new SignupPage()));
             }
         }
 
-        private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
+        private async void SkipOnboarding_Clicked(object sender, System.EventArgs e)
         {
-            DependencyService.Get<IAndroidMethods>().ShowBar();
+            await App.SaveProperty("firstLoad", true);
+            await App.SaveProperty("keepLogin", false);
             SetMainPage(new NavigationPage(new SignupPage()));
         }
 

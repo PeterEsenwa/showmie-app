@@ -1,18 +1,24 @@
 ﻿using Showmie.Models;
 using System;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Showmie.Views.CustomViews
 {
     public class CoordinatorPage : Grid
     {
+        public event EventHandler ShowFilters;
 
-        public static ObservableCollection<FilterItem> FilterItems { get; set; }
-
-        public CoordinatorPage(ObservableCollection<FilterItem>  filterItems)
+        public void ShowFiltersAction()
         {
-            FilterItems = filterItems;
+            ShowFilters?.Invoke(this, EventArgs.Empty);
         }
+
+        public CoordinatorPage()
+        {
+
+        }
+
     }
 }

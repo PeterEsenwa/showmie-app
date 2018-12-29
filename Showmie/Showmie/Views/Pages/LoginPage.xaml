@@ -3,15 +3,15 @@
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Showmie"
-             xmlns:views="clr-namespace:Showmie.Views"
              xmlns:utils="clr-namespace:Showmie.Utils"
+             xmlns:views="clr-namespace:Showmie.Views"
              Title="Login"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
         <Grid x:Name="mainGrid"
               Grid.Row="0"
-              VerticalOptions="Fill"
-              HorizontalOptions="Fill">
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="grid0" Height="1*" />
                 <RowDefinition x:Name="grid1" Height="Auto" />
@@ -27,22 +27,29 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <ActivityIndicator x:Name="loader"
+                               Grid.Row="0"
+                               Grid.RowSpan="10"
+                               IsRunning="False"
+                               IsVisible="False"
+                               Scale="0.1"
+                               Color="Red" />
             <StackLayout x:Name="intro"
                          Grid.Row="1"
                          Grid.Column="0"
                          HorizontalOptions="CenterAndExpand"
                          Spacing="-4">
                 <Label x:Name="startTxt"
-                       Text="Catchup now!"
                        FontFamily="{StaticResource QuicksandBold}"
                        FontSize="{StaticResource FontSizeLarge}"
                        HorizontalOptions="CenterAndExpand"
+                       Text="Catchup now!"
                        TextColor="{StaticResource TextColorNearBlack}" />
                 <Label x:Name="createAccntPrompt"
-                       Text="Login to your account"
                        FontFamily="{StaticResource QuicksandBold}"
                        FontSize="{StaticResource FontSizeBig}"
                        HorizontalOptions="CenterAndExpand"
+                       Text="Login to your account"
                        TextColor="{StaticResource TextColorNearBlack}" />
             </StackLayout>
             <Grid x:Name="fieldsHolder"
@@ -74,8 +81,8 @@
                                          FontFamily="{StaticResource QuicksandMedium}"
                                          FontSize="{StaticResource FontSizeMedium}"
                                          HorizontalOptions="FillAndExpand"
-                                         Placeholder="Password"
                                          IsPassword="true"
+                                         Placeholder="Password"
                                          PlaceholderColor="{StaticResource TextColorLightGrey}"
                                          TextColor="{StaticResource TextColorNearBlack}" />
                 <StackLayout x:Name="staySignedInHolder"
@@ -86,14 +93,23 @@
                                                                 Top=4,
                                                                 Right=0,
                                                                 Bottom=4}"
-                             Orientation="Horizontal"
-                             HorizontalOptions="CenterAndExpand">
-                    <Image Source="bookmark.png" />
-                    <Label Text="keep me signed in"
-                           HorizontalOptions="CenterAndExpand"
-                           TextColor="{StaticResource TextColorNearBlack}"
+                             HorizontalOptions="CenterAndExpand"
+                             Orientation="Horizontal">
+                    <Image x:Name="keepLoginImage" Source="dont_keep_login.png">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="KeepLogin" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Label x:Name="keepLoginLabel"
                            FontFamily="{StaticResource QuicksandMedium}"
-                           FontSize="{StaticResource FontSizeMedium}" />
+                           FontSize="{StaticResource FontSizeMedium}"
+                           HorizontalOptions="CenterAndExpand"
+                           Text="keep me signed in"
+                           TextColor="{StaticResource TextColorNearBlack}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="KeepLogin" />
+                        </Label.GestureRecognizers>
+                    </Label>
                 </StackLayout>
             </Grid>
             <Grid x:Name="loginBtnHolder"
@@ -107,48 +123,52 @@
                 <views:SizedButton x:Name="LoginBtn"
                                    Grid.Column="1"
                                    Padding="8,2"
-                                   Text="Login"
-                                   TextColor="{StaticResource BtnTextColorDefault}"
+                                   BackgroundColor="{StaticResource BtnBackColorDefault}"
+                                   Clicked="LoginBtn_Clicked"
+                                   CornerRadius="4"
                                    FontFamily="{StaticResource QuicksandBold}"
                                    FontSize="{StaticResource FontSizeBig}"
-                                   BackgroundColor="{StaticResource BtnBackColorDefault}"
                                    HorizontalOptions="Fill"
-                                   VerticalOptions="Center"
-                                   CornerRadius="4" />
+                                   Text="Login"
+                                   TextColor="{StaticResource BtnTextColorDefault}"
+                                   VerticalOptions="Center" />
             </Grid>
             <StackLayout x:Name="forgotPassHolder"
                          Grid.Row="7"
                          Grid.Column="0">
-                <Label Text="forgot my password"
+                <Label FontFamily="{StaticResource QuicksandMedium}"
+                       FontSize="{StaticResource FontSizeMedium}"
                        HorizontalOptions="CenterAndExpand"
-                       TextColor="{StaticResource TextColorNearBlack}"
-                       FontFamily="{StaticResource QuicksandMedium}"
-                       FontSize="{StaticResource FontSizeMedium}" />
+                       Text="forgot my password"
+                       TextColor="{StaticResource TextColorNearBlack}" />
             </StackLayout>
             <StackLayout x:Name="gotoSignup"
                          Grid.Row="8"
                          Grid.Column="0"
-                         VerticalOptions="Center"
                          HorizontalOptions="CenterAndExpand"
                          Orientation="Horizontal"
-                         Spacing="4">
-                <Label Text="don't have an account?"
-                       VerticalOptions="Center"
+                         Spacing="4"
+                         VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GotoSignup" />
+                </StackLayout.GestureRecognizers>
+                <Label FontFamily="{StaticResource QuicksandMedium}"
+                       FontSize="{StaticResource FontSizeSmall}"
+                       Text="don't have an account?"
                        TextColor="{StaticResource TextColorLightBlack}"
-                       FontFamily="{StaticResource QuicksandMedium}"
-                       FontSize="{StaticResource FontSizeSmall}" />
-                <Label Text="Signup now"
-                       VerticalOptions="Center"
+                       VerticalOptions="Center" />
+                <Label FontFamily="{StaticResource QuicksandMedium}"
+                       FontSize="{StaticResource FontSizeSmall}"
+                       Text="Signup now"
                        TextColor="{StaticResource TextColorNearRed}"
-                       FontFamily="{StaticResource QuicksandMedium}"
-                       FontSize="{StaticResource FontSizeSmall}" />
+                       VerticalOptions="Center" />
             </StackLayout>
             <Grid x:Name="socialSignup"
                   Grid.Row="9"
                   Grid.Column="0"
-                  VerticalOptions="End"
+                  BackgroundColor="{StaticResource TextColorNearBlack}"
                   HorizontalOptions="Fill"
-                  BackgroundColor="{StaticResource TextColorNearBlack}">
+                  VerticalOptions="End">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -156,48 +176,48 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <StackLayout HorizontalOptions="CenterAndExpand"
-                             VerticalOptions="CenterAndExpand"
                              Orientation="Horizontal"
-                             Spacing="0">
+                             Spacing="0"
+                             VerticalOptions="CenterAndExpand">
                     <Label Margin="{utils:ResponsiveThickness Size=Small,
                                                               Left=2.5,
                                                               Top=0,
                                                               Right=2.5,
                                                               Bottom=0}"
-                           Text="continue with"
-                           VerticalOptions="Center"
-                           TextColor="{StaticResource TextColorWhite}"
                            FontFamily="{StaticResource QuicksandMedium}"
-                           FontSize="{StaticResource FontSizeMediumAlt}" />
+                           FontSize="{StaticResource FontSizeMediumAlt}"
+                           Text="continue with"
+                           TextColor="{StaticResource TextColorWhite}"
+                           VerticalOptions="Center" />
                     <Image x:Name="fb_signup"
-                           Source="fb_icon.png"
                            Margin="{utils:ResponsiveThickness Size=Small,
                                                               Left=5,
                                                               Top=10,
                                                               Right=5,
                                                               Bottom=10}"
-                           VerticalOptions="Center"
                            HeightRequest="{StaticResource IconSizeLarge}"
+                           Source="fb_icon.png"
+                           VerticalOptions="Center"
                            WidthRequest="{StaticResource IconSizeLarge}" />
                     <Label Margin="{utils:ResponsiveThickness Size=Small,
                                                               Left=2.5,
                                                               Top=0,
                                                               Right=2.5,
                                                               Bottom=0}"
-                           Text="or"
-                           VerticalOptions="Center"
-                           TextColor="{StaticResource TextColorWhite}"
                            FontFamily="{StaticResource QuicksandMedium}"
-                           FontSize="{StaticResource FontSizeMediumAlt}" />
+                           FontSize="{StaticResource FontSizeMediumAlt}"
+                           Text="or"
+                           TextColor="{StaticResource TextColorWhite}"
+                           VerticalOptions="Center" />
                     <Image x:Name="google_signup"
-                           Source="google_icon.png"
                            Margin="{utils:ResponsiveThickness Size=Small,
                                                               Left=5,
                                                               Top=10,
                                                               Right=5,
                                                               Bottom=10}"
-                           VerticalOptions="Center"
                            HeightRequest="{StaticResource IconSizeLarge}"
+                           Source="google_icon.png"
+                           VerticalOptions="Center"
                            WidthRequest="{StaticResource IconSizeLarge}" />
                 </StackLayout>
             </Grid>

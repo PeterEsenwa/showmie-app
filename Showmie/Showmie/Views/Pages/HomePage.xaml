@@ -16,7 +16,6 @@
                                                                          Top=0,
                                                                          Right=18,
                                                                          Bottom=18}"
-                                      BackgroundColor="Black"
                                       HorizontalOptions="Center"
                                       VerticalOptions="Start">
                         <Grid.RowDefinitions>
@@ -100,6 +99,7 @@
                       HorizontalOptions="Fill"
                       ItemTemplate="{StaticResource itemTemplateSelector}"
                       ItemsSource="{Binding HomeItemsSource}"
+                      SelectionMode="None"
                       SeparatorVisibility="None"
                       VerticalOptions="Start" />
         </Grid>

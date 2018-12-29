@@ -1,4 +1,4 @@
-﻿
+﻿using Android;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
@@ -8,10 +8,15 @@ using Xamarin.Forms.Platform.Android;
 
 namespace Showmie.Droid
 {
-    [Activity(Label = "PreApp", Icon = "@mipmap/icon", Theme = "@style/PreAppTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "PreApp", Icon = "@mipmap/icon", Theme = "@style/PreAppTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class PreApp : FormsAppCompatActivity
     {
         public static PreApp activity;
+        private readonly string[] PermissionsStorage =
+        {
+          Manifest.Permission.ReadExternalStorage,
+          Manifest.Permission.WriteExternalStorage
+        };
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,7 +43,6 @@ namespace Showmie.Droid
 
         protected override void OnStop()
         {
-            Xamarin.Forms.Application.Current.Properties["current_page"] = null;
             base.OnStop();
         }
     }

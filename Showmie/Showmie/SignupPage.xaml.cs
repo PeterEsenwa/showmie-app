@@ -10,7 +10,7 @@ namespace Showmie
         {
             InitializeComponent();
         }
-
+        
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             ((SwitchButton) sender)?.ToggleSwitch();
@@ -18,13 +18,14 @@ namespace Showmie
 
         private async void GotoLoginAsync(object sender, EventArgs e)
         {
+            await Navigation.PopToRootAsync();
             await Navigation.PushAsync(new LoginPage());
         }
 
         private void HandleSignup(object sender, EventArgs e)
         {
             //DependencyService.Get<IAndroidMethods>().SetActionBarIcon();
-            Application.Current.MainPage = new RootPage();
+            //Application.Current.MainPage = new RootPage();
         }
     }
 }

@@ -10,9 +10,9 @@
     <item name="windowActionBar">true</item>
     <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
     <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#FF4081</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
     <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">#dc316b</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
     <item name="colorAccent">@color/colorAccent</item>
@@ -51,11 +51,11 @@
     <item name="checkboxStyle">@style/MyCheckboxStyle</item>
     <!--<item name="android:tabWidgetStyle">@style/MyTabLayoutStyle</item>-->
 
-    <item name="colorPrimary">#FFFFFF</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
 
-    <item name="colorPrimaryDark">#BA1437</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
-    <item name="colorAccent">#262626</item>
+    <item name="colorAccent">@color/colorAccent</item>
   </style>
 
   <style name="MyCheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">

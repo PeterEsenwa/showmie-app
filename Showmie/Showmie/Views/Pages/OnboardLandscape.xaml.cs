@@ -28,10 +28,10 @@ namespace Showmie
             BindingContext = this;
             BoardPosition = boardPosition;
         }
-
         private OnboardsVM onboardsVM = new OnboardsVM();
         public List<SingleBoard> BoardsSource { get; set; }
         private int _sourceImage;
+
         public int SourceImage { get { return _sourceImage; } set { _sourceImage = value; OnPropertyChanged(); } }
 
         private void NextBoard_Clicked(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace Showmie
             }
         }
 
-        private void SkipOnboarding_Clicked(object sender, System.EventArgs e)
+        private void SkipOnboarding_Clicked(object sender, EventArgs e)
         {
             SetMainPage(new NavigationPage(new SignupPage()));
         }

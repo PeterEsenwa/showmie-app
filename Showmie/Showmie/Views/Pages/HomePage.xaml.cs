@@ -18,9 +18,17 @@ namespace Showmie.Views
             Title = "Home";
         }
 
+        protected async override void OnAppearing()
+        {
+            await App.SaveProperty("firstLoad", false);
+            base.OnAppearing();
+        }
+
         private HomeItemsVM homeItemsVM = new HomeItemsVM();
         public ObservableCollection<HomeItem> HomeItemsSource { get; set; }
     }
+
+    
 
     public class HomeItemTemplateSelector : DataTemplateSelector
     {

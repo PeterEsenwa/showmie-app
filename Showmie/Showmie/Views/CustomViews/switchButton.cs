@@ -134,22 +134,6 @@ namespace Showmie.Views
             return new SizeRequest(totalSize);
         }
 
-        /**private double[] GetNeededSizes()
-        //{
-        //    double _neededHeight = 0;
-        //    double _neededWidth = 0;
-        //    foreach (object child in Children)
-        //    {
-        //        if (child is Label)
-        //        {
-        //            SizeRequest childSizeRequest = (child as Label).Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
-        //            _neededWidth += childSizeRequest.Request.Width + 8;
-        //            _neededHeight += childSizeRequest.Request.Height;
-        //        }
-        //    }
-        //    return new double[] { _neededWidth, _neededHeight };
-        *}*/
-
         private double[] GetNeededSizes()
         {
             double _neededHeight = 0;

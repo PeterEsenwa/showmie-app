@@ -2,9 +2,9 @@
 <ContentPage x:Class="Showmie.Views.RootPageMaster"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Showmie.Views"
              xmlns:app="clr-namespace:Showmie;assembly=Showmie"
              xmlns:utils="clr-namespace:Showmie.Utils"
+             xmlns:views="clr-namespace:Showmie.Views"
              Title="Master Main">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -22,38 +22,38 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Image Grid.Column="0"
-                               Source="{Binding IconSrc}"
                                Margin="{utils:ResponsiveThickness Size=Small,
                                                                   Left=8,
                                                                   Top=0,
                                                                   Right=8,
                                                                   Bottom=0}"
-                               VerticalOptions="Fill"
-                               HorizontalOptions="Fill" />
+                               HorizontalOptions="Fill"
+                               Source="{Binding IconSrc}"
+                               VerticalOptions="Fill" />
                         <views:CustomLabel Grid.Column="1"
-                                           FontSizeFactor="1"
-                                           NamedFontSize="Medium"
-                                           VerticalOptions="FillAndExpand"
-                                           VerticalTextAlignment="Center"
-                                           Text="{Binding Title}"
-                                           HorizontalOptions="Start"
                                            FontFamily="{StaticResource QuicksandMedium}"
-                                           TextColor="{StaticResource TextColorNearBlack}" />
+                                           FontSizeFactor="1"
+                                           HorizontalOptions="Start"
+                                           NamedFontSize="Medium"
+                                           Text="{Binding Title}"
+                                           TextColor="{StaticResource TextColorNearBlack}"
+                                           VerticalOptions="FillAndExpand"
+                                           VerticalTextAlignment="Center" />
                     </Grid>
                 </ViewCell>
             </DataTemplate>
             <DataTemplate x:Key="otherTemplate">
                 <ViewCell>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                         <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
                                                                               Left=8,
                                                                               Top=4,
                                                                               Right=8,
                                                                               Bottom=4}"
+                                           FontFamily="{StaticResource QuicksandRegular}"
                                            FontSizeFactor="1.2"
                                            NamedFontSize="Small"
                                            Text="{Binding Title}"
-                                           FontFamily="{StaticResource QuicksandRegular}"
                                            TextColor="{StaticResource TextColorNearBlack}" />
                     </StackLayout>
                 </ViewCell>
@@ -67,11 +67,12 @@
     <Grid VerticalOptions="Fill">
         <ListView x:Name="MenuItemsListView"
                   x:FieldModifier="public"
-                  SeparatorVisibility="None"
                   HasUnevenRows="True"
-                  RowHeight="{StaticResource Key=MenuRowHeight}"
                   IsGroupingEnabled="true"
-                  ItemTemplate="{StaticResource itemTemplateSelector}">
+                  ItemTemplate="{StaticResource itemTemplateSelector}"
+                  RowHeight="{StaticResource Key=MenuRowHeight}"
+                  SelectionMode="Single"
+                  SeparatorVisibility="None">
             <ListView.Header>
                 <Grid BackgroundColor="#4B4B4B">
                     <Grid.ColumnDefinitions>
@@ -84,28 +85,21 @@
                         <RowDefinition x:Name="Row0" Height="Auto" />
                         <RowDefinition x:Name="Row1" Height="Auto" />
                     </Grid.RowDefinitions>
-                    <views:SizedButton Grid.Row="0"
-                                       Grid.Column="1"
-                                       Padding="{utils:ResponsiveThickness Size=Small,
-                                                                           Left=8,
-                                                                           Top=8,
-                                                                           Right=8,
-                                                                           Bottom=8}"
-                                       VerticalOptions="Center"
-                                       HorizontalOptions="Center"
-                                       Image="edit_pencil_icon.png"
-                                       FontFamily="{StaticResource QuicksandMedium}"
-                                       FontSize="{StaticResource FontSizeSmall}"
-                                       BackgroundColor="#1976D2"
-                                       TextColor="{x:StaticResource TextColorWhite}"
-                                       ContentLayout="Left, 0" />
+                    <Image x:Name="CoverImage"
+                           Grid.Row="0"
+                           Grid.RowSpan="2"
+                           Grid.Column="0"
+                           Grid.ColumnSpan="4"
+                           x:FieldModifier="public"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Fill" />
 
                     <BoxView Grid.Row="1"
                              Grid.Column="0"
                              Grid.ColumnSpan="4"
+                             BackgroundColor="{StaticResource BackgroundColorNearBlack}"
                              Opacity=".5"
-                             VerticalOptions="Fill"
-                             BackgroundColor="{StaticResource BackgroundColorNearBlack}" />
+                             VerticalOptions="Fill" />
                     <Grid Grid.Row="1"
                           Grid.Column="1"
                           Padding="0,8"
@@ -116,60 +110,66 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout x:Name="followersRect"
                                      Grid.Column="0"
-                                     VerticalOptions="CenterAndExpand"
                                      Orientation="Vertical"
-                                     Spacing="-2">
-                            <views:CustomLabel Text="122k"
-                                               HorizontalOptions="CenterAndExpand"
-                                               TextColor="{StaticResource TextColorWhite}"
-                                               FontSizeFactor="1.2"
-                                               NamedFontSize="Small"
-                                               FontFamily="{StaticResource QuicksandMedium}" />
-                            <views:CustomLabel Text="Followers"
-                                               TextColor="{StaticResource TextColorWhite}"
-                                               HorizontalOptions="CenterAndExpand"
-                                               FontSizeFactor="1.2"
-                                               NamedFontSize="Small"
-                                               FontFamily="{StaticResource QuicksandRegular}" />
+                                     Spacing="-2"
+                                     VerticalOptions="CenterAndExpand">
+                            <Label x:Name="Followers"
+                                   x:FieldModifier="public"
+                                   FontFamily="{StaticResource QuicksandMedium}"
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   HorizontalOptions="CenterAndExpand"
+                                   Text=""
+                                   TextColor="{StaticResource TextColorWhite}" />
+                            <Label FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSize="{StaticResource FontSizeSmall}"
+                                   HorizontalOptions="CenterAndExpand"
+                                   Text="Followers"
+                                   TextColor="{StaticResource TextColorWhite}" />
                         </StackLayout>
                         <StackLayout x:Name="designsRect"
                                      Grid.Column="1"
                                      Orientation="Vertical"
-                                     VerticalOptions="CenterAndExpand"
-                                     Spacing="-2">
-                            <Label Text="80"
-                                   HorizontalOptions="CenterAndExpand"
+                                     Spacing="-2"
+                                     VerticalOptions="CenterAndExpand">
+                            <Label x:Name="Posts"
+                                   x:FieldModifier="public"
+                                   FontFamily="{StaticResource QuicksandMedium}"
                                    FontSize="{StaticResource FontSizeSmall}"
-                                   TextColor="{StaticResource TextColorWhite}"
-                                   FontFamily="{StaticResource QuicksandMedium}" />
-                            <Label Text="Posts"
                                    HorizontalOptions="CenterAndExpand"
-                                   TextColor="{StaticResource TextColorWhite}"
+                                   Text="80"
+                                   TextColor="{StaticResource TextColorWhite}" />
+                            <Label FontFamily="{StaticResource QuicksandRegular}"
                                    FontSize="{StaticResource FontSizeSmall}"
-                                   FontFamily="{StaticResource QuicksandRegular}" />
+                                   HorizontalOptions="CenterAndExpand"
+                                   Text="Posts"
+                                   TextColor="{StaticResource TextColorWhite}" />
                         </StackLayout>
                     </Grid>
-                    <Image Grid.Row="0"
+                    <Image x:Name="userImage"
+                           Grid.Row="0"
                            Grid.Column="2"
-                           Source="my_user.png"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center" />
-                    <views:CustomLabel Grid.Row="1"
+                           x:FieldModifier="public"
+                           HeightRequest="48"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                    <views:CustomLabel x:Name="Hello"
+                                       Grid.Row="1"
                                        Grid.Column="2"
-                                       Text="Hi Peter"
-                                       VerticalOptions="Center"
+                                       x:FieldModifier="public"
+                                       FontFamily="{StaticResource QuicksandMedium}"
+                                       FontSizeFactor="1"
                                        HorizontalOptions="Center"
                                        HorizontalTextAlignment="Center"
-                                       FontSizeFactor="1.2"
+                                       LineBreakMode="WordWrap"
                                        NamedFontSize="Small"
                                        TextColor="{x:StaticResource TextColorWhite}"
-                                       FontFamily="{StaticResource QuicksandMedium}" />
+                                       VerticalOptions="Center" />
                 </Grid>
             </ListView.Header>
             <ListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid HeightRequest="1" BackgroundColor="{StaticResource TextColorLightGrey}" />
+                        <Grid BackgroundColor="{StaticResource TextColorLightGrey}" HeightRequest="1" />
                     </ViewCell>
                 </DataTemplate>
             </ListView.GroupHeaderTemplate>

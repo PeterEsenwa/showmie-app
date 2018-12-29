@@ -7,7 +7,7 @@ namespace Showmie.Views
 {
     public class OrientationContentPage : ContentPage
     {
-        private static ScreenOrientation Orientation = ScreenOrientation.Unknown;
+        private static DisplayOrientation Orientation = DisplayOrientation.Unknown;
         internal static bool firstPageLoad = true;
         public static int onboardPosition = 0;
 
@@ -16,16 +16,22 @@ namespace Showmie.Views
         public OrientationContentPage()
             : base()
         {
-            DeviceDisplay.ScreenMetricsChanged += OnScreenMetricsChanged;
+            DeviceDisplay.MainDisplayInfoChanged += OnScreenMetricsChanged;
         }
 
-        private void OnScreenMetricsChanged(object sender, ScreenMetricsChangedEventArgs e)
+        void OnMainDisplayInfoChanged(DisplayInfoChangedEventArgs e)
         {
-            ScreenMetrics metrics = e.Metrics;
-            if (!Orientation.Equals(ScreenOrientation.Unknown) && Orientation != metrics.Orientation)
+            // Process changes
+            var displayInfo = e.DisplayInfo;
+        }
+
+        private void OnScreenMetricsChanged(object sender, DisplayInfoChangedEventArgs e)
+        {
+            DisplayInfo metrics = e.DisplayInfo;
+            if (!Orientation.Equals(DisplayOrientation.Unknown) && Orientation != metrics.Orientation)
             {
                 Orientation = metrics.Orientation;
-                OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((Orientation == ScreenOrientation.Portrait) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
+                OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((Orientation == DisplayOrientation.Portrait) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
             }
             else { Orientation = metrics.Orientation; }
         }
@@ -40,16 +46,16 @@ namespace Showmie.Views
             base.OnSizeAllocated(width, height);
             if (firstPageLoad)
             {
-                ScreenMetrics screenMetrics = new ScreenMetrics();
-                if (screenMetrics.Rotation == ScreenRotation.Rotation0 || screenMetrics.Rotation == ScreenRotation.Rotation180)
+                DisplayInfo screenMetrics = new DisplayInfo();
+                if (screenMetrics.Rotation == DisplayRotation.Rotation0 || screenMetrics.Rotation == DisplayRotation.Rotation180)
                 {
-                    Orientation = ScreenOrientation.Portrait;
+                    Orientation = DisplayOrientation.Portrait;
                 }
                 else
                 {
-                    Orientation = ScreenOrientation.Landscape;
+                    Orientation = DisplayOrientation.Landscape;
                 }
-                OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((Orientation == ScreenOrientation.Portrait) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
+                OnOrientationChanged.Invoke(this, new PageOrientationEventArgs((Orientation == DisplayOrientation.Portrait) ? PageOrientation.Vertical : PageOrientation.Horizontal, this));
                 firstPageLoad = false;
             }
 

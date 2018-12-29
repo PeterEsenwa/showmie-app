@@ -14,11 +14,15 @@
     </TabbedPage.ToolbarItems>
     <NavigationPage.TitleView>
         <views:CustomSearchBar FontFamily="{StaticResource QuicksandRegular}"
+                               FontSize="{StaticResource FontSizeMedium}"
                                HeightRequest="{Utils:ResponsiveDouble Value=42,
                                                                       Size=Small}"
-                               HorizontalOptions="Fill"
-                               Placeholder="Search SHOWMiE"
+                               HorizontalOptions="StartAndExpand"
+                               Placeholder="Search"
                                PlaceholderColor="Gray"
                                VerticalOptions="CenterAndExpand" />
     </NavigationPage.TitleView>
+    <views:ExploreTab Title="Men" />
+    <views:ExploreTab Title="Women" />
+    <views:ExploreTab Title="Children" />
 </TabbedPage>

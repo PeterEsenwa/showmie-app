@@ -2,4 +2,155 @@
 <ContentPage x:Class="Showmie.Views.ExploreTab"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:customviews="clr-namespace:Showmie.Views.CustomViews" />  
+             xmlns:customviews="clr-namespace:Showmie.Views.CustomViews"
+             xmlns:utils="clr-namespace:Showmie.Utils"
+             xmlns:views="clr-namespace:Showmie.Views"
+             BackgroundColor="#EBEBEB">
+    <customviews:CoordinatorPage>
+        <ScrollView>
+            <StackLayout Padding="{utils:ResponsiveThickness Size=Small, Left=10, Top=12, Right=10, Bottom=12}">
+                <StackLayout Padding="{utils:ResponsiveThickness Size=Small,
+                                                                 Left=12,
+                                                                 Top=4,
+                                                                 Right=0,
+                                                                 Bottom=0}"
+                             BackgroundColor="White"
+                             Orientation="Vertical"
+                             Spacing="2">
+                    <Label FontSize="{utils:ResponsiveDouble Size=Small, Value=10}" Text="Most Resent" />
+                    <views:HScrollview x:Name="RecentDesignsViewer"
+                                       Padding="{utils:ResponsiveThickness Size=Small,
+                                                                           Left=0,
+                                                                           Top=0,
+                                                                           Right=8,
+                                                                           Bottom=4}"
+                                       BackgroundColor="White"
+                                       HeightRequest="{utils:ResponsiveDouble Value=120,
+                                                                              Size=Medium}"
+                                       HorizontalScrollBarVisibility="Never"
+                                       Orientation="Horizontal"
+                                       VerticalScrollBarVisibility="Never">
+                        <views:HScrollview.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HeightRequest="{utils:ResponsiveDouble Value=120, Size=Medium}" Spacing="0">
+                                        <Grid>
+                                            <Image x:Name="designImage"
+                                                   Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="{utils:ResponsiveDouble Value=90,
+                                                                                          Size=Medium}"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   Source="{Binding Design.Image, FallbackValue=image_placeholder.png}"
+                                                   WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                         Size=Medium}" />
+                                            <ActivityIndicator Grid.Row="0"
+                                                               Grid.Column="0"
+                                                               BindingContext="{x:Reference Name=designImage}"
+                                                               HorizontalOptions="Center"
+                                                               IsRunning="{Binding Path=IsLoading}"
+                                                               IsVisible="{Binding Path=IsLoading}"
+                                                               VerticalOptions="Center" />
+                                        </Grid>
+                                        <Label Margin="0"
+                                               FontSize="{utils:ResponsiveDouble Value=12,
+                                                                                 Size=Medium}"
+                                               HorizontalTextAlignment="Start"
+                                               LineBreakMode="TailTruncation"
+                                               LineHeight="{utils:ResponsiveDouble Value=12,
+                                                                                   Size=Medium}"
+                                               Text="{Binding Design.Title}"
+                                               TextColor="#2A2A2A"
+                                               WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                     Size=Medium}" />
+                                        <Label Margin="0"
+                                               FontSize="{utils:ResponsiveDouble Value=10,
+                                                                                 Size=Medium}"
+                                               HorizontalTextAlignment="Start"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Creator.Username}"
+                                               TextColor="#5E5E5E"
+                                               WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                     Size=Medium}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </views:HScrollview.ItemTemplate>
+                    </views:HScrollview>
+                </StackLayout>
+                <StackLayout Padding="{utils:ResponsiveThickness Size=Small,
+                                                                 Left=12,
+                                                                 Top=4,
+                                                                 Right=0,
+                                                                 Bottom=0}"
+                             BackgroundColor="White"
+                             Orientation="Vertical"
+                             Spacing="2">
+                    <Label FontSize="{utils:ResponsiveDouble Size=Small, Value=10}" Text="Most Liked" />
+                    <views:HScrollview x:Name="MostLikedDesignsViewer"
+                                       Padding="{utils:ResponsiveThickness Size=Small,
+                                                                           Left=0,
+                                                                           Top=0,
+                                                                           Right=8,
+                                                                           Bottom=4}"
+                                       BackgroundColor="White"
+                                       HeightRequest="{utils:ResponsiveDouble Value=120,
+                                                                              Size=Medium}"
+                                       HorizontalScrollBarVisibility="Never"
+                                       Orientation="Horizontal"
+                                       SortPattern="Most Liked"
+                                       VerticalScrollBarVisibility="Never">
+                        <views:HScrollview.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout HeightRequest="{utils:ResponsiveDouble Value=120, Size=Medium}" Spacing="0">
+                                        <Grid>
+                                            <Image x:Name="designImage"
+                                                   Grid.Row="0"
+                                                   Grid.Column="0"
+                                                   Aspect="AspectFill"
+                                                   HeightRequest="{utils:ResponsiveDouble Value=90,
+                                                                                          Size=Medium}"
+                                                   HorizontalOptions="CenterAndExpand"
+                                                   Source="{Binding Design.Image, FallbackValue=image_placeholder.png}"
+                                                   WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                         Size=Medium}" />
+                                            <ActivityIndicator Grid.Row="0"
+                                                               Grid.Column="0"
+                                                               BindingContext="{x:Reference Name=designImage}"
+                                                               HorizontalOptions="Center"
+                                                               IsRunning="{Binding Path=IsLoading}"
+                                                               IsVisible="{Binding Path=IsLoading}"
+                                                               VerticalOptions="Center" />
+                                        </Grid>
+                                        <Label Margin="0"
+                                               FontSize="{utils:ResponsiveDouble Value=12,
+                                                                                 Size=Medium}"
+                                               HorizontalTextAlignment="Start"
+                                               LineBreakMode="TailTruncation"
+                                               LineHeight="{utils:ResponsiveDouble Value=12,
+                                                                                   Size=Medium}"
+                                               Text="{Binding Design.Title}"
+                                               TextColor="#2A2A2A"
+                                               WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                     Size=Medium}" />
+                                        <Label Margin="0"
+                                               FontSize="{utils:ResponsiveDouble Value=10,
+                                                                                 Size=Medium}"
+                                               HorizontalTextAlignment="Start"
+                                               LineBreakMode="TailTruncation"
+                                               Text="{Binding Creator.Username}"
+                                               TextColor="#5E5E5E"
+                                               WidthRequest="{utils:ResponsiveDouble Value=90,
+                                                                                     Size=Medium}" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </views:HScrollview.ItemTemplate>
+                    </views:HScrollview>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </customviews:CoordinatorPage>
+</ContentPage>  
