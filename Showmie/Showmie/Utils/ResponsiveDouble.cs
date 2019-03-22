@@ -27,4 +27,26 @@ namespace Showmie.Utils
             return (this as IMarkupExtension<Double>).ProvideValue(serviceProvider);
         }
     }
+
+    class ResponsiveInteger: IMarkupExtension<int>
+    {
+        public NamedSize Size { get; set; }
+
+        public int Value { get; set; } = 0;
+
+        public int ProvideValue(IServiceProvider serviceProvider)
+        {
+            if (!Value.Equals(0))
+            {
+                int uniformDouble = (int) (Value / 14 * Device.GetNamedSize(Size, typeof(Label)));
+                return Value;
+            }
+            return 0;
+        }
+
+        object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider)
+        {
+            return (this as IMarkupExtension<int>).ProvideValue(serviceProvider);
+        }
+    }
 }

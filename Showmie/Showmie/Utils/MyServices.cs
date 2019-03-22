@@ -9,11 +9,13 @@ namespace Showmie.Utils
 {
     class MyServices
     {
-        public HttpClient httpClient = new HttpClient
+        protected HttpClient httpClient = new HttpClient
         {
-            MaxResponseContentBufferSize = 500000
+            MaxResponseContentBufferSize = 500000,
+            Timeout = TimeSpan.FromSeconds(30)
         };
-        public JToken body;
+        protected JToken body;
+        protected JToken error;
     }
 
     public class NegateBooleanConverter : IValueConverter

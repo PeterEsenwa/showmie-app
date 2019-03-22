@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="help_us_out">We\'ll try to do this automatically, but you could help us out</string>
+  <string name="verify_text">"Verify your number"</string>
+
+  <string name="finish_phone_verification">Verify</string>
+</resources>

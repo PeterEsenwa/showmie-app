@@ -1,6 +1,6 @@
 ﻿using Android.App;
-using Android.Views;
 using Showmie.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
@@ -19,16 +19,16 @@ namespace Showmie
             BoardsSource = onboardsVM.GetBoards();
             SourceImage = 0;
             BindingContext = this;
-            DependencyService.Get<IAndroidMethods>().HideBar();
+            boardsCarousel.PositionChanged += BoardsCarousel_PositionChanged;
         }
 
-        public Onboard(bool isFirstLoad, int boardPosition)
+        private void BoardsCarousel_PositionChanged(object sender, int newPostion)
         {
-            InitializeComponent();
-            firstPageLoad = isFirstLoad;
-            BoardsSource = onboardsVM.GetBoards();
-            SourceImage = 0;
-            BindingContext = this;
+            boardsCarousel.TabIndex = newPostion;
+        }
+
+        public Onboard(bool isFirstLoad, int boardPosition) : this(isFirstLoad)
+        {
             BoardPosition = boardPosition;
         }
 
@@ -44,13 +44,13 @@ namespace Showmie
 
         public int SourceImage { get { return _sourceImage; } set { _sourceImage = value; OnPropertyChanged(); } }
 
-        private async void NextBoard_Clicked(object sender, System.EventArgs e)
+        private async void NextBoard_Clicked(object sender, EventArgs e)
         {
-            if (boardsCarousel.Position < onboardsVM.NoOfBoards() - 1)
+            if (boardsCarousel.TabIndex < onboardsVM.NoOfBoards() - 1)
             {
-                boardsCarousel.Position++;
+                boardsCarousel.ScrollTo(boardsCarousel.TabIndex + 1);
             }
-            else if (boardsCarousel.Position == onboardsVM.NoOfBoards() - 1)
+            else if (boardsCarousel.TabIndex == onboardsVM.NoOfBoards() - 1)
             {
                 await App.SaveProperty("firstLoad", true);
                 await App.SaveProperty("keepLogin", false);
@@ -67,18 +67,17 @@ namespace Showmie
 
         protected override void OnAppearing()
         {
-            boardsCarousel.Position = BoardPosition;
+            boardsCarousel.TabIndex = BoardPosition;
             base.OnAppearing();
         }
 
-        protected override void OnSizeAllocated(double width, double height)
+        private void BoardsCarousel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            base.OnSizeAllocated(width, height);
-        }
-
-        private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)
-        {
-            OnboardPositionChanged(boardsCarousel.Position);
+            if (e.PropertyName == TabIndexProperty.PropertyName)
+            {
+                SourceImage = boardsCarousel.TabIndex;
+                OnboardPositionChanged(boardsCarousel.TabIndex);
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace Showmie.Views.CustomViews
@@ -43,4 +44,5 @@ namespace Showmie.Views.CustomViews
         }
 
     }
+
 }

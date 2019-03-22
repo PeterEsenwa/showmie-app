@@ -8,7 +8,7 @@
              Title="Master Main">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <DataTemplate x:Key="normalTemplate">
+            <DataTemplate x:Key="NormalTemplate">
                 <ViewCell>
                     <Grid Padding="{utils:ResponsiveThickness Size=Small,
                                                               Left=8,
@@ -42,7 +42,7 @@
                     </Grid>
                 </ViewCell>
             </DataTemplate>
-            <DataTemplate x:Key="otherTemplate">
+            <DataTemplate x:Key="OtherTemplate">
                 <ViewCell>
                     <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                         <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
@@ -58,18 +58,17 @@
                     </StackLayout>
                 </ViewCell>
             </DataTemplate>
-            <views:ItemTemplateSelector x:Key="itemTemplateSelector"
-                                        NormalTemplate="{StaticResource normalTemplate}"
-                                        OtherTemplate="{StaticResource otherTemplate}" />
+            <views:ItemTemplateSelector x:Key="ItemTemplateSelector"
+                                        NormalTemplate="{StaticResource NormalTemplate}"
+                                        OtherTemplate="{StaticResource OtherTemplate}" />
         </ResourceDictionary>
 
     </ContentPage.Resources>
     <Grid VerticalOptions="Fill">
         <ListView x:Name="MenuItemsListView"
-                  x:FieldModifier="public"
                   HasUnevenRows="True"
                   IsGroupingEnabled="true"
-                  ItemTemplate="{StaticResource itemTemplateSelector}"
+                  ItemTemplate="{StaticResource ItemTemplateSelector}"
                   RowHeight="{StaticResource Key=MenuRowHeight}"
                   SelectionMode="Single"
                   SeparatorVisibility="None">
@@ -90,7 +89,6 @@
                            Grid.RowSpan="2"
                            Grid.Column="0"
                            Grid.ColumnSpan="4"
-                           x:FieldModifier="public"
                            Aspect="AspectFill"
                            HorizontalOptions="Fill" />
 
@@ -114,7 +112,6 @@
                                      Spacing="-2"
                                      VerticalOptions="CenterAndExpand">
                             <Label x:Name="Followers"
-                                   x:FieldModifier="public"
                                    FontFamily="{StaticResource QuicksandMedium}"
                                    FontSize="{StaticResource FontSizeSmall}"
                                    HorizontalOptions="CenterAndExpand"
@@ -132,7 +129,6 @@
                                      Spacing="-2"
                                      VerticalOptions="CenterAndExpand">
                             <Label x:Name="Posts"
-                                   x:FieldModifier="public"
                                    FontFamily="{StaticResource QuicksandMedium}"
                                    FontSize="{StaticResource FontSizeSmall}"
                                    HorizontalOptions="CenterAndExpand"
@@ -148,14 +144,12 @@
                     <Image x:Name="userImage"
                            Grid.Row="0"
                            Grid.Column="2"
-                           x:FieldModifier="public"
                            HeightRequest="48"
                            HorizontalOptions="Center"
                            VerticalOptions="Center" />
                     <views:CustomLabel x:Name="Hello"
                                        Grid.Row="1"
                                        Grid.Column="2"
-                                       x:FieldModifier="public"
                                        FontFamily="{StaticResource QuicksandMedium}"
                                        FontSizeFactor="1"
                                        HorizontalOptions="Center"

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Showmie.Views.Pages.NotificationsPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:utils="clr-namespace:Showmie.Utils">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="normalNotificationTemplate">
+                <ViewCell Height="{utils:ResponsiveDouble Size=Small, Value=80}">
+                    <FlexLayout Padding="{utils:ResponsiveThickness Size=Small,
+                                                                    Left=4,
+                                                                    Top=0,
+                                                                    Right=4,
+                                                                    Bottom=0}"
+                                AlignItems="Center"
+                                Direction="Row"
+                                JustifyContent="SpaceAround"
+                                VerticalOptions="Center">
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Sender.ProfilePicture}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                        <Label Text="{Binding Title}" />
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Design.Image}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="designNotificationTemplate">
+                <ViewCell Height="{utils:ResponsiveDouble Size=Small, Value=80}">
+                    <FlexLayout Padding="{utils:ResponsiveThickness Size=Small,
+                                                                    Left=4,
+                                                                    Top=0,
+                                                                    Right=4,
+                                                                    Bottom=0}"
+                                AlignItems="Center"
+                                Direction="Row"
+                                JustifyContent="SpaceAround"
+                                VerticalOptions="Center">
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Sender.ProfilePicture}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                        <Label Text="{Binding Title}" />
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Design.Image}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+            <DataTemplate x:Key="eventNotificationTemplate">
+                <ViewCell Height="{utils:ResponsiveDouble Size=Small, Value=80}">
+                    <FlexLayout Padding="{utils:ResponsiveThickness Size=Small,
+                                                                    Left=4,
+                                                                    Top=0,
+                                                                    Right=4,
+                                                                    Bottom=0}"
+                                AlignItems="Center"
+                                Direction="Row"
+                                JustifyContent="SpaceAround"
+                                VerticalOptions="Center">
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Sender.ProfilePicture}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                        <Label Text="{Binding Title}" />
+                        <Image Aspect="AspectFill"
+                               HeightRequest="{utils:ResponsiveDouble Size=Small,
+                                                                      Value=48}"
+                               Source="{Binding Design.Image}"
+                               VerticalOptions="Center"
+                               WidthRequest="{utils:ResponsiveDouble Size=Small,
+                                                                     Value=48}" />
+                    </FlexLayout>
+                </ViewCell>
+            </DataTemplate>
+            <utils:NotificationTemplateSelector x:Key="itemTemplateSelector"
+                                                NormalNotificationTemplate="{StaticResource normalNotificationTemplate}"
+                                                DesignNotificationTemplate="{StaticResource designNotificationTemplate}"
+                                                EventNotificationTemplate="{StaticResource eventNotificationTemplate}" />
+        </ResourceDictionary>
+
+    </ContentPage.Resources>
+    <ListView x:Name="MyListView"
+              CachingStrategy="RecycleElement"
+              HasUnevenRows="True"
+              ItemTapped="Handle_ItemTapped"
+              SeparatorVisibility="None"
+              SelectionMode="None"
+              ItemTemplate="{StaticResource itemTemplateSelector}" />
+
+    <!--  Built in Cells  -->
+    <!--<ListView.ItemTemplate>
+        <DataTemplate>
+            <TextCell Text="{Binding .}" />
+        </DataTemplate>
+    </ListView.ItemTemplate>-->
+
+    <!--  Custom View Cells  -->
+
+</ContentPage>

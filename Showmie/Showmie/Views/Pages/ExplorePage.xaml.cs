@@ -33,8 +33,8 @@ namespace Showmie.Views
             if (((ToolbarItem)sender).Icon.File == "filter_icon.png")
             {
                 ((ToolbarItem)sender).Icon = "filter_toggled_icon.png";
-                ExploreTab currentPage = (ExploreTab)CurrentPage;
-                CoordinatorPage currentCoordinator = (CoordinatorPage)currentPage.Content;
+                var currentPage = (ExploreTab)CurrentPage;
+                var currentCoordinator = (CoordinatorPage)currentPage.Content;
                 currentCoordinator.ShowFiltersAction();
             }
             else

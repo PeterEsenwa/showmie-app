@@ -2,19 +2,20 @@
 <views:OrientationContentPage x:Class="Showmie.Onboard"
                               xmlns="http://xamarin.com/schemas/2014/forms"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                              xmlns:views="clr-namespace:Showmie.Views"
-                              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+                              xmlns:customviews="clr-namespace:Showmie.Views.CustomViews"
                               xmlns:local="clr-namespace:Showmie"
-                              xmlns:utils="clr-namespace:Showmie.Utils">
+                              xmlns:utils="clr-namespace:Showmie.Utils"
+                              xmlns:views="clr-namespace:Showmie.Views">
     <views:OrientationContentPage.Content>
         <StackLayout BackgroundColor="White">
-            <cv:CarouselView x:Name="boardsCarousel"
-                             PositionSelected="BoardsCarousel_PositionSelected"
-                             ItemsSource="{Binding BoardsSource}"
-                             Position="{Binding SourceImage, Mode=TwoWay}">
-                <cv:CarouselView.ItemTemplate>
+            <customviews:CustomCarousel x:Name="boardsCarousel"
+                                        BackgroundColor="White"
+                                        ItemsSource="{Binding BoardsSource}"
+                                        PropertyChanged="BoardsCarousel_PropertyChanged">
+
+                <customviews:CustomCarousel.ItemTemplate>
                     <DataTemplate>
-                        <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height=".5*" />
                                 <RowDefinition Height="Auto" />
@@ -35,47 +36,53 @@
                                    Grid.Row="1"
                                    Grid.Column="0"
                                    Grid.ColumnSpan="5"
+                                   HorizontalOptions="CenterAndExpand"
                                    Source="{Binding DescImageURL}"
                                    VerticalOptions="CenterAndExpand" />
                             <views:CustomLabel x:Name="boardHeader"
                                                Grid.Row="3"
                                                Grid.Column="2"
-                                               LineBreakMode="WordWrap"
-                                               NamedFontSize="Large"
-                                               FontSizeFactor="1.5"
-                                               MaxLines="3"
-                                               VerticalOptions="FillAndExpand"
-                                               VerticalTextAlignment="Center"
                                                FontFamily="{StaticResource QuicksandBold}"
-                                               Text="{Binding HeadingText}"
+                                               FontSizeFactor="1.5"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
-                                               TextColor="{StaticResource TextColorLightBlack}" />
+                                               LineBreakMode="WordWrap"
+                                               MaxLines="3"
+                                               NamedFontSize="Large"
+                                               Text="{Binding HeadingText}"
+                                               TextColor="{StaticResource TextColorLightBlack}"
+                                               VerticalOptions="FillAndExpand"
+                                               VerticalTextAlignment="Center" />
                             <Image x:Name="seperator"
                                    Grid.Row="4"
                                    Grid.Column="0"
                                    Grid.ColumnSpan="5"
+                                   HorizontalOptions="Center"
                                    Source="seperator.png"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Center" />
+                                   VerticalOptions="Center" />
                             <views:CustomLabel x:Name="boardDescription"
                                                Grid.Row="5"
                                                Grid.Column="2"
-                                               NamedFontSize="Small"
-                                               FontSizeFactor="1.2"
-                                               MaxLines="5"
-                                               VerticalOptions="FillAndExpand"
-                                               VerticalTextAlignment="Center"
-                                               LineBreakMode="WordWrap"
+                                               Margin="{utils:ResponsiveThickness Size=Small,
+                                                                                  Left=8,
+                                                                                  Top=0,
+                                                                                  Right=8,
+                                                                                  Bottom=0}"
                                                FontFamily="{StaticResource QuicksandMedium}"
+                                               FontSizeFactor="1.2"
                                                HorizontalOptions="Center"
                                                HorizontalTextAlignment="Center"
+                                               LineBreakMode="WordWrap"
+                                               MaxLines="5"
+                                               NamedFontSize="Small"
                                                Text="{Binding BodyText}"
-                                               TextColor="{StaticResource TextColorLightBlack}" />
+                                               TextColor="{StaticResource TextColorLightBlack}"
+                                               VerticalOptions="FillAndExpand"
+                                               VerticalTextAlignment="Center" />
                         </Grid>
                     </DataTemplate>
-                </cv:CarouselView.ItemTemplate>
-            </cv:CarouselView>
+                </customviews:CustomCarousel.ItemTemplate>
+            </customviews:CustomCarousel>
             <Grid x:Name="lowerBar"
                   Margin="{utils:ResponsiveThickness Size=Small,
                                                      Left=0,
@@ -100,13 +107,13 @@
                         Grid.Column="1"
                         BackgroundColor="White"
                         BorderColor="Transparent"
-                        FontSize="{StaticResource FontSizeSmall}"
-                        FontFamily="{StaticResource QuicksandBold}"
-                        CornerRadius="4"
-                        Text="SKIP"
                         Clicked="SkipOnboarding_Clicked"
-                        TextColor="{StaticResource TextColorLightGrey}"
+                        CornerRadius="4"
+                        FontFamily="{StaticResource QuicksandBold}"
+                        FontSize="{StaticResource FontSizeSmall}"
                         HorizontalOptions="Start"
+                        Text="SKIP"
+                        TextColor="{StaticResource TextColorLightGrey}"
                         VerticalOptions="Start" />
                 <Grid x:Name="Indicators"
                       Grid.Column="2"
@@ -123,11 +130,11 @@
                 </Grid>
                 <Button x:Name="NextBoard"
                         Grid.Column="3"
-                        Clicked="NextBoard_Clicked"
                         BackgroundColor="Transparent"
-                        Image="next_page_arrow.png"
-                        HorizontalOptions="End"
+                        Clicked="NextBoard_Clicked"
                         FontSize="{StaticResource FontSizeMedium}"
+                        HorizontalOptions="End"
+                        Image="next_page_arrow.png"
                         VerticalOptions="Start" />
             </Grid>
         </StackLayout>

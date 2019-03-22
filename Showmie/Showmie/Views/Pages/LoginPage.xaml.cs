@@ -19,34 +19,21 @@ namespace Showmie.Views
 
         protected override async void OnAppearing()
         {
-            base.OnAppearing();
             UserService userService = new UserService();
             User user = new User();
-            //if (Application.Current.Properties.ContainsKey("curUsername") && Application.Current.Properties.ContainsKey("curUserpass"))
-            //{
-            //    loader.IsVisible = true;
-            //    loader.IsRunning = true;
-            //    intro.IsEnabled = false;
-
-            //    string username = ((string)Application.Current.Properties["curUsername"]).Trim();
-            //    string password = ((string)Application.Current.Properties["curUserpass"]).Trim();
-            //    var current = Connectivity.NetworkAccess;
-            //    user = await DoLogin(userService, user, username, password);
-            //    if (user != null)
-            //    {
-            //        loader.IsVisible = false;
-            //        loader.IsRunning = false;
-            //        intro.IsEnabled = true;
-            //        Application.Current.MainPage = new RootPage(user);
-            //    }
-            //    else
-            //    {
-            //        loader.IsVisible = false;
-            //        loader.IsRunning = false;
-            //        intro.IsEnabled = true;
-            //        await DisplayAlert("Login Expired", "Your session has expired. Please login again.", "OK");
-            //    }
-            //}
+            //Todo : Move auto login logic to App.xaml.cs
+            if (Application.Current.Properties.ContainsKey("firstLoad") && !(bool)Application.Current.Properties["firstLoad"])
+            {
+                if (Application.Current.Properties.ContainsKey("curUsername") && Application.Current.Properties.ContainsKey("curUserpass"))
+                {
+                    user = await new UserService().UserLogin((string)Application.Current.Properties["curUsername"], (string)Application.Current.Properties["curUserpass"]);
+                    if (user != null)
+                    {
+                        Application.Current.MainPage = new RootPage(user);
+                    }
+                }
+            }
+            base.OnAppearing();
             var cacheDir = FileSystem.CacheDirectory;
         }
 
@@ -54,7 +41,7 @@ namespace Showmie.Views
         {
             if (username != null && username.Length > 0 && username != "" && password != null && password.Length > 0 && password != "")
             {
-                user = await userService.GetUser(username, (string)Application.Current.Properties["curUserpass"]);
+                user = await userService.UserLogin(username, (string)Application.Current.Properties["curUserpass"]);
             }
             else
             {
@@ -66,8 +53,6 @@ namespace Showmie.Views
 
         private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
-            UserService userService = new UserService();
-            Models.User user;
             string username = usernameInput.Text;
             string password = passwordInput.Text;
 
@@ -75,30 +60,25 @@ namespace Showmie.Views
             {
                 loader.IsVisible = true;
                 loader.IsRunning = true;
-                intro.IsEnabled = false;
-                var current = Connectivity.NetworkAccess;
-                user = await userService.GetUser(username, password);
+                mainGrid.IsEnabled = false;
+                NetworkAccess current = Connectivity.NetworkAccess;
+                UserService userService = new UserService();
+                User user = await userService.UserLogin(username, password);
+                loader.IsVisible = false;
+                loader.IsRunning = false;
+                mainGrid.IsEnabled = true;
                 if (user != null)
                 {
                     Application.Current.Properties["curUsername"] = username;
                     Application.Current.Properties["curUserpass"] = password;
-                    loader.IsVisible = false;
-                    loader.IsRunning = false;
-                    intro.IsEnabled = true;
                     Application.Current.MainPage = new RootPage(user);
                 }
                 else if (user == null && current != NetworkAccess.Internet)
                 {
-                    loader.IsVisible = false;
-                    loader.IsRunning = false;
-                    intro.IsEnabled = true;
                     await DisplayAlert("Connection Error", "It seems you aren't connected to the Internet", "OK");
                 }
                 else
                 {
-                    loader.IsVisible = false;
-                    loader.IsRunning = false;
-                    intro.IsEnabled = true;
                     await DisplayAlert("Login Error", "Your details were incorrect. Try again", "OK");
                 }
             }
@@ -116,10 +96,18 @@ namespace Showmie.Views
 
         private async void KeepLogin(object sender, EventArgs e)
         {
-            keepLogin = (bool) Application.Current.Properties["keepLogin"];
-            keepLoginImage.Source = keepLogin ? "dont_keep_login.png" : (ImageSource)"keep_login.png";
-            await App.SaveProperty("keepLogin", !keepLogin);
-
+            bool keepLoginExist = Application.Current.Properties.TryGetValue("keepLogin", out object tempVal);
+            if (keepLoginExist)
+            {
+                keepLogin = (bool)tempVal;
+                keepLoginImage.Source = keepLogin ? "dont_keep_login.png" : (ImageSource)"keep_login.png";
+                await App.SaveProperty("keepLogin", !keepLogin); 
+            }
+            else
+            {
+                await App.SaveProperty("keepLogin", true);
+                keepLoginImage.Source = keepLogin ? "dont_keep_login.png" : (ImageSource)"keep_login.png";
+            }
         }
     }
 }

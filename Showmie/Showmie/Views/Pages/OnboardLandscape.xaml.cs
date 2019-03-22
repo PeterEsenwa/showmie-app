@@ -36,11 +36,11 @@ namespace Showmie
 
         private void NextBoard_Clicked(object sender, EventArgs e)
         {
-            if (boardsCarousel.Position < onboardsVM.NoOfBoards() - 1)
+            if (boardsCarousel.TabIndex < onboardsVM.NoOfBoards() - 1)
             {
-                boardsCarousel.Position++;
+                boardsCarousel.TabIndex++;
             }
-            else if (boardsCarousel.Position == onboardsVM.NoOfBoards() - 1)
+            else if (boardsCarousel.TabIndex == onboardsVM.NoOfBoards() - 1)
             {
                 SetMainPage(new NavigationPage(new SignupPage()));
             }
@@ -53,13 +53,16 @@ namespace Showmie
 
         protected override void OnAppearing()
         {
-            boardsCarousel.Position = BoardPosition;
+            boardsCarousel.TabIndex = BoardPosition;
             base.OnAppearing();
         }
 
-        private void BoardsCarousel_PositionSelected(object sender, SelectedPositionChangedEventArgs e)
+        private void BoardsCarousel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            OnboardPositionChanged(boardsCarousel.Position);
+            if (e.PropertyName == CarouselView.TabIndexProperty.PropertyName)
+            {
+                OnboardPositionChanged(boardsCarousel.TabIndex);
+            }
         }
     }
 }

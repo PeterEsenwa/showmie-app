@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "55071138488",
+    "firebase_url": "https://showmie.firebaseio.com",
+    "project_id": "showmie",
+    "storage_bucket": "showmie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55071138488:android:9d1158b0afb907b1",
+        "android_client_info": {
+          "package_name": "com.Showmie.Mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55071138488-qr7stj2kav930abnhiemplb443t108a4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Showmie.Mobile",
+            "certificate_hash": "2eeb777773c9b0c2f858d1300eba33104b7f6d86"
+          }
+        },
+        {
+          "client_id": "55071138488-o9j26c6ahomnqc0flcuvcqkaubjs2ri5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqm5sLTO9gwN9Pl16WkIDfgQwBExpXPy4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55071138488-o9j26c6ahomnqc0flcuvcqkaubjs2ri5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

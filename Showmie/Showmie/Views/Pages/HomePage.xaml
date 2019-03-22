@@ -2,106 +2,95 @@
 <ContentPage x:Class="Showmie.Views.HomePage"
              xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
-             xmlns:models="clr-namespace:Showmie.Models"
+             xmlns:effects="clr-namespace:Showmie.Utils.Effects"
              xmlns:utils="clr-namespace:Showmie.Utils"
              xmlns:views="clr-namespace:Showmie.Views"
+             BackgroundColor="White"
              NavigationPage.HasNavigationBar="True">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <DataTemplate x:Key="singleTemplate">
-                <ViewCell>
-                    <views:CardHolder Margin="{utils:ResponsiveThickness Size=Small,
-                                                                         Left=18,
-                                                                         Top=0,
-                                                                         Right=18,
-                                                                         Bottom=18}"
-                                      HorizontalOptions="Center"
-                                      VerticalOptions="Start">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <views:CardHolder.Title>
-                            <views:CustomLabel Margin="0"
-                                               FontFamily="{StaticResource PTSansBold}"
-                                               FontSizeFactor="1.6"
-                                               HorizontalTextAlignment="Center"
-                                               LineBreakMode="WordWrap"
-                                               NamedFontSize="Large"
-                                               Text="{Binding Title}"
-                                               TextColor="{StaticResource TextColorWhitesmoke}"
-                                               VerticalOptions="Center"
-                                               VerticalTextAlignment="Center" />
-                        </views:CardHolder.Title>
-                        <views:CardHolder.Description>
-                            <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
-                                                                                  Left=0,
-                                                                                  Top=0,
-                                                                                  Right=0,
-                                                                                  Bottom=8}"
-                                               FontFamily="{StaticResource QuicksandMedium}"
-                                               FontSizeFactor="1"
-                                               HorizontalTextAlignment="Center"
-                                               NamedFontSize="Small"
-                                               Text="{Binding Contributor, StringFormat='by {0}'}"
-                                               TextColor="{StaticResource TextColorWhitesmoke}"
-                                               VerticalOptions="Center" />
-                        </views:CardHolder.Description>
-                    </views:CardHolder>
-                </ViewCell>
-            </DataTemplate>
-            <DataTemplate x:Key="multipleTemplate">
-                <ViewCell>
-                    <views:MultiCardHolder Margin="{utils:ResponsiveThickness Size=Small,
-                                                                              Left=18,
-                                                                              Top=0,
-                                                                              Right=18,
-                                                                              Bottom=18}"
-                                           ColumnSpacing="20"
-                                           HorizontalOptions="Center">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                    </views:MultiCardHolder>
-                </ViewCell>
-            </DataTemplate>
-            <views:HomeItemTemplateSelector x:Key="itemTemplateSelector"
-                                            MultipleTemplate="{StaticResource multipleTemplate}"
-                                            SingleTemplate="{StaticResource singleTemplate}" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="White" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <views:CustomLabel Grid.Row="0"
                                Margin="{utils:ResponsiveThickness Size=Small,
-                                                                  Left=9,
-                                                                  Top=1,
-                                                                  Right=9,
-                                                                  Bottom=1}"
+                                                                  Left=18,
+                                                                  Top=2,
+                                                                  Right=18,
+                                                                  Bottom=2}"
                                BackgroundColor="{StaticResource TextBackColorLightPink}"
                                FontFamily="{StaticResource QuicksandMedium}"
                                FontSizeFactor="1.3"
                                HorizontalOptions="Fill"
                                HorizontalTextAlignment="Center"
                                NamedFontSize="Small"
-                               Text="FEATURED THIS WEEK"
+                               Text="TOP FEATURED THIS WEEK"
                                TextColor="{StaticResource TextColorLightBlack}"
                                VerticalOptions="Fill"
                                VerticalTextAlignment="Center" />
-            <ListView Grid.Row="1"
-                      BackgroundColor="Transparent"
-                      HasUnevenRows="True"
-                      HorizontalOptions="Fill"
-                      ItemTemplate="{StaticResource itemTemplateSelector}"
-                      ItemsSource="{Binding HomeItemsSource}"
-                      SelectionMode="None"
-                      SeparatorVisibility="None"
-                      VerticalOptions="Start" />
+            <CollectionView x:Name="featuredListView"
+                            Grid.Row="1"
+                            Margin="{utils:ResponsiveThickness Size=Small,
+                                                               Left=18,
+                                                               Top=0,
+                                                               Right=18,
+                                                               Bottom=0}"
+                            BackgroundColor="White"
+                            HorizontalOptions="Fill"
+                            ItemsLayout="{x:Static ListItemsLayout.VerticalList}"
+                            SelectionMode="None"
+                            VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="{utils:ResponsiveThickness Left=4,
+                                                                  Right=4,
+                                                                  Size=Micro}"
+                              effects:ShadowEffect.HasShadow="True"
+                              effects:ShadowEffect.Radius="8"
+                              HorizontalOptions="Fill">
+                            <Image Grid.RowSpan="2"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Fill"
+                                   Source="{Binding PostImage}"
+                                   VerticalOptions="Fill" />
+                            <StackLayout Grid.Row="0"
+                                         Margin="{utils:ResponsiveThickness Top=16,
+                                                                            Left=16,
+                                                                            Right=16,
+                                                                            Size=Micro}"
+                                         BackgroundColor="{x:StaticResource TextColorLightGreyTRANS}"
+                                         HorizontalOptions="FillAndExpand"
+                                         Orientation="Vertical"
+                                         Spacing="-4"
+                                         VerticalOptions="Start">
+                                <views:CustomLabel FontFamily="{StaticResource PTSansBold}"
+                                                   FontSizeFactor="2"
+                                                   HorizontalOptions="Fill"
+                                                   HorizontalTextAlignment="Center"
+                                                   LineBreakMode="WordWrap"
+                                                   NamedFontSize="Medium"
+                                                   Text="{Binding Title}"
+                                                   TextColor="White"
+                                                   VerticalOptions="Start"
+                                                   VerticalTextAlignment="Center" />
+                                <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
+                                                                                      Left=0,
+                                                                                      Top=0,
+                                                                                      Right=0,
+                                                                                      Bottom=8}"
+                                                   FontFamily="{StaticResource QuicksandMedium}"
+                                                   FontSizeFactor="1"
+                                                   HorizontalTextAlignment="Center"
+                                                   NamedFontSize="Small"
+                                                   Text="{Binding Contributor}"
+                                                   TextColor="{StaticResource TextColorWhitesmoke}"
+                                                   VerticalOptions="Center" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

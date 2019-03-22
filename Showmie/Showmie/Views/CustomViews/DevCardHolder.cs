@@ -18,7 +18,7 @@ namespace Showmie.Views
         {
             BackgroundColor = Color.Coral,
             Source = "boy_called_cloak",
-            VerticalOptions = LayoutOptions.Start,
+            VerticalOptions = LayoutOptions.Fill,
             Aspect= Aspect.AspectFill
         };
 
@@ -34,10 +34,9 @@ namespace Showmie.Views
             //PostImage.HorizontalOptions = LayoutOptions.Center;
             //PostImage.VerticalOptions = LayoutOptions.Start;
             PostImage.Margin = 0;
-            TitleAndDesc.VerticalOptions = LayoutOptions.Start;
+            TitleAndDesc.VerticalOptions = LayoutOptions.Fill;
             Children.Add(PostImage, 0, 0);
             Children.Add(TitleAndDesc, 0, 0);
-            HeightRequest = -1;
         }
 
         private static BindableProperty ItemsProperty { get; } = BindableProperty.Create(
@@ -48,7 +47,6 @@ namespace Showmie.Views
           propertyChanged: (bindable, oldvalue, newvalue) =>
           {
               OnItemsChanged(bindable, newvalue);
-              ((CardHolder)bindable).HeightRequest = ((List<FeaturedItem>)newvalue)[0].PostImage.Height;
               
           });
 
@@ -56,8 +54,8 @@ namespace Showmie.Views
         {
             if (newvalue is List<FeaturedItem>)
             {
-                Image postImage = ((List<FeaturedItem>)newvalue)[0].PostImage;
-                ((CardHolder)bindable).PostImage.Source = postImage.Source;
+                //Image postImage = ((List<FeaturedItem>)newvalue)[0].PostImage;
+                //((CardHolder)bindable).PostImage.Source = postImage.Source;
             }
         }
 
@@ -108,52 +106,5 @@ namespace Showmie.Views
           });
         #endregion  
 
-    }
-
-    public class MultiCardHolder : Grid
-    {
-        public Image LeftPostImage { get; set; } = new Image();
-        public Image RightPostImage { get; set; } = new Image();
-
-        public MultiCardHolder()
-        {
-            this.SetBinding(ItemsProperty, "ItemsList");
-
-            LeftPostImage.HorizontalOptions = LayoutOptions.Center;
-            RightPostImage.HorizontalOptions = LayoutOptions.Center;
-            Children.Add(LeftPostImage, 0, 0);
-            Children.Add(RightPostImage, 1, 0);
-        }
-
-        private static BindableProperty ItemsProperty { get; } = BindableProperty.Create(
-        "Items",
-        typeof(List<FeaturedItem>),
-        typeof(MultiCardHolder),
-        new List<FeaturedItem>(2),
-        propertyChanged: (bindable, oldvalue, newvalue) =>
-        {
-            OnItemsChanged(bindable, newvalue);
-        });
-
-        private static void OnItemsChanged(BindableObject bindable, object newvalue)
-        {
-            Image leftPostImage = ((List<FeaturedItem>)newvalue)[0].PostImage;
-            Image rightPostImage = ((List<FeaturedItem>)newvalue)[1].PostImage;
-            ((MultiCardHolder)bindable).LeftPostImage.Source = leftPostImage.Source;
-            ((MultiCardHolder)bindable).RightPostImage.Source = rightPostImage.Source;
-            ((MultiCardHolder)bindable).InvalidateLayout();
-            ((MultiCardHolder)bindable).InvalidateMeasure();
-        }
-
-        public List<FeaturedItem> Items {
-            get {
-                return (List<FeaturedItem>)GetValue(ItemsProperty);
-            }
-
-            set {
-                SetValue(ItemsProperty, value);
-                OnPropertyChanged("Items");
-            }
-        }
     }
 }

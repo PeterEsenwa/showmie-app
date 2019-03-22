@@ -1,6 +1,5 @@
 ﻿using Showmie.Models;
 using Showmie.ViewModels;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,37 +7,24 @@ using Xamarin.Forms.Xaml;
 namespace Showmie.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class HomePage : ContentPage
+    public partial class HomePage
     {
         public HomePage()
         {
             InitializeComponent();
-            HomeItemsSource = homeItemsVM.GetItems();
+            HomeItemsSource = HomeItemsVm.GetItems();
             BindingContext = this;
             Title = "Home";
         }
 
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
+            featuredListView.SetBinding(ItemsView.ItemsSourceProperty, "HomeItemsSource");
             await App.SaveProperty("firstLoad", false);
             base.OnAppearing();
         }
 
-        private HomeItemsVM homeItemsVM = new HomeItemsVM();
-        public ObservableCollection<HomeItem> HomeItemsSource { get; set; }
-    }
-
-    
-
-    public class HomeItemTemplateSelector : DataTemplateSelector
-    {
-        public DataTemplate SingleTemplate { get; set; }
-
-        public DataTemplate MultipleTemplate { get; set; }
-
-        protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
-        {
-            return ((HomeItem)item).Type == HomeItem.ItemType.Singular ? SingleTemplate : MultipleTemplate;
-        }
+        public HomeItemsVm HomeItemsVm { get; } = new HomeItemsVm();
+        public ObservableCollection<FeaturedItem> HomeItemsSource { get; set; }
     }
 }

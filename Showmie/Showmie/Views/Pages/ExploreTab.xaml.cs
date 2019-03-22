@@ -1,7 +1,7 @@
-﻿using Showmie.Models;
-using Showmie.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Showmie.Models;
+using Showmie.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +10,6 @@ namespace Showmie.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ExploreTab : ContentPage
     {
-
         public ExploreTab()
         {
             InitializeComponent();
@@ -41,48 +40,47 @@ namespace Showmie.Views
         {
             if (x == y)
                 return 0;
-            else if (x > y)
+            if (x > y)
                 return y - x;
-            else if (x < y)
+            if (x < y)
                 return x - y;
-            else return 0;
+            return 0;
         }
 
         protected override async void OnAppearing()
         {
-
             if (RecentDesigns == null || RecentDesigns.Count == 0)
             {
-                DesignService service = new DesignService();
+                var service = new DesignService();
 
                 RecentDesigns = await service.GetDesigns(Title);
-                RecentDesigns.ForEach((designGroup) => 
+                RecentDesigns.ForEach(designGroup =>
                 {
-                    string URL = designGroup.Design.Image;
-                    int uploadIndex = URL.IndexOf("upload/") + 7;
-                    URL = URL.Insert(uploadIndex, "w_0.75,h_0.75,c_crop,g_auto,q_auto/w_180/");
-                    designGroup.Design.Image = URL;
+                    var url = designGroup.Design.Image;
+                    var uploadIndex = url.IndexOf("upload/", StringComparison.Ordinal) + 7;
+                    url = url.Insert(uploadIndex, "w_0.75,h_0.75,c_crop,g_auto,q_auto/w_180/");
+                    designGroup.Design.Image = url;
                 });
                 MostLikedDesigns = RecentDesigns;
                 MostRequestedDesigns = RecentDesigns;
                 RecentDesignsViewer.ItemsSource = RecentDesigns;
 
-                MostLikedDesigns.Sort(new Comparison<DesignGroup>((x, y) => CompareIntegers(x.Design.Likes, y.Design.Likes)));
+                MostLikedDesigns.Sort((x, y) => CompareIntegers(x.Design.Likes, y.Design.Likes));
                 MostLikedDesignsViewer.ItemsSource = MostRequestedDesigns;
             }
 
             base.OnAppearing();
         }
 
-        private int CompareIntegers(int? x, int? y)
+        private static int CompareIntegers(int? x, int? y)
         {
             if (x.HasValue && y.HasValue)
             {
                 if (x.Value == y.Value)
                     return 0;
-                else if (x.Value > y.Value)
+                if (x.Value > y.Value)
                     return -1;
-                else if (x < y)
+                if (x < y)
                     return 1;
             }
             else if (x.HasValue)
@@ -93,10 +91,7 @@ namespace Showmie.Views
             {
                 return 1;
             }
-            else if (!x.HasValue && !y.HasValue)
-            {
-                return 0;
-            }
+
             return 0;
         }
     }

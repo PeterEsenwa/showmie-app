@@ -1,0 +1,187 @@
+[
+    {
+        "name": "Abia",
+        "lat": "5.41667",
+        "lng": "7.5"
+    },
+    {
+        "name": "Adamawa",
+        "lat": "9.33333",
+        "lng": "12.5"
+    },
+    {
+        "name": "Akwa Ibom",
+        "lat": "5",
+        "lng": "7.83333"
+    },
+    {
+        "name": "Anambra",
+        "lat": "6.33333",
+        "lng": "7"
+    },
+    {
+        "name": "Bauchi",
+        "lat": "10.5",
+        "lng": "10"
+    },
+    {
+        "name": "Bayelsa",
+        "lat": "4.75",
+        "lng": "6.08333"
+    },
+    {
+        "name": "Benue",
+        "lat": "7.33333",
+        "lng": "8.75"
+    },
+    {
+        "name": "Borno",
+        "lat": "11.5",
+        "lng": "13"
+    },
+    {
+        "name": "Cross River",
+        "lat": "5.75",
+        "lng": "8.5"
+    },
+    {
+        "name": "Delta",
+        "lat": "5.5",
+        "lng": "6"
+    },
+    {
+        "name": "Ebonyi",
+        "lat": "6.25",
+        "lng": "8.08333"
+    },
+    {
+        "name": "Edo",
+        "lat": "6.5",
+        "lng": "6"
+    },
+    {
+        "name": "Ekiti",
+        "lat": "7.66667",
+        "lng": "5.25"
+    },
+    {
+        "name": "Enugu",
+        "lat": "6.5",
+        "lng": "7.5"
+    },
+    {
+        "name": "FCT",
+        "lat": "8.83333",
+        "lng": "7.16667"
+    },
+    {
+        "name": "Gombe",
+        "lat": "10.25",
+        "lng": "11.16667"
+    },
+    {
+        "name": "Imo",
+        "lat": "5.5",
+        "lng": "7.16667"
+    },
+    {
+        "name": "Jigawa",
+        "lat": "12.1",
+        "lng": "9.56"
+    },
+    {
+        "name": "Kaduna",
+        "lat": "10.33333",
+        "lng": "7.75"
+    },
+    {
+        "name": "Kano",
+        "lat": "11.5",
+        "lng": "8.5"
+    },
+    {
+        "name": "Katsina",
+        "lat": "12.25",
+        "lng": "7.5"
+    },
+    {
+        "name": "Kebbi",
+        "lat": "11.5",
+        "lng": "4"
+    },
+    {
+        "name": "Kogi",
+        "lat": "7.75",
+        "lng": "6.75"
+    },
+    {
+        "name": "Kwara",
+        "lat": "8.5",
+        "lng": "5"
+    },
+    {
+        "name": "Lagos",
+        "lat": "6.53774",
+        "lng": "3.3522"
+    },
+    {
+        "name": "Nasarawa",
+        "lat": "8.5",
+        "lng": "8.25"
+    },
+    {
+        "name": "Niger",
+        "lat": "10",
+        "lng": "6"
+    },
+    {
+        "name": "Ogun",
+        "lat": "7",
+        "lng": "3.58333"
+    },
+    {
+        "name": "Ondo",
+        "lat": "7.16667",
+        "lng": "5.08333"
+    },
+    {
+        "name": "Osun",
+        "lat": "7.5",
+        "lng": "4.5"
+    },
+    {
+        "name": "Oyo",
+        "lat": "8",
+        "lng": "4"
+    },
+    {
+        "name": "Plateau",
+        "lat": "9.16667",
+        "lng": "9.75"
+    },
+    {
+        "name": "Rivers",
+        "lat": "4.74974",
+        "lng": "6.82766"
+    },
+    {
+        "name": "Sokoto",
+        "lat": "13.08333",
+        "lng": "5.25"
+    },
+    {
+        "name": "Taraba",
+        "lat": "8",
+        "lng": "10.5"
+    },
+    {
+        "name": "Yobe",
+        "lat": "12",
+        "lng": "11.5"
+    },
+    {
+        "name": "Zamfara",
+        "lat": "12.16667",
+        "lng": "6.25"
+    }
+]

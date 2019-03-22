@@ -47,7 +47,7 @@ namespace Showmie.Views
             if (firstPageLoad)
             {
                 DisplayInfo screenMetrics = new DisplayInfo();
-                if (screenMetrics.Rotation == DisplayRotation.Rotation0 || screenMetrics.Rotation == DisplayRotation.Rotation180)
+                if (screenMetrics.Rotation == DisplayRotation.Rotation0 || screenMetrics.Rotation == DisplayRotation.Rotation180 || screenMetrics.Rotation == DisplayRotation.Unknown)
                 {
                     Orientation = DisplayOrientation.Portrait;
                 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using static Showmie.Models.User;
 
 namespace Showmie.Views
 {
@@ -154,6 +155,11 @@ namespace Showmie.Views
         public void ToggleSwitch()
         {
             SwitchPosition = SwitchPosition == SwitchPositions.Left ? SwitchPositions.Right : SwitchPositions.Left;
+        }
+
+        public AccountTypes GetAccountType()
+        {
+            return SwitchPosition == SwitchPositions.Left ? AccountTypes.Professional : AccountTypes.Enthusiast;
         }
     }
 }

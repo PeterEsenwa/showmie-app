@@ -2,19 +2,18 @@
 <views:OrientationContentPage x:Class="Showmie.OnboardLandscape"
                               xmlns="http://xamarin.com/schemas/2014/forms"
                               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                              xmlns:views="clr-namespace:Showmie.Views"
-                              xmlns:cv="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView"
+                              xmlns:local="clr-namespace:Showmie"
                               xmlns:utils="clr-namespace:Showmie.Utils"
-                              xmlns:local="clr-namespace:Showmie">
+                              xmlns:views="clr-namespace:Showmie.Views">
     <views:OrientationContentPage.Content>
         <StackLayout BackgroundColor="White">
-            <cv:CarouselView x:Name="boardsCarousel"
-                             ItemsSource="{Binding BoardsSource}"
-                             PositionSelected="BoardsCarousel_PositionSelected"
-                             Position="{Binding BoardPosition, Mode=TwoWay}">
-                <cv:CarouselView.ItemTemplate>
+            <CarouselView x:Name="boardsCarousel"
+                          ItemsSource="{Binding BoardsSource}"
+                          PropertyChanged="BoardsCarousel_PropertyChanged"
+                          TabIndex="{Binding BoardPosition, Mode=TwoWay}">
+                <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <Grid VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                        <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="Start">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
@@ -42,28 +41,28 @@
                                        Grid.Row="1"
                                        FontFamily="{StaticResource QuicksandBold}"
                                        FontSize="{StaticResource FontSizeLarge}"
-                                       Text="{Binding HeadingText}"
                                        HorizontalOptions="Center"
-                                       VerticalOptions="Center"
                                        HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
-                                       TextColor="{StaticResource TextColorLightBlack}" />
+                                       Text="{Binding HeadingText}"
+                                       TextColor="{StaticResource TextColorLightBlack}"
+                                       VerticalOptions="Center"
+                                       VerticalTextAlignment="Center" />
 
                                 <Label x:Name="boardDescription"
                                        Grid.Row="2"
                                        FontFamily="{StaticResource QuicksandMedium}"
                                        FontSize="{StaticResource FontSizeMedium}"
                                        HorizontalOptions="Center"
-                                       VerticalOptions="Center"
                                        HorizontalTextAlignment="Center"
-                                       VerticalTextAlignment="Center"
                                        Text="{Binding BodyText}"
-                                       TextColor="{StaticResource TextColorLightBlack}" />
+                                       TextColor="{StaticResource TextColorLightBlack}"
+                                       VerticalOptions="Center"
+                                       VerticalTextAlignment="Center" />
                             </Grid>
                         </Grid>
                     </DataTemplate>
-                </cv:CarouselView.ItemTemplate>
-            </cv:CarouselView>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
             <Grid x:Name="lowerBar"
                   Margin="0,0,0,10"
                   HeightRequest="50">
@@ -84,13 +83,13 @@
                         Grid.Column="1"
                         BackgroundColor="White"
                         BorderColor="Transparent"
-                        FontSize="{StaticResource FontSizeSmall}"
-                        FontFamily="{StaticResource QuicksandBold}"
-                        CornerRadius="4"
-                        Text="SKIP"
                         Clicked="SkipOnboarding_Clicked"
-                        TextColor="{StaticResource TextColorLightGrey}"
+                        CornerRadius="4"
+                        FontFamily="{StaticResource QuicksandBold}"
+                        FontSize="{StaticResource FontSizeSmall}"
                         HorizontalOptions="Start"
+                        Text="SKIP"
+                        TextColor="{StaticResource TextColorLightGrey}"
                         VerticalOptions="Start" />
                 <Grid x:Name="Indicators"
                       Grid.Column="2"
@@ -107,11 +106,11 @@
                 </Grid>
                 <Button x:Name="NextBoard"
                         Grid.Column="3"
-                        Clicked="NextBoard_Clicked"
                         BackgroundColor="Transparent"
-                        Image="next_page_arrow.png"
-                        HorizontalOptions="End"
+                        Clicked="NextBoard_Clicked"
                         FontSize="{StaticResource FontSizeMedium}"
+                        HorizontalOptions="End"
+                        Image="next_page_arrow.png"
                         VerticalOptions="Start" />
             </Grid>
         </StackLayout>

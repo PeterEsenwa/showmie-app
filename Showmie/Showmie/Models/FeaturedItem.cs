@@ -5,7 +5,7 @@ namespace Showmie.Models
 {
     public class FeaturedItem
     {
-        public Image PostImage { get; set; }
+        public string PostImage { get; set; }
         public string Title { get; set; }
         public string Contributor { get; set; }
 
@@ -14,30 +14,9 @@ namespace Showmie.Models
 
         }
 
-        public FeaturedItem(Image postImage, string title, string contributor)
+        public FeaturedItem(string postImage, string title, string contributor)
         {
-            if (postImage.Equals(null) || postImage == null)
-            {
-                PostImage = new Image() { Source = "" };
-            }
-            else
-            {
-                PostImage = postImage;
-            }
-            Title = title ?? throw new ArgumentNullException(nameof(title));
-            Contributor = contributor ?? throw new ArgumentNullException(nameof(contributor));
-        }
-
-        public FeaturedItem(string postImageSrc, string title, string contributor)
-        {
-            if (postImageSrc.Equals(null) || postImageSrc == null || postImageSrc == "")
-            {
-                PostImage = new Image() { Source = "" };
-            }
-            else
-            {
-                PostImage = new Image() { Source = postImageSrc };
-            }
+            PostImage = postImage ?? throw new ArgumentNullException(nameof(postImage));
             Title = title ?? throw new ArgumentNullException(nameof(title));
             Contributor = contributor ?? throw new ArgumentNullException(nameof(contributor));
         }

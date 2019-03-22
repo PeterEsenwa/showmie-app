@@ -13,13 +13,15 @@ namespace Showmie.Utils
     {
         private List<DesignGroup> DesignGroups { get; set; }
 
+        public JsonSerializerSettings JSON_SerializerSettings { get; } = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Include,
+            MissingMemberHandling = MissingMemberHandling.Ignore,
+        };
+
         public DesignService()
         {
             DesignGroups = new List<DesignGroup>();
-            httpClient = new HttpClient
-            {
-                MaxResponseContentBufferSize = 500000
-            };
         }
 
         public async Task<List<DesignGroup>> GetDesigns(string category)
@@ -55,6 +57,12 @@ namespace Showmie.Utils
                                 else if (((JProperty)bodyValues).Name == "creator")
                                 {
                                     JToken designValue = ((JProperty)bodyValues).Value;
+                                    foreach (JToken jToken in designValue)
+                                    {
+                                        var token = (JObject) jToken;
+                                        string path = jToken.Path;
+                                        designValue.Value<JObject>().Remove("");
+                                    }
                                     User creator = JsonConvert.DeserializeObject<User>(designValue.Value<JObject>().ToString());
                                     designGroup.Creator = creator;
                                     DesignGroups.Add(designGroup);
@@ -80,6 +88,50 @@ namespace Showmie.Utils
                 catch (Exception ex)
                 {
                     throw;
+                }
+            }
+            httpClient.Dispose();
+            return null;
+        }
+
+        public async Task<Design> GetDesign(int designID)
+        {
+            NetworkAccess current = Connectivity.NetworkAccess;
+            if (current == NetworkAccess.Internet)
+            {
+                try
+                {
+                    string uriString = string.Format(URLS.GetDesignByID, designID);
+                    Uri uri = new Uri(uriString);
+                    
+                    //HttpResponseMessage response = await httpClient.GetAsync(uri);
+                    HttpResponseMessage response = await httpClient.GetAsync(uri);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        JObject respBody = JObject.Parse(await response.Content.ReadAsStringAsync());
+                        if (respBody.TryGetValue("body", out body))
+                        {
+                            Design design = JsonConvert.DeserializeObject<Design>(body.Value<JObject>().ToString());
+                            return design;
+                        }
+                        else
+                        {
+                            response.Dispose();
+                            httpClient.Dispose();
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        response.Dispose();
+                        httpClient.Dispose();
+                        return null;
+                    }
+                }
+                catch (Exception)
+                {
+                    httpClient.Dispose();
+                    return null;
                 }
             }
             httpClient.Dispose();

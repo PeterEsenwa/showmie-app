@@ -22,7 +22,7 @@
                 <RowDefinition x:Name="grid4" Height=".3*" />
                 <RowDefinition x:Name="grid5" Height="Auto" />
                 <RowDefinition x:Name="grid6" Height=".3*" />
-                <RowDefinition x:Name="grid7" Height="4.5*" />
+                <RowDefinition x:Name="grid7" Height="4*" />
                 <RowDefinition x:Name="grid8" Height="Auto" />
                 <RowDefinition x:Name="grid9" Height="Auto" />
             </Grid.RowDefinitions>
@@ -34,18 +34,20 @@
                          Grid.Column="0"
                          HorizontalOptions="CenterAndExpand"
                          Spacing="-4">
-                <Label x:Name="startTxt"
-                       FontFamily="{StaticResource QuicksandBold}"
-                       FontSize="{StaticResource FontSizeLarge}"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="Get Started!"
-                       TextColor="{StaticResource TextColorNearBlack}" />
-                <Label x:Name="createAccntPrompt"
-                       FontFamily="{StaticResource QuicksandBold}"
-                       FontSize="{StaticResource FontSizeBig}"
-                       HorizontalOptions="CenterAndExpand"
-                       Text="Create an account now"
-                       TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomLabel x:Name="startTxt"
+                                   FontFamily="{StaticResource QuicksandBold}"
+                                   FontSizeFactor="2.4"
+                                   HorizontalOptions="CenterAndExpand"
+                                   NamedFontSize="Medium"
+                                   Text="Get Started!"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomLabel x:Name="createAccntPrompt"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSizeFactor="2.4"
+                                   HorizontalOptions="CenterAndExpand"
+                                   NamedFontSize="Micro"
+                                   Text="Create an account now"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
             </StackLayout>
             <Grid x:Name="fieldsHolder"
                   Grid.Row="3"
@@ -59,47 +61,58 @@
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="6*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <views:BottomBorderEntry x:Name="usernameInput"
-                                         Grid.Row="0"
-                                         Grid.Column="1"
-                                         FontFamily="{StaticResource QuicksandMedium}"
-                                         FontSize="{StaticResource FontSizeMedium}"
-                                         HorizontalOptions="FillAndExpand"
-                                         Placeholder="Username"
-                                         PlaceholderColor="{StaticResource TextColorLightGrey}"
-                                         TextColor="{StaticResource TextColorNearBlack}" />
-                <views:BottomBorderEntry x:Name="emailInput"
-                                         Grid.Row="1"
-                                         Grid.Column="1"
-                                         FontFamily="{StaticResource QuicksandMedium}"
-                                         FontSize="{StaticResource FontSizeMedium}"
-                                         HorizontalOptions="FillAndExpand"
-                                         Placeholder="Email"
-                                         PlaceholderColor="{StaticResource TextColorLightGrey}"
-                                         TextColor="{StaticResource TextColorNearBlack}" />
-                <views:BottomBorderEntry x:Name="passwordInput"
-                                         Grid.Row="2"
-                                         Grid.Column="1"
-                                         FontFamily="{StaticResource QuicksandMedium}"
-                                         FontSize="{StaticResource FontSizeMedium}"
-                                         HorizontalOptions="FillAndExpand"
-                                         IsPassword="true"
-                                         Placeholder="Password"
-                                         PlaceholderColor="{StaticResource TextColorLightGrey}"
-                                         TextColor="{StaticResource TextColorNearBlack}" />
-                <views:BottomBorderEntry x:Name="confirmInput"
-                                         Grid.Row="3"
-                                         Grid.Column="1"
-                                         FontFamily="{StaticResource QuicksandMedium}"
-                                         FontSize="{StaticResource FontSizeMedium}"
-                                         HorizontalOptions="FillAndExpand"
-                                         IsPassword="true"
-                                         Placeholder="Re-enter Password"
-                                         PlaceholderColor="{StaticResource TextColorLightGrey}"
-                                         TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomEntry x:Name="usernameInput"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   HorizontalOptions="FillAndExpand"
+                                   Placeholder="Username"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   ReturnCommandParameter="1"
+                                   ReturnType="Next"
+                                   TabIndex="1"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomEntry x:Name="emailInput"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   HorizontalOptions="FillAndExpand"
+                                   Placeholder="Email"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   ReturnCommandParameter="2"
+                                   ReturnType="Next"
+                                   TabIndex="2"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomEntry x:Name="passwordInput"
+                                   Grid.Row="2"
+                                   Grid.Column="1"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsPassword="true"
+                                   Placeholder="Password"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   ReturnCommandParameter="3"
+                                   ReturnType="Next"
+                                   TabIndex="3"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
+                <views:CustomEntry x:Name="confirmInput"
+                                   Grid.Row="3"
+                                   Grid.Column="1"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSize="{StaticResource FontSizeMedium}"
+                                   HorizontalOptions="FillAndExpand"
+                                   IsPassword="true"
+                                   Placeholder="Re-enter Password"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   ReturnType="Done"
+                                   TabIndex="4"
+                                   TextColor="{StaticResource TextColorNearBlack}" />
             </Grid>
             <StackLayout x:Name="chooseUserType"
                          Grid.Row="5"
@@ -111,7 +124,8 @@
                        HorizontalOptions="CenterAndExpand"
                        Text="I am a Fashion"
                        TextColor="{StaticResource TextColorNearBlack}" />
-                <views:SwitchButton HorizontalOptions="Fill"
+                <views:SwitchButton x:Name="accountType"
+                                    HorizontalOptions="Fill"
                                     LeftText="Enthusiast"
                                     RightText="Professional"
                                     SwitchPosition="Right">
@@ -151,22 +165,30 @@
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GotoLoginAsync" />
                 </StackLayout.GestureRecognizers>
-                <Label FontFamily="{StaticResource QuicksandMedium}"
-                       FontSize="{StaticResource FontSizeSmall}"
-                       Text="already have an account?"
-                       TextColor="{StaticResource TextColorLightBlack}"
-                       VerticalOptions="Start" />
-                <Label FontFamily="{StaticResource QuicksandMedium}"
-                       FontSize="{StaticResource FontSizeSmall}"
-                       Text="Goto Login"
-                       TextColor="{StaticResource TextColorLightBlue}"
-                       VerticalOptions="Start" />
+                <views:CustomLabel Margin="{utils:ResponsiveThickness Size=Small,
+                                                                      Left=0,
+                                                                      Top=2.5,
+                                                                      Right=0,
+                                                                      Bottom=2.5}"
+                                   FontFamily="{StaticResource QuicksandMedium}"
+                                   FontSizeFactor="1.5"
+                                   NamedFontSize="Micro"
+                                   Text="already have an account?"
+                                   TextColor="{StaticResource TextColorLightBlack}"
+                                   VerticalOptions="Start" />
+                <views:CustomLabel FontFamily="{StaticResource QuicksandMedium}"
+                                   FontSizeFactor="1.5"
+                                   NamedFontSize="Micro"
+                                   Text="Goto Login"
+                                   TextColor="{StaticResource TextColorLightBlue}"
+                                   VerticalOptions="Start" />
             </StackLayout>
             <Grid x:Name="socialSignup"
                   Grid.Row="9"
                   Grid.Column="0"
                   BackgroundColor="{StaticResource TextColorNearBlack}"
                   HorizontalOptions="Fill"
+                  IsVisible="False"
                   VerticalOptions="End">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

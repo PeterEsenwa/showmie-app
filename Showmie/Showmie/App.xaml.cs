@@ -26,21 +26,19 @@ namespace Showmie
         public OnboardLandscape OnboardLandscapeScreens { get; set; }
         public static double ScreenWidth { get; internal set; }
         public static double ScreenHeight { get; internal set; }
-
+        public static Models.User CurrentUser { get; set; }
         protected override async void OnStart()
         {
             base.OnStart();
+
             if (Current.Properties.ContainsKey("firstLoad") && !(bool)Current.Properties["firstLoad"])
             {
-                if (Current.Properties.ContainsKey("keepLogin") && (bool)Current.Properties["keepLogin"])
-                {
-
-                }
-                MainPage = new NavigationPage(new LoginPage());
+                NavigationPage navigationPage = new NavigationPage(new LoginPage()) { BarBackgroundColor = Color.White, BarTextColor = Color.Black };
+                Current.MainPage = navigationPage;
             }
-            else if(Current.Properties.ContainsKey("firstLoad") && (bool)Current.Properties["firstLoad"])
+            else if (Current.Properties.ContainsKey("firstLoad") && (bool)Current.Properties["firstLoad"])
             {
-                MainPage = new NavigationPage(new SignupPage());
+                Current.MainPage = new NavigationPage(new SignupPage()) { BarBackgroundColor = Color.White, BarTextColor = Color.Black };
             }
             else if (!Current.Properties.ContainsKey("firstLoad"))
             {
@@ -72,38 +70,9 @@ namespace Showmie
         }
 
 
-        protected override async void OnResume()
+        protected override void OnResume()
         {
-            //base.OnResume();
-            MainPage = new NavigationPage(new LoginPage());
-            Signup = new SignupPage();
-            if (Current.Properties.ContainsKey("firstLoad") && !(bool)Current.Properties["firstLoad"])
-            {
-                MainPage = new NavigationPage(new LoginPage());
-            }
-            else
-            {
-                Current.Properties.Add("firstLoad", false);
-                await Current.SavePropertiesAsync();
-                OnboardScreens = new Onboard(true);
-                OnboardLandscapeScreens = new OnboardLandscape(true);
-                DisplayInfo metrics = DeviceDisplay.MainDisplayInfo;
-                switch (metrics.Orientation)
-                {
-                    case DisplayOrientation.Portrait:
-                        MainPage = OnboardScreens;
-                        break;
-                    case DisplayOrientation.Unknown:
-                        MainPage = OnboardScreens;
-                        break;
-                    case DisplayOrientation.Landscape:
-                        MainPage = OnboardLandscapeScreens;
-                        break;
-                    default:
-                        MainPage = OnboardScreens;
-                        break;
-                }
-            }
+            base.OnResume();
 
         }
 

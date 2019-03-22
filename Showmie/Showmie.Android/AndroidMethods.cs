@@ -8,6 +8,7 @@ using static Showmie.Droid.PreApp;
 [assembly: Xamarin.Forms.Dependency(typeof(AndroidMethods))]
 namespace Showmie.Droid
 {
+    //TODO : Implement equivalent for IOS
     public class AndroidMethods : IAndroidMethods
     {
         Window window = activity.Window;

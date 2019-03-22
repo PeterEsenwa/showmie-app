@@ -8,4 +8,11 @@ namespace Showmie
         void ShowBar();
         void SetActionBarIcon();
     }
+
+    /**
+     */
+    internal interface IFirebaseAuthFunctions
+    {
+        bool AuthenticatePhone(string phoneNumber);
+    }
 }

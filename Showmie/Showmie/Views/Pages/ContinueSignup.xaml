@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="Showmie.Views.Pages.ContinueSignup"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behavior="clr-namespace:Showmie.Utils.Behaviours"
+             xmlns:customviews="clr-namespace:Showmie.Views.CustomViews"
+             xmlns:utils="clr-namespace:Showmie.Utils"
+             xmlns:views="clr-namespace:Showmie.Views"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".067*" />
+                <ColumnDefinition Width=".799*" />
+                <ColumnDefinition Width=".067*" />
+                <ColumnDefinition Width=".067*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="grid0" Height=".11*" />
+                <RowDefinition x:Name="grid1" Height=".164*" />
+                <RowDefinition x:Name="grid2" Height=".09*" />
+                <RowDefinition x:Name="grid3" Height=".09*" />
+                <RowDefinition x:Name="grid4" Height=".09*" />
+                <RowDefinition x:Name="grid5" Height=".09*" />
+                <RowDefinition x:Name="grid6" Height=".09*" />
+                <RowDefinition x:Name="grid7" Height=".09*" />
+                <RowDefinition x:Name="grid8" Height=".076*" />
+                <RowDefinition x:Name="grid9" Height=".11*" />
+            </Grid.RowDefinitions>
+            <ImageButton Grid.Row="0"
+                         Grid.Column="2"
+                         Aspect="AspectFit"
+                         BackgroundColor="White"
+                         HorizontalOptions="CenterAndExpand"
+                         Source="close_btn_image"
+                         VerticalOptions="Center" />
+            <views:CustomLabel Grid.Row="1"
+                               Grid.Column="1"
+                               FontFamily="{StaticResource QuicksandMedium}"
+                               FontSizeFactor="2"
+                               HorizontalOptions="Fill"
+                               NamedFontSize="Small"
+                               Text="Let's complete your information"
+                               TextColor="{StaticResource TextColorNearBlack}" />
+
+            <Grid Grid.Row="2"
+                  Grid.Column="1"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <views:CustomEntry x:Name="firstNameInput"
+                                   Grid.Column="0"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSizeFactor="2"
+                                   HorizontalOptions="Fill"
+                                   IsName="True"
+                                   NamedFontSize="Micro"
+                                   Placeholder="Firstname"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   TabIndex="1"
+                                   TextColor="{StaticResource TextColorNearBlack}"
+                                   VerticalOptions="CenterAndExpand" />
+                <views:CustomEntry x:Name="lastNameInput"
+                                   Grid.Column="1"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSizeFactor="2"
+                                   HorizontalOptions="Fill"
+                                   IsName="True"
+                                   NamedFontSize="Micro"
+                                   Placeholder="Lastname"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   TabIndex="2"
+                                   TextColor="{StaticResource TextColorNearBlack}"
+                                   VerticalOptions="CenterAndExpand" />
+            </Grid>
+            <views:CustomDatePicker x:Name="DoBEntry"
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    FontFamily="{StaticResource QuicksandRegular}"
+                                    FontSizeFactor="2"
+                                    HorizontalOptions="Fill"
+                                    NamedFontSize="Micro"
+                                    TabIndex="3" />
+            <views:CustomPicker x:Name="StateOfResidence"
+                                Title="Select a State"
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontFamily="{StaticResource QuicksandRegular}"
+                                FontSizeFactor="1.8"
+                                HorizontalOptions="Fill"
+                                ItemDisplayBinding="{Binding Name}"
+                                NamedFontSize="Micro"
+                                TabIndex="4" />
+            <Grid Grid.Row="5"
+                  Grid.Column="1"
+                  HorizontalOptions="Fill"
+                  VerticalOptions="Fill">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <views:CustomEntry x:Name="phoneNumberEntry"
+                                   Grid.Column="0"
+                                   FontFamily="{StaticResource QuicksandRegular}"
+                                   FontSizeFactor="2"
+                                   HorizontalOptions="Fill"
+                                   Keyboard="Telephone"
+                                   Mask="+234 XXXX-XXX-XXXX"
+                                   NamedFontSize="Micro"
+                                   Placeholder="Phone"
+                                   PlaceholderColor="{StaticResource TextColorLightGrey}"
+                                   ReturnType="Done"
+                                   TabIndex="5"
+                                   TextColor="{StaticResource TextColorNearBlack}"
+                                   VerticalOptions="CenterAndExpand" />
+                <views:CustomLabel x:Name="DoVerification"
+                                   Grid.Column="1"
+                                   Margin="{utils:ResponsiveThickness Left=8,
+                                                                      Size=Medium}"
+                                   FontFamily="{StaticResource QuicksandLight}"
+                                   FontSize="{utils:ResponsiveDouble Value=16,
+                                                                     Size=Medium}"
+                                   HorizontalOptions="Fill"
+                                   Text="verify now?"
+                                   TextColor="{StaticResource TextColorNearRed}"
+                                   VerticalOptions="Center">
+                    <views:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="VerifyPhoneNumber" />
+                    </views:CustomLabel.GestureRecognizers>
+                </views:CustomLabel>
+            </Grid>
+            <customviews:CheckboxHolder x:Name="gendersBox"
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Fill"
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand">
+                <customviews:CustomCheckbox x:Name="MaleSwitch"
+                                            CheckedBackgroundColor="{StaticResource CheckedCheckboxBackgroundColor}"
+                                            FontFamily="Quicksand-Regular.ttf"
+                                            HorizontalOptions="Fill"
+                                            Label="Male"
+                                            LabelColor="{StaticResource TextColorNearBlack}"
+                                            TabIndex="6"
+                                            TextSize="18"
+                                            UnCheckedBackgroundColor="{StaticResource UnCheckedCheckboxBackgroundColor}" />
+                <customviews:CustomCheckbox x:Name="FemaleSwitch"
+                                            CheckedBackgroundColor="{StaticResource CheckedCheckboxBackgroundColor}"
+                                            FontFamily="Quicksand-Regular.ttf"
+                                            HorizontalOptions="Fill"
+                                            Label="Female"
+                                            LabelColor="{StaticResource TextColorNearBlack}"
+                                            TabIndex="7"
+                                            TextSize="18"
+                                            UnCheckedBackgroundColor="{StaticResource UnCheckedCheckboxBackgroundColor}" />
+
+            </customviews:CheckboxHolder>
+            <Button x:Name="continueButton"
+                    Grid.Row="9"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="{StaticResource BtnBackColorDefault}"
+                    Clicked="ContinueButton_Clicked"
+                    FontFamily="{StaticResource QuicksandRegular}"
+                    FontSize="{utils:ResponsiveDouble Value=18,
+                                                      Size=Medium}"
+                    HorizontalOptions="End"
+                    Text="Complete"
+                    TextColor="{StaticResource BtnTextColorDefault}"
+                    VerticalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

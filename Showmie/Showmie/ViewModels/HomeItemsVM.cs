@@ -1,33 +1,24 @@
 ﻿using Showmie.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Showmie.ViewModels
 {
-    internal class HomeItemsVM
+    public class HomeItemsVm
     {
-        public ObservableCollection<HomeItem> ItemsList { get; set; } = new ObservableCollection<HomeItem>();
+        public ObservableCollection<FeaturedItem> ItemsList { get; set; } = new ObservableCollection<FeaturedItem>();
 
-        public ObservableCollection<HomeItem> GetItems()
+        public ObservableCollection<FeaturedItem> GetItems()
         {
-            FeaturedItem mainFeaturedItem = new FeaturedItem("black_essence", "BLACK ESSENCE", "petrilevi");
-            List<FeaturedItem> otherFeaturedItems = new List<FeaturedItem>()
-            {
-                new FeaturedItem("boy_called_cloak", "CLOAK IN RED", "petrilevi"),
-                new FeaturedItem("light_africa", "BLACK WHITE", "petrilevi")
-            };
-
-            HomeItem mainItem = new HomeItem(SingleItem: mainFeaturedItem);
-            HomeItem otherItems = new HomeItem(Items: otherFeaturedItems);
-
-            mainItem.Title = "BLACK ESSENCE";
-            mainItem.Contributor = "petrilevi";
-            otherItems.Title = "";
-            otherItems.Contributor = "petrilevi";
-
-            ItemsList.Add(mainItem);
-            ItemsList.Add(otherItems);
+            var item1 = new FeaturedItem("black_essence.png", "BLACK ESSENCE", "petrilevi");
+            var item2 = new FeaturedItem("womens_day.png", "WOMEN'S DAY", "petrilevi");
+            var item3 = new FeaturedItem("womens_day.png", "WOMEN'S DAY", "petrilevi");
+            var item4 = new FeaturedItem("black_essence.png", "BLACK ESSENCE", "petrilevi");
+            //FeaturedItem item3 = new FeaturedItem("light_africa.png", "WHITE AFRICANA", "mr nobody");
+            
+            ItemsList.Add(item1);
+            ItemsList.Add(item2);
+            ItemsList.Add(item3);
+            ItemsList.Add(item4);
             return ItemsList;
         }
 

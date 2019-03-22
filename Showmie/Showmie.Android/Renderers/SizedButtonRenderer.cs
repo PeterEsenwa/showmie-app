@@ -1,5 +1,5 @@
 ﻿using Android.Content;
-using Showmie.Droid;
+using Showmie.Droid.Renderers;
 using Showmie.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -7,7 +7,7 @@ using Android.Support.V7.Widget;
 using ButtonRenderer = Xamarin.Forms.Platform.Android.AppCompat.ButtonRenderer;
 
 [assembly: ExportRenderer(typeof(SizedButton), typeof(SizedButtonRenderer))]
-namespace Showmie.Droid
+namespace Showmie.Droid.Renderers
 {
     internal class SizedButtonRenderer: ButtonRenderer
     {
@@ -38,10 +38,18 @@ namespace Showmie.Droid
             }
 
             if (_myButton != null)
-                _androidButton.SetPadding((int) _myButton.Padding.Left, (int) _myButton.Padding.Top,
-                    (int) _myButton.Padding.Right, (int) _myButton.Padding.Bottom);
-            _androidButton.SetMinimumHeight(0);
-            _androidButton.SetMinimumWidth(0);
+            {
+                _androidButton.Elevation = _myButton.Elevation;
+                if (!_myButton.Capitalize)
+                {
+                    _androidButton.SetSupportAllCaps(false);
+                }
+                if (_myButton.BackgroundColor == Color.Transparent)
+                {
+                    _androidButton.Background = Context.GetDrawable(Resource.Drawable.abc_btn_borderless_material);
+                }
+            }
+            
         }
     }
 }

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+  <style name="MainTheme" parent="MainTheme.Base">
+  </style>
+  <!-- Base theme applied no matter what API -->
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
+    <!--We will be using the toolbar so no need to show ActionBar-->
+    <item name="windowActionBar">true</item>
+    <!-- Set theme colors from http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <!-- colorPrimary is used for the default action bar background -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <!-- colorPrimaryDark is used for the status bar -->
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <!-- colorAccent is used as the default value for colorControlActivated
+         which is used to tint widgets -->
+    <item name="colorAccent">@color/colorAccent</item>
+    <!-- You can also set colorControlNormal, colorControlActivated
+         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+
+    <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
+  </style>
+
+  <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
+
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    
+    <item name="android:statusBarColor">#FFFFFF</item>
+    
+    <item name="android:windowNoTitle">true</item>
+
+    <item name="android:windowLightStatusBar">true</item>
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <!--<item name="colorPrimary">#FFFFFF</item>
+
+    <item name="colorPrimaryDark">#BA1437</item>
+
+    <item name="colorAccent">#262626</item>-->
+    <!--<item name="android:colorControlActivated">#dc316b</item>
+
+    <item name="colorPrimaryDark">#BA1437</item>
+    <item name="colorControlNormal">#E81945</item>
+    <item name="colorAccent">#262626</item>-->
+  </style>
+
+  <style name="PreAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="searchViewStyle">@style/MySearchViewStyle</item>
+    <item name="checkboxStyle">@style/MyCheckboxStyle</item>
+    <!--<item name="android:tabWidgetStyle">@style/MyTabLayoutStyle</item>-->
+    
+    <item name="colorPrimary">@color/colorPrimary</item>
+    
+    <item name="android:windowLightStatusBar">false</item>
+    
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="MyCheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+    <item name="buttonTint">#EBEBEB</item>
+  </style>
+  
+  <style name="Base.Widget.Design.TabLayout" parent="android:Widget">
+    <item name="tabIndicatorColor">@android:color/white</item>
+    <item name="tabIndicatorHeight">2dp</item>
+    <item name="tabPaddingStart">8dp</item>
+    <item name="tabPaddingEnd">8dp</item>
+    <item name="tabBackground">@drawable/exploreTabLayoutBackground</item>
+    <item name="tabTextAppearance">@style/AppTheme.TextAppearance.Design.Tab</item>
+    <!--<item name="tabSelectedTextColor">?android:textColorPrimary</item>-->
+  </style>
+
+  <style name="AppTheme.TextAppearance.Design.Tab" parent="TextAppearance.AppCompat.Button">
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@android:color/white</item>
+    <!--<item name="textAllCaps">true</item>-->
+  </style>
+
+
+  <style name="MySearchViewStyle" parent="Widget.AppCompat.SearchView">
+    <item name="color">@color/pink</item>
+    <!-- Background for the search query section (e.g. EditText) -->
+    <item name="queryBackground">@color/searchbarBackground</item>
+    <!-- Background for the actions section (e.g. voice, submit) -->
+    <item name="submitBackground">@color/searchbarBackground</item>
+    <!-- Close button icon -->
+    <!--<item name="closeIcon">...</item>-->
+    <!-- Search button icon -->
+    <!--<item name="searchIcon">...</item>-->
+    <!-- Go/commit button icon -->
+    <!--<item name="goIcon">...</item>-->
+    <!-- Voice search button icon -->
+    <!--<item name="voiceIcon">...</item>-->
+    <!-- Commit icon shown in the query suggestion row -->
+    <!--<item name="commitIcon">...</item>-->
+    <!-- Layout for query suggestion rows -->
+    <!--<item name="suggestionRowLayout">...</item>-->
+  </style>
+
+
+  <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+    <item name="color">#dc316b</item>
+  </style>
+
+
+  <style name="ToolbarTheme">
+    <!-- Used to tint the back arrow, menu and spinner arrow -->
+    <item name="colorControlNormal">#E81945</item>
+  </style>
+
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#FF4081</item>
+  </style>
+
+  <!--<style name="MyCheckboxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">
+    <item name="colorAccent">#E81945</item>
+    <item name="colorControlActivated">#E81945</item>
+    <item name="android:buttonTint">#E81945</item>
+  </style>-->
+  
+  
+</resources>
